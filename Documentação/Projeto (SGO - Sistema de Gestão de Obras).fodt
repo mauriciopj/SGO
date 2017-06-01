@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <office:document xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:officeooo="http://openoffice.org/2009/office" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:css3t="http://www.w3.org/TR/css3-text/" office:version="1.2" office:mimetype="application/vnd.oasis.opendocument.text">
- <office:meta><meta:generator>LibreOffice/5.1.6.2$Linux_X86_64 LibreOffice_project/10m0$Build-2</meta:generator><dc:date>2017-05-31T22:28:32.229209316</dc:date><meta:editing-duration>PT22M46S</meta:editing-duration><meta:editing-cycles>8</meta:editing-cycles><meta:document-statistic meta:table-count="22" meta:image-count="4" meta:object-count="0" meta:page-count="14" meta:paragraph-count="389" meta:word-count="2115" meta:character-count="13249" meta:non-whitespace-character-count="11403"/></office:meta>
+ <office:meta><meta:generator>LibreOffice/5.1.6.2$Linux_X86_64 LibreOffice_project/10m0$Build-2</meta:generator><dc:date>2017-05-31T22:55:43.698352031</dc:date><meta:editing-duration>PT25M30S</meta:editing-duration><meta:editing-cycles>9</meta:editing-cycles><meta:document-statistic meta:table-count="23" meta:image-count="4" meta:object-count="0" meta:page-count="15" meta:paragraph-count="419" meta:word-count="2281" meta:character-count="14298" meta:non-whitespace-character-count="12309"/></office:meta>
  <office:settings>
   <config:config-item-set config:name="ooo:view-settings">
-   <config:config-item config:name="ViewAreaTop" config:type="long">223744</config:config-item>
+   <config:config-item config:name="ViewAreaTop" config:type="long">262214</config:config-item>
    <config:config-item config:name="ViewAreaLeft" config:type="long">0</config:config-item>
    <config:config-item config:name="ViewAreaWidth" config:type="long">19606</config:config-item>
-   <config:config-item config:name="ViewAreaHeight" config:type="long">12845</config:config-item>
+   <config:config-item config:name="ViewAreaHeight" config:type="long">12846</config:config-item>
    <config:config-item config:name="ShowRedlineChanges" config:type="boolean">true</config:config-item>
    <config:config-item config:name="InBrowseMode" config:type="boolean">false</config:config-item>
    <config:config-item-map-indexed config:name="Views">
     <config:config-item-map-entry>
      <config:config-item config:name="ViewId" config:type="string">view2</config:config-item>
-     <config:config-item config:name="ViewLeft" config:type="long">6623</config:config-item>
-     <config:config-item config:name="ViewTop" config:type="long">231166</config:config-item>
+     <config:config-item config:name="ViewLeft" config:type="long">14885</config:config-item>
+     <config:config-item config:name="ViewTop" config:type="long">255685</config:config-item>
      <config:config-item config:name="VisibleLeft" config:type="long">0</config:config-item>
-     <config:config-item config:name="VisibleTop" config:type="long">223744</config:config-item>
+     <config:config-item config:name="VisibleTop" config:type="long">262214</config:config-item>
      <config:config-item config:name="VisibleRight" config:type="long">19604</config:config-item>
-     <config:config-item config:name="VisibleBottom" config:type="long">236587</config:config-item>
+     <config:config-item config:name="VisibleBottom" config:type="long">275059</config:config-item>
      <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
      <config:config-item config:name="ViewLayoutColumns" config:type="short">0</config:config-item>
      <config:config-item config:name="ViewLayoutBookMode" config:type="boolean">false</config:config-item>
@@ -68,7 +68,7 @@
    <config:config-item config:name="InvertBorderSpacing" config:type="boolean">true</config:config-item>
    <config:config-item config:name="SaveGlobalDocumentLinks" config:type="boolean">false</config:config-item>
    <config:config-item config:name="TabsRelativeToIndent" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="Rsid" config:type="int">2594115</config:config-item>
+   <config:config-item config:name="Rsid" config:type="int">2657200</config:config-item>
    <config:config-item config:name="PrintProspectRTL" config:type="boolean">false</config:config-item>
    <config:config-item config:name="PrintEmptyPages" config:type="boolean">false</config:config-item>
    <config:config-item config:name="ApplyUserData" config:type="boolean">true</config:config-item>
@@ -1655,6 +1655,98 @@
   <style:style style:name="Table23.A1" style:family="table-cell">
    <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
   </style:style>
+  <style:style style:name="Tabela5" style:family="table">
+   <style:table-properties style:width="16.828cm" fo:margin-left="-0.206cm" fo:margin-top="0cm" fo:margin-bottom="0cm" table:align="left" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.A" style:family="table-column">
+   <style:table-column-properties style:column-width="4.154cm"/>
+  </style:style>
+  <style:style style:name="Tabela5.B" style:family="table-column">
+   <style:table-column-properties style:column-width="1.402cm"/>
+  </style:style>
+  <style:style style:name="Tabela5.C" style:family="table-column">
+   <style:table-column-properties style:column-width="11.271cm"/>
+  </style:style>
+  <style:style style:name="Tabela5.1" style:family="table-row">
+   <style:table-row-properties style:min-row-height="0.741cm" fo:keep-together="auto"/>
+  </style:style>
+  <style:style style:name="Tabela5.A1" style:family="table-cell">
+   <style:table-cell-properties style:vertical-align="middle" fo:background-color="#f3f3f3" fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb">
+    <style:background-image/>
+   </style:table-cell-properties>
+  </style:style>
+  <style:style style:name="Tabela5.B2" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.C2" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.3" style:family="table-row">
+   <style:table-row-properties style:min-row-height="0.953cm" fo:keep-together="auto"/>
+  </style:style>
+  <style:style style:name="Tabela5.B3" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.B4" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.C4" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.B5" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.C5" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.B6" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.C6" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.B7" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.C7" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.B8" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.C8" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.B9" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.C9" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.B10" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.C10" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.B11" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.C11" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.12" style:family="table-row">
+   <style:table-row-properties fo:keep-together="auto"/>
+  </style:style>
+  <style:style style:name="Tabela5.B12" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.C12" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="Tabela5.B13" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.176cm" fo:border="1pt solid #000001" style:writing-mode="lr-tb"/>
+  </style:style>
   <style:style style:name="P1" style:family="paragraph" style:parent-style-name="Standard">
    <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false"/>
   </style:style>
@@ -1966,29 +2058,71 @@
    <style:paragraph-properties fo:margin-left="1.27cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="true" fo:text-indent="-0.635cm" style:auto-text-indent="false"/>
    <style:text-properties style:font-name="Times New Roman" fo:font-size="12pt" style:font-name-asian="Times New Roman1" style:font-size-asian="12pt" style:font-name-complex="Times New Roman1" style:font-size-complex="12pt"/>
   </style:style>
-  <style:style style:name="P82" style:family="paragraph" style:parent-style-name="Standard" style:master-page-name="Standard">
+  <style:style style:name="P82" style:family="paragraph" style:parent-style-name="Standard">
+   <style:text-properties officeooo:paragraph-rsid="00280018"/>
+  </style:style>
+  <style:style style:name="P83" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="100%" fo:orphans="0" fo:widows="0"/>
+   <style:text-properties style:font-name="Times New Roman" fo:font-size="12pt" officeooo:paragraph-rsid="0025fcfd" style:font-name-asian="Times New Roman1" style:font-size-asian="12pt" style:font-name-complex="Times New Roman1" style:font-size-complex="12pt"/>
+  </style:style>
+  <style:style style:name="P84" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="100%" fo:orphans="0" fo:widows="0"/>
+   <style:text-properties style:font-name="Times New Roman" fo:font-size="12pt" officeooo:paragraph-rsid="00280018" style:font-name-asian="Times New Roman1" style:font-size-asian="12pt" style:font-name-complex="Times New Roman1" style:font-size-complex="12pt"/>
+  </style:style>
+  <style:style style:name="P85" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="100%" fo:orphans="0" fo:widows="0"/>
+   <style:text-properties officeooo:rsid="0023132a" officeooo:paragraph-rsid="00280018"/>
+  </style:style>
+  <style:style style:name="P86" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="100%" fo:text-align="center" style:justify-single-word="false" fo:orphans="0" fo:widows="0"/>
+   <style:text-properties officeooo:paragraph-rsid="00280018"/>
+  </style:style>
+  <style:style style:name="P87" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="100%" fo:orphans="0" fo:widows="0"/>
+   <style:text-properties officeooo:paragraph-rsid="00280018"/>
+  </style:style>
+  <style:style style:name="P88" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false"/>
+   <style:text-properties officeooo:paragraph-rsid="00280018"/>
+  </style:style>
+  <style:style style:name="P89" style:family="paragraph" style:parent-style-name="Standard" style:master-page-name="Standard">
    <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="100%" fo:text-align="center" style:justify-single-word="false" style:page-number="1"/>
    <style:text-properties style:font-name="Times New Roman" fo:font-size="12pt" fo:font-weight="bold" style:font-name-asian="Times New Roman1" style:font-size-asian="12pt" style:font-weight-asian="bold" style:font-name-complex="Times New Roman1" style:font-size-complex="12pt"/>
   </style:style>
-  <style:style style:name="P83" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="WWNum8">
+  <style:style style:name="P90" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="WWNum8">
    <style:paragraph-properties fo:margin-left="2.54cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="true" fo:text-indent="-0.635cm" style:auto-text-indent="false"/>
    <style:text-properties style:font-name="Times New Roman" fo:font-size="12pt" style:font-name-asian="Times New Roman1" style:font-size-asian="12pt" style:font-name-complex="Times New Roman1" style:font-size-complex="12pt"/>
   </style:style>
-  <style:style style:name="P84" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="WWNum9">
+  <style:style style:name="P91" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="WWNum9">
    <style:paragraph-properties fo:margin-left="2.54cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="true" fo:text-indent="-0.635cm" style:auto-text-indent="false"/>
    <style:text-properties style:font-name="Times New Roman" fo:font-size="12pt" style:font-name-asian="Times New Roman1" style:font-size-asian="12pt" style:font-name-complex="Times New Roman1" style:font-size-complex="12pt"/>
   </style:style>
-  <style:style style:name="P85" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="WWNum6">
+  <style:style style:name="P92" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="WWNum6">
    <style:paragraph-properties fo:margin-left="2.54cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="true" fo:text-indent="-0.635cm" style:auto-text-indent="false"/>
    <style:text-properties style:font-name="Times New Roman" fo:font-size="12pt" style:font-name-asian="Times New Roman1" style:font-size-asian="12pt" style:font-name-complex="Times New Roman1" style:font-size-complex="12pt"/>
   </style:style>
-  <style:style style:name="P86" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="WWNum4">
+  <style:style style:name="P93" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="WWNum4">
    <style:paragraph-properties fo:margin-left="2.54cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="true" fo:line-height="100%" fo:orphans="0" fo:widows="0" fo:text-indent="-0.635cm" style:auto-text-indent="false"/>
    <style:text-properties style:font-name="Times New Roman" fo:font-size="12pt" style:font-name-asian="Times New Roman1" style:font-size-asian="12pt" style:font-name-complex="Times New Roman1" style:font-size-complex="12pt"/>
   </style:style>
-  <style:style style:name="P87" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="WWNum8">
+  <style:style style:name="P94" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="WWNum8">
    <style:paragraph-properties fo:margin-left="1.27cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="true" fo:text-indent="-0.635cm" style:auto-text-indent="false"/>
    <style:text-properties style:font-name="Times New Roman" fo:font-size="12pt" style:font-name-asian="Times New Roman1" style:font-size-asian="12pt" style:font-name-complex="Times New Roman1" style:font-size-complex="12pt"/>
+  </style:style>
+  <style:style style:name="P95" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="100%" fo:text-align="start" style:justify-single-word="false" fo:keep-together="auto" fo:orphans="0" fo:widows="0" fo:text-indent="0cm" style:auto-text-indent="false" fo:keep-with-next="auto"/>
+   <style:text-properties officeooo:paragraph-rsid="00280018"/>
+  </style:style>
+  <style:style style:name="P96" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="100%" fo:text-align="center" style:justify-single-word="false" fo:keep-together="auto" fo:orphans="0" fo:widows="0" fo:text-indent="0cm" style:auto-text-indent="false" fo:keep-with-next="auto"/>
+   <style:text-properties officeooo:paragraph-rsid="00280018"/>
+  </style:style>
+  <style:style style:name="P97" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:line-height="100%" fo:text-align="start" style:justify-single-word="false" fo:keep-together="auto" fo:orphans="0" fo:widows="0" fo:text-indent="0cm" style:auto-text-indent="false" fo:keep-with-next="auto"/>
+   <style:text-properties fo:language="pt" fo:country="BR" officeooo:paragraph-rsid="00280018"/>
+  </style:style>
+  <style:style style:name="P98" style:family="paragraph" style:parent-style-name="Heading_20_1">
+   <style:text-properties officeooo:paragraph-rsid="00280018"/>
   </style:style>
   <style:style style:name="T1" style:family="text">
    <style:text-properties style:font-name="Times New Roman" fo:font-size="12pt" fo:font-weight="bold" style:font-name-asian="Times New Roman1" style:font-size-asian="12pt" style:font-weight-asian="bold" style:font-name-complex="Times New Roman1" style:font-size-complex="12pt"/>
@@ -2045,13 +2179,22 @@
    <style:text-properties officeooo:rsid="0023f6a7" fo:background-color="#ffff00" loext:char-shading-value="0"/>
   </style:style>
   <style:style style:name="T19" style:family="text">
-   <style:text-properties officeooo:rsid="0023f6a7" fo:background-color="#ffff00" loext:char-shading-value="0"/>
-  </style:style>
-  <style:style style:name="T20" style:family="text">
    <style:text-properties officeooo:rsid="00277e14"/>
   </style:style>
-  <style:style style:name="T21" style:family="text">
+  <style:style style:name="T20" style:family="text">
    <style:text-properties officeooo:rsid="00279543"/>
+  </style:style>
+  <style:style style:name="T21" style:family="text">
+   <style:text-properties officeooo:rsid="00280018"/>
+  </style:style>
+  <style:style style:name="T22" style:family="text">
+   <style:text-properties fo:language="pt" fo:country="BR" officeooo:rsid="0023132a"/>
+  </style:style>
+  <style:style style:name="T23" style:family="text">
+   <style:text-properties fo:language="pt" fo:country="BR" officeooo:rsid="0023132a" fo:background-color="transparent" loext:char-shading-value="0" loext:shadow="none"/>
+  </style:style>
+  <style:style style:name="T24" style:family="text">
+   <style:text-properties officeooo:rsid="00288bb0"/>
   </style:style>
   <style:style style:name="fr1" style:family="graphic" style:parent-style-name="Graphics">
    <style:graphic-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" style:vertical-pos="top" style:vertical-rel="baseline" fo:background-color="transparent" draw:fill="none" draw:opacity="0%" fo:padding="0cm" fo:border="none" style:mirror="none" fo:clip="rect(0cm, 0cm, 0cm, 0cm)" draw:luminance="0%" draw:contrast="0%" draw:red="0%" draw:green="0%" draw:blue="0%" draw:gamma="100%" draw:color-inversion="false" draw:image-opacity="100%" draw:color-mode="standard"/>
@@ -2082,7 +2225,7 @@
     <text:sequence-decl text:display-outline-level="0" text:name="Text"/>
     <text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>
    </text:sequence-decls>
-   <text:p text:style-name="P82">INSTITUTO FEDERAL DO NORTE DE MINAS GERAIS CAMPUS JANUÁRIA</text:p>
+   <text:p text:style-name="P89">INSTITUTO FEDERAL DO NORTE DE MINAS GERAIS CAMPUS JANUÁRIA</text:p>
    <text:p text:style-name="P23">TECNOLOGIA EM ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</text:p>
    <text:p text:style-name="P49"/>
    <text:p text:style-name="P11"/>
@@ -2193,11 +2336,11 @@
    <text:p text:style-name="P15"/>
    <text:p text:style-name="P14">JANUÁRIA - MINAS GERAIS</text:p>
    <text:p text:style-name="P14">2017</text:p>
-   <text:list xml:id="list8768338362755224851" text:style-name="WWNum8">
+   <text:list xml:id="list3060589499727976535" text:style-name="WWNum8">
     <text:list-item>
      <text:list>
       <text:list-item>
-       <text:p text:style-name="P83"><text:soft-page-break/>MINIMUNDO</text:p>
+       <text:p text:style-name="P90"><text:soft-page-break/>MINIMUNDO</text:p>
       </text:list-item>
      </text:list>
     </text:list-item>
@@ -2209,11 +2352,11 @@
    <text:p text:style-name="P69"><text:tab/> <text:tab/> <text:tab/></text:p>
    <text:p text:style-name="P70">Com isso, esse sistema proporcionará à equipe e ao construtor uma maior visão na realização das obras e serviços, possibilitando rever o planejamento, redirecionar mão de obra, e minimizar os desperdícios. O sistema deverá ser online e estar disponível a qualquer pessoa interessada nos projetos ou na compra de bens.</text:p>
    <text:p text:style-name="P48"/>
-   <text:list xml:id="list222832779200484" text:continue-numbering="true" text:style-name="WWNum8">
+   <text:list xml:id="list225543794204909" text:continue-numbering="true" text:style-name="WWNum8">
     <text:list-item>
      <text:list>
       <text:list-item>
-       <text:p text:style-name="P83">LISTA DE REQUISITOS</text:p>
+       <text:p text:style-name="P90">LISTA DE REQUISITOS</text:p>
       </text:list-item>
      </text:list>
     </text:list-item>
@@ -2221,78 +2364,78 @@
    <text:p text:style-name="P64"/>
    <text:p text:style-name="P67">Levantamento de Requisitos Funcionais</text:p>
    <text:p text:style-name="P64"/>
-   <text:list xml:id="list8430073959148284953" text:style-name="WWNum9">
+   <text:list xml:id="list1518062586282628199" text:style-name="WWNum9">
     <text:list-item>
-     <text:p text:style-name="P84">Cadastrar Empresas</text:p>
+     <text:p text:style-name="P91">Cadastrar Empresas</text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P84">Cadastrar Funcionários</text:p>
+     <text:p text:style-name="P91">Cadastrar Funcionários</text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P84">Cadastrar Empresa Licitante</text:p>
+     <text:p text:style-name="P91">Cadastrar Empresa Licitante</text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P84">Cadastrar Licitações</text:p>
+     <text:p text:style-name="P91">Cadastrar Licitações</text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P84">Cadastrar Serviços</text:p>
+     <text:p text:style-name="P91">Cadastrar Serviços</text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P84">Cadastrar Fornecedores</text:p>
+     <text:p text:style-name="P91">Cadastrar Fornecedores</text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P84">Cadastrar Clientes</text:p>
+     <text:p text:style-name="P91">Cadastrar Clientes</text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P84">Cadastrar Vendas</text:p>
+     <text:p text:style-name="P91">Cadastrar Vendas</text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P84">Cadastrar Material de Construção</text:p>
+     <text:p text:style-name="P91">Cadastrar Material de Construção</text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P84">Cadastrar Assistência Pós Venda</text:p>
+     <text:p text:style-name="P91">Cadastrar Assistência Pós Venda</text:p>
     </text:list-item>
    </text:list>
    <text:p text:style-name="P64"/>
    <text:p text:style-name="P67">Levantamento de Requisitos não Funcionais </text:p>
    <text:p text:style-name="P19"/>
-   <text:list xml:id="list8787105522533494024" text:style-name="WWNum6">
+   <text:list xml:id="list1131734191386302717" text:style-name="WWNum6">
     <text:list-item>
-     <text:p text:style-name="P85">NF1.1 - Controle de Acesso</text:p>
+     <text:p text:style-name="P92">NF1.1 - Controle de Acesso</text:p>
     </text:list-item>
    </text:list>
    <text:p text:style-name="P68">NF1.2 - Identificação usuário</text:p>
-   <text:list xml:id="list222833481557992" text:continue-numbering="true" text:style-name="WWNum6">
+   <text:list xml:id="list225544747395699" text:continue-numbering="true" text:style-name="WWNum6">
     <text:list-item>
-     <text:p text:style-name="P85">NF2.1 - Controle de Acesso</text:p>
+     <text:p text:style-name="P92">NF2.1 - Controle de Acesso</text:p>
     </text:list-item>
    </text:list>
    <text:p text:style-name="P68">NF2.2 - Identificação da empresa</text:p>
-   <text:list xml:id="list222833584920999" text:continue-numbering="true" text:style-name="WWNum6">
+   <text:list xml:id="list225545528140125" text:continue-numbering="true" text:style-name="WWNum6">
     <text:list-item>
-     <text:p text:style-name="P85">NF3.1 - Controle de Acesso</text:p>
+     <text:p text:style-name="P92">NF3.1 - Controle de Acesso</text:p>
     </text:list-item>
    </text:list>
    <text:p text:style-name="P68">NF3.2 - Identificação </text:p>
    <text:p text:style-name="P68">NF3.3 - Tempo de Resposta</text:p>
-   <text:list xml:id="list222833110082774" text:continue-numbering="true" text:style-name="WWNum6">
+   <text:list xml:id="list225545305967183" text:continue-numbering="true" text:style-name="WWNum6">
     <text:list-item>
-     <text:p text:style-name="P85">NF4.1 - Controle de Acesso</text:p>
+     <text:p text:style-name="P92">NF4.1 - Controle de Acesso</text:p>
     </text:list-item>
    </text:list>
    <text:p text:style-name="P68"><text:soft-page-break/>NF4.2 - Tempo de Resposta</text:p>
-   <text:list xml:id="list222833657591528" text:continue-numbering="true" text:style-name="WWNum6">
+   <text:list xml:id="list225544068032589" text:continue-numbering="true" text:style-name="WWNum6">
     <text:list-item>
-     <text:p text:style-name="P85">NF5.1 - Controle de Acesso</text:p>
+     <text:p text:style-name="P92">NF5.1 - Controle de Acesso</text:p>
     </text:list-item>
    </text:list>
    <text:p text:style-name="P68">NF5.2 - Identificação</text:p>
    <text:p text:style-name="P68">NF5.3 - Tempo de Resposta</text:p>
    <text:p text:style-name="P64"/>
    <text:p text:style-name="P48"/>
-   <text:list xml:id="list222832668920022" text:continue-list="list222832779200484" text:style-name="WWNum8">
+   <text:list xml:id="list225545589539377" text:continue-list="list225543794204909" text:style-name="WWNum8">
     <text:list-item>
-     <text:p text:style-name="P87">ELABORAÇÃO</text:p>
+     <text:p text:style-name="P94">ELABORAÇÃO</text:p>
     </text:list-item>
    </text:list>
    <text:p text:style-name="P1"/>
@@ -2758,11 +2901,11 @@
    <text:p text:style-name="P36"/>
    <text:p text:style-name="P20">Casos de Uso</text:p>
    <text:p text:style-name="P20"/>
-   <text:list xml:id="list2202971871791040077" text:style-name="WWNum4">
+   <text:list xml:id="list8627727325588504986" text:style-name="WWNum4">
     <text:list-item>
      <text:list>
       <text:list-item>
-       <text:p text:style-name="P86">Casos de uso de Alto Nível</text:p>
+       <text:p text:style-name="P93">Casos de uso de Alto Nível</text:p>
       </text:list-item>
      </text:list>
     </text:list-item>
@@ -3092,7 +3235,7 @@
    <text:p text:style-name="P72"><text:bookmark-end text:name="__DdeLink__1224_8935349"/></text:p>
    <text:p text:style-name="P76"/>
    <text:p text:style-name="P73"><text:soft-page-break/></text:p>
-   <text:p text:style-name="P72"><text:span text:style-name="T12">7</text:span>. UC <text:span text:style-name="T12">5</text:span>.0 – <text:span text:style-name="T12">Gerenciar <text:s/>Clientes</text:span></text:p>
+   <text:p text:style-name="P72"><text:bookmark-start text:name="__DdeLink__1550_1691147143"/><text:span text:style-name="T12">7</text:span>. UC <text:span text:style-name="T12">5</text:span>.0 – <text:span text:style-name="T12">Gerenciar <text:s/>Clientes</text:span></text:p>
    <text:p text:style-name="P40"/>
    <table:table table:name="Tabela2" table:style-name="Tabela2">
     <table:table-column table:style-name="Tabela2.A"/>
@@ -3211,7 +3354,7 @@
       <text:p text:style-name="P52">PC1</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tabela2.C12" office:value-type="string">
-      <text:p text:style-name="P52">A <text:span text:style-name="T21">o cliente</text:span> confirmad<text:span text:style-name="T21">o</text:span> deverá ser salva no banco de dados</text:p>
+      <text:p text:style-name="P52">A <text:span text:style-name="T20">o cliente</text:span> confirmad<text:span text:style-name="T20">o</text:span> deverá ser salva no banco de dados</text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row table:style-name="Tabela2.1">
@@ -3225,7 +3368,7 @@
     </table:table-row>
    </table:table>
    <text:p text:style-name="P21"/>
-   <text:p text:style-name="P21"/>
+   <text:p text:style-name="P21"><text:bookmark-end text:name="__DdeLink__1550_1691147143"/></text:p>
    <text:p text:style-name="P21"/>
    <text:p text:style-name="P74"/>
    <text:p text:style-name="P74"><text:span text:style-name="T15">8</text:span>. UC <text:span text:style-name="T15">3</text:span>.0 – <text:span text:style-name="T12">Gerenciar <text:s/>Obras</text:span></text:p>
@@ -3258,7 +3401,7 @@
       <text:p text:style-name="P58">Atores Envolvidos</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tabela4.B3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P43">Secretaria , Administrador <text:span text:style-name="T16">e Coordenador de Obras</text:span></text:p>
+      <text:p text:style-name="P43"><text:bookmark-start text:name="__DdeLink__1553_1691147143"/>Secretaria , Administrador <text:span text:style-name="T16">e Coordenador de Obras</text:span><text:bookmark-end text:name="__DdeLink__1553_1691147143"/></text:p>
      </table:table-cell>
      <table:covered-table-cell/>
     </table:table-row>
@@ -3270,7 +3413,7 @@
       <text:p text:style-name="P55">FP1</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tabela4.C4" office:value-type="string">
-      <text:p text:style-name="P55"><text:span text:style-name="T14">Usuario insere </text:span><text:span text:style-name="T17">Numero da obra</text:span><text:span text:style-name="T14"> se já existir , o </text:span><text:s/>sistema <text:span text:style-name="T12">busca a obra</text:span> <text:span text:style-name="T12">requisitada se não , efetua cadastro</text:span> [UC<text:span text:style-name="T20">3</text:span>.<text:span text:style-name="T12">1</text:span>[UC<text:span text:style-name="T20">3</text:span>.<text:span text:style-name="T12">4</text:span>]</text:p>
+      <text:p text:style-name="P55"><text:span text:style-name="T14">Usuario insere </text:span><text:span text:style-name="T17">Numero da obra</text:span><text:span text:style-name="T14"> se já existir , o </text:span><text:s/>sistema <text:span text:style-name="T12">busca a obra</text:span> <text:span text:style-name="T12">requisitada se não , efetua cadastro</text:span> [UC<text:span text:style-name="T19">3</text:span>.<text:span text:style-name="T12">1</text:span>[UC<text:span text:style-name="T19">3</text:span>.<text:span text:style-name="T12">4</text:span>]</text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row table:style-name="Tabela4.1">
@@ -3279,7 +3422,7 @@
       <text:p text:style-name="P55">FP2</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tabela4.C5" office:value-type="string">
-      <text:p text:style-name="P55">O usuário deverá selecionar <text:span text:style-name="T21">a obra e fazer as modificações desejadas.[UC3.2][UC3.3]</text:span></text:p>
+      <text:p text:style-name="P55">O usuário deverá selecionar <text:span text:style-name="T20">a obra e fazer as modificações desejadas.[UC3.2][UC3.3]</text:span></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row table:style-name="Tabela4.1">
@@ -3337,7 +3480,7 @@
       <text:p text:style-name="P55">RN1</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tabela4.C11" office:value-type="string">
-      <text:p text:style-name="P55">Não podem haver <text:span text:style-name="T13">sobreposição de <text:s/></text:span><text:span text:style-name="T19">NUMERO DE OBRA.</text:span></text:p>
+      <text:p text:style-name="P55">Não podem haver <text:span text:style-name="T13">sobreposição do <text:s/>Da </text:span><text:span text:style-name="T18"><text:s/>OBRA.</text:span></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row table:style-name="Tabela4.12">
@@ -3348,7 +3491,7 @@
       <text:p text:style-name="P55">PC1</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tabela4.C12" office:value-type="string">
-      <text:p text:style-name="P55">A <text:span text:style-name="T21">obra</text:span> confirmada deverá ser salva no banco de dados</text:p>
+      <text:p text:style-name="P55">A <text:span text:style-name="T20">obra</text:span> confirmada deverá ser salva no banco de dados</text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row table:style-name="Tabela4.1">
@@ -3364,12 +3507,148 @@
    <text:p text:style-name="P22"/>
    <text:p text:style-name="P22"/>
    <text:p text:style-name="P22"/>
+   <text:p text:style-name="P22"/>
+   <text:p text:style-name="P98"><text:span text:style-name="T21">9</text:span>. UC <text:span text:style-name="T21">4</text:span>.0 – <text:span text:style-name="T23">Gerenciar</text:span><text:span text:style-name="T12"> <text:s/></text:span><text:span text:style-name="T22">Materiais</text:span><text:span text:style-name="T12"> de </text:span><text:span text:style-name="T22">Construção</text:span></text:p>
+   <text:p text:style-name="P88"/>
+   <table:table table:name="Tabela5" table:style-name="Tabela5">
+    <table:table-column table:style-name="Tabela5.A"/>
+    <table:table-column table:style-name="Tabela5.B"/>
+    <table:table-column table:style-name="Tabela5.C"/>
+    <table:table-row table:style-name="Tabela5.1">
+     <table:table-cell table:style-name="Tabela5.A1" table:number-columns-spanned="3" office:value-type="string">
+      <text:p text:style-name="P95">UC<text:span text:style-name="T21">1</text:span>.1 - Gerenciar <text:span text:style-name="T21">Materiais Construção </text:span></text:p>
+     </table:table-cell>
+     <table:covered-table-cell/>
+     <table:covered-table-cell/>
+    </table:table-row>
+    <table:table-row table:style-name="Tabela5.1">
+     <table:table-cell table:style-name="Tabela5.A1" office:value-type="string">
+      <text:p text:style-name="P96">Pré - Condições</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.B2" office:value-type="string">
+      <text:p text:style-name="P95">PC1</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.C2" office:value-type="string">
+      <text:p text:style-name="P97">O <text:span text:style-name="T21">u</text:span>suário deve estar logado no sistema [UC<text:span text:style-name="T15">1</text:span>.3]</text:p>
+     </table:table-cell>
+    </table:table-row>
+    <table:table-row table:style-name="Tabela5.3">
+     <table:table-cell table:style-name="Tabela5.A1" office:value-type="string">
+      <text:p text:style-name="P96">Atores Envolvidos</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.B3" table:number-columns-spanned="2" office:value-type="string">
+      <text:p text:style-name="P85">Secretaria , Administrador <text:span text:style-name="T16">e Coordenador de Obras</text:span></text:p>
+     </table:table-cell>
+     <table:covered-table-cell/>
+    </table:table-row>
+    <table:table-row table:style-name="Tabela5.1">
+     <table:table-cell table:style-name="Tabela5.A1" table:number-rows-spanned="5" office:value-type="string">
+      <text:p text:style-name="P96">Fluxo Principal</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.B4" office:value-type="string">
+      <text:p text:style-name="P95">FP1</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.C4" office:value-type="string">
+      <text:p text:style-name="P95"><text:span text:style-name="T14">Usuario insere nome do mateiral se já existir o </text:span>sistema <text:span text:style-name="T12">busca o o item </text:span><text:s/><text:span text:style-name="T12">requisitado, se não efetua cadastro</text:span> [UC<text:span text:style-name="T12">5</text:span>.<text:span text:style-name="T12">1</text:span><text:bookmark-start text:name="__DdeLink__3480_89353491"/>[UC<text:span text:style-name="T12">5</text:span>.<text:span text:style-name="T12">4</text:span>]<text:bookmark-end text:name="__DdeLink__3480_89353491"/></text:p>
+     </table:table-cell>
+    </table:table-row>
+    <table:table-row table:style-name="Tabela5.1">
+     <table:covered-table-cell/>
+     <table:table-cell table:style-name="Tabela5.B5" office:value-type="string">
+      <text:p text:style-name="P95">FP2</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.C5" office:value-type="string">
+      <text:p text:style-name="P95">O usuário deverá selecionar <text:span text:style-name="T12">o</text:span> <text:span text:style-name="T21">item</text:span> <text:span text:style-name="T12">e fazer as modificações desejadas.[UC4.2][UC4.3]</text:span></text:p>
+     </table:table-cell>
+    </table:table-row>
+    <table:table-row table:style-name="Tabela5.1">
+     <table:covered-table-cell/>
+     <table:table-cell table:style-name="Tabela5.B6" office:value-type="string">
+      <text:p text:style-name="P95">FP3</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.C6" office:value-type="string">
+      <text:p text:style-name="P95">Para concluir a <text:span text:style-name="T12">modificação </text:span>o Usuário deverá clicar no botão <text:soft-page-break/>Confirmar [FA2]</text:p>
+     </table:table-cell>
+    </table:table-row>
+    <table:table-row table:style-name="Tabela5.1">
+     <table:covered-table-cell/>
+     <table:table-cell table:style-name="Tabela5.B7" office:value-type="string">
+      <text:p text:style-name="P95">FP4</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.C7" office:value-type="string">
+      <text:p text:style-name="P95">O sistema verificará <text:s/>o cumprimento das regras de negócio aplicáveis [RN1].</text:p>
+     </table:table-cell>
+    </table:table-row>
+    <table:table-row table:style-name="Tabela5.1">
+     <table:covered-table-cell/>
+     <table:table-cell table:style-name="Tabela5.B8" office:value-type="string">
+      <text:p text:style-name="P95">FP5</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.C8" office:value-type="string">
+      <text:p text:style-name="P95">O sistema mostrará a mensagem “<text:span text:style-name="T12">Alteração Salva com Sucesso</text:span>” [FA1].</text:p>
+     </table:table-cell>
+    </table:table-row>
+    <table:table-row table:style-name="Tabela5.1">
+     <table:table-cell table:style-name="Tabela5.A1" table:number-rows-spanned="2" office:value-type="string">
+      <text:p text:style-name="P96">Fluxos Alternativos</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.B9" office:value-type="string">
+      <text:p text:style-name="P95">FA1</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.C9" office:value-type="string">
+      <text:p text:style-name="P95">Se houverem <text:span text:style-name="T13">alguma</text:span> conflito com <text:span text:style-name="T13">as informações </text:span>especificado pelo usuário o sistema emitirá a mensagem “<text:span text:style-name="T13">Falha na Modificação</text:span>”</text:p>
+     </table:table-cell>
+    </table:table-row>
+    <table:table-row table:style-name="Tabela5.1">
+     <table:covered-table-cell/>
+     <table:table-cell table:style-name="Tabela5.B10" office:value-type="string">
+      <text:p text:style-name="P95">FA2</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.C10" office:value-type="string">
+      <text:p text:style-name="P95">Se o usuário desejar cancelar o processo deverá clicar no botão Cancelar</text:p>
+     </table:table-cell>
+    </table:table-row>
+    <table:table-row table:style-name="Tabela5.1">
+     <table:table-cell table:style-name="Tabela5.A1" office:value-type="string">
+      <text:p text:style-name="P96">Regras de Negócio</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.B11" office:value-type="string">
+      <text:p text:style-name="P95">RN1</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.C11" office:value-type="string">
+      <text:p text:style-name="P95">Não podem haver <text:span text:style-name="T13">sobreposição de materia de construção.</text:span></text:p>
+     </table:table-cell>
+    </table:table-row>
+    <table:table-row table:style-name="Tabela5.12">
+     <table:table-cell table:style-name="Tabela5.A1" office:value-type="string">
+      <text:p text:style-name="P86">Pós Condições</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.B12" office:value-type="string">
+      <text:p text:style-name="P95">PC1</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.C12" office:value-type="string">
+      <text:p text:style-name="P95">A <text:s/><text:span text:style-name="T24">Material </text:span>confirmad<text:span text:style-name="T20">o</text:span> deverá ser salv<text:span text:style-name="T24">o</text:span> no banco de dados</text:p>
+     </table:table-cell>
+    </table:table-row>
+    <table:table-row table:style-name="Tabela5.1">
+     <table:table-cell table:style-name="Tabela5.A1" office:value-type="string">
+      <text:p text:style-name="P86">Casos de Uso Afetados</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="Tabela5.B13" table:number-columns-spanned="2" office:value-type="string">
+      <text:p text:style-name="P87"/>
+     </table:table-cell>
+     <table:covered-table-cell/>
+    </table:table-row>
+   </table:table>
+   <text:p text:style-name="P84"/>
+   <text:p text:style-name="P84"/>
+   <text:p text:style-name="P22"/>
    <text:p text:style-name="P21"/>
-   <text:list xml:id="list222833309783161" text:continue-numbering="true" text:style-name="WWNum4">
+   <text:list xml:id="list225544852029047" text:continue-numbering="true" text:style-name="WWNum4">
     <text:list-item>
      <text:list>
       <text:list-item>
-       <text:p text:style-name="P86">Diagrama de Caso de Uso</text:p>
+       <text:p text:style-name="P93">Diagrama de Caso de Uso</text:p>
       </text:list-item>
      </text:list>
     </text:list-item>
@@ -4284,11 +4563,11 @@
    <text:p text:style-name="P65"/>
    <text:p text:style-name="P65"/>
    <text:p text:style-name="P50"/>
-   <text:list xml:id="list222833742862265" text:continue-numbering="true" text:style-name="WWNum4">
+   <text:list xml:id="list225545167866634" text:continue-numbering="true" text:style-name="WWNum4">
     <text:list-item>
      <text:list>
       <text:list-item>
-       <text:p text:style-name="P86">Modelo Conceitual</text:p>
+       <text:p text:style-name="P93">Modelo Conceitual</text:p>
       </text:list-item>
      </text:list>
     </text:list-item>
@@ -6199,11 +6478,11 @@
     </draw:frame></text:p>
    <text:p text:style-name="P65"/>
    <text:p text:style-name="P65"/>
-   <text:list xml:id="list222833405369000" text:continue-numbering="true" text:style-name="WWNum4">
+   <text:list xml:id="list225543833977318" text:continue-numbering="true" text:style-name="WWNum4">
     <text:list-item>
      <text:list>
       <text:list-item>
-       <text:p text:style-name="P86">Contratos de Operações do Sistema </text:p>
+       <text:p text:style-name="P93">Contratos de Operações do Sistema </text:p>
       </text:list-item>
      </text:list>
     </text:list-item>
@@ -6413,11 +6692,11 @@
    <text:p text:style-name="P20"/>
    <text:p text:style-name="P20"/>
    <text:p text:style-name="P20"/>
-   <text:list xml:id="list222832673797230" text:continue-numbering="true" text:style-name="WWNum4">
+   <text:list xml:id="list225545699058887" text:continue-numbering="true" text:style-name="WWNum4">
     <text:list-item>
      <text:list>
       <text:list-item>
-       <text:p text:style-name="P86">DER<text:tab/> </text:p>
+       <text:p text:style-name="P93">DER<text:tab/> </text:p>
       </text:list-item>
      </text:list>
     </text:list-item>
