@@ -42,7 +42,7 @@ create table funcionarios(
 create table fornecedores(
 	idForn int auto_increment not null primary key,
 	nome varchar(150) not null,
-    fone varchar(50) not null,
+    fone varchar(11) not null,
     email varchar(150) not null,
     bairro varchar(150) not null,
     numero varchar(8) not null, 
@@ -54,3 +54,14 @@ create table materiais(
 	nome varchar(50) not null,
     descricao varchar(150) not null
 );	
+
+create table empresa(
+	idEmpr int auto_increment not null primary key,
+	cnpj varchar(14) not null unique,
+	nome varchar(100) not null,
+	fone varchar(11) not null,
+	email varchar(150) not null,
+	bairro varchar(150) not null,
+    numero varchar(8) not null, 
+    rua varchar(150) not null
+);

@@ -31,6 +31,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         mnuForn = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        mnuEmpresa = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SGO - Sistema de Gestão de Obras");
@@ -62,6 +63,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Editar");
         jMenu2.setToolTipText("");
         jMenu2.setFocusable(false);
+
+        mnuEmpresa.setText("Empresa");
+        mnuEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuEmpresaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuEmpresa);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -86,6 +96,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.add(tela);
         tela.setVisible(true);
     }//GEN-LAST:event_mnuFornActionPerformed
+
+    private void mnuEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEmpresaActionPerformed
+        EmpresaEditar tela = new EmpresaEditar();
+        
+        this.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_mnuEmpresaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +144,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem mnuEmpresa;
     private javax.swing.JMenuItem mnuForn;
     // End of variables declaration//GEN-END:variables
 }

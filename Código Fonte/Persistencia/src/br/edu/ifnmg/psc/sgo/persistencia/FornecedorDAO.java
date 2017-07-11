@@ -22,8 +22,6 @@ public class FornecedorDAO extends DAOGenerico<Fornecedor> implements Fornecedor
     public FornecedorDAO() throws ClassNotFoundException, SQLException {
         super();
     }
-
-    
     
     @Override
     protected String getConsultaInsert() {
