@@ -27,7 +27,7 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
     public void carregaCampos() {
         txtNome.setText( entidade.getNome() );
         txtEmail.setText( entidade.getEmail() );
-        txtFone.setValue( entidade.getFone() );
+        txtFone.setText( entidade.getFone() );
         txtRua.setText( entidade.getRua() );
         txtBairro.setText( entidade.getBairro() );
         txtNumero.setText( entidade.getNumero() );
@@ -37,7 +37,7 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
     public void carregaObjeto() throws ViolacaoRegraNegocioException {
         entidade.setNome( txtNome.getText() );
         entidade.setEmail( txtEmail.getText() );
-        entidade.setFone( txtFone.getValue().toString() );
+        entidade.setFone( txtFone.getText() );
         entidade.setRua( txtRua.getText() );
         entidade.setBairro( txtBairro.getText() );
         entidade.setNumero( txtNumero.getText() );        
@@ -47,7 +47,7 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
     public boolean verificarCamposObrigatorios() {
         return !txtNome.getText().isEmpty() || 
                !txtEmail.getText().isEmpty() ||
-               !txtFone.getValue().toString().isEmpty() ||
+               !txtFone.getText().isEmpty() ||
                !txtRua.getText().isEmpty() || 
                !txtBairro.getText().isEmpty() || 
                !txtNumero.getText().isEmpty();
@@ -72,7 +72,6 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
         lblRua = new javax.swing.JLabel();
         txtRua = new javax.swing.JTextField();
         lblFone = new javax.swing.JLabel();
-        txtFone = new javax.swing.JFormattedTextField();
         txtBairro = new javax.swing.JTextField();
         lblBairro = new javax.swing.JLabel();
         lblNumero = new javax.swing.JLabel();
@@ -80,6 +79,7 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        txtFone = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Editar Fornecedor");
@@ -100,9 +100,6 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
         txtRua.setToolTipText("Rua, Av.:");
 
         lblFone.setText("Telefone: *");
-
-        txtFone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        txtFone.setToolTipText("Telefone");
 
         txtBairro.setToolTipText("Bairro");
 
@@ -145,8 +142,10 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmail)
-                            .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNome)))
+                            .addComponent(txtNome)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,7 +205,7 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNumero)
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
@@ -239,7 +238,7 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
     private javax.swing.JLabel lblRua;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JFormattedTextField txtFone;
+    private javax.swing.JTextField txtFone;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtRua;
