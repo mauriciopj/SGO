@@ -99,6 +99,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void mnuEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEmpresaActionPerformed
         EmpresaEditar tela = new EmpresaEditar();
+        abrir();
         
         this.add(tela);
         tela.setVisible(true);
