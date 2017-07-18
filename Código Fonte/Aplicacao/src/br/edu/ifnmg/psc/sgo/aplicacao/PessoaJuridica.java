@@ -20,9 +20,9 @@ public class PessoaJuridica extends Pessoa {
         return cnpj;
     }        
     
-    public void setCnpj(String cnpj){
-        //if (!validaCNPJ(cnpj))
-           // throw new ViolacaoRegraNegocioException("CNPJ inválido!"); 
+    public void setCnpj(String cnpj) throws ViolacaoRegraNegocioException{
+        if (!validaCNPJ(cnpj))
+            throw new ViolacaoRegraNegocioException("CNPJ inválido!"); 
         this.cnpj = cnpj;
     }
         
