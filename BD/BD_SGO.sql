@@ -3,7 +3,7 @@ create database sgo;
 
 use sgo;
 
-select * from empresa;
+-- select * from empresa;
 
 /*create table empresa(
 	idEmpresa int auto_increment not null,

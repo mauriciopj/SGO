@@ -20,6 +20,7 @@ public class EmpresaEditar extends TelaEdicao<Empresa> {
         super();
         initComponents();
         
+        repositorio = Repositorios.getEmpresaRepositorio();
         entidade = new Empresa();
     }
 

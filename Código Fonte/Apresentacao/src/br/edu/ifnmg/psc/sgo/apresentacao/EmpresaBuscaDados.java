@@ -14,20 +14,21 @@ import java.util.List;
  * @author mauricio
  */
 public class EmpresaBuscaDados extends TelaBusca<Empresa> {
-    Repositorio<Empresa> repositorio;
 
     public EmpresaBuscaDados(Repositorio<Empresa> repositorio, Class tipo_tela) { 
         super(repositorio, tipo_tela);
         initComponents();
         filtro = new Empresa();
         
-        Empresa entidade = repositorio.Abrir(1);        
-        txtCnpj.setText( entidade.getCnpj() );
-        txtNome.setText( entidade.getNome() );
-        txtEmail.setText( entidade.getEmail() );
-        txtFone.setText( entidade.getFone() );
-        lblRua.setText( entidade.getRua()+", "+entidade.getNumero() );
-        lblBairro.setText( entidade.getBairro() );       
+        if (repositorio.Abrir(1) != null){
+            Empresa entidadeaux = repositorio.Abrir(1);
+            txtCnpj.setText( entidadeaux.getCnpj() );
+            txtNome.setText( entidadeaux.getNome() );
+            txtEmail.setText( entidadeaux.getEmail() );
+            txtFone.setText( entidadeaux.getFone() );
+            lblRua.setText( entidadeaux.getRua()+", "+entidadeaux.getNumero() );
+            lblBairro.setText( entidadeaux.getBairro() );
+        }
     }
 
     /**
