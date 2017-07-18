@@ -11,104 +11,36 @@ import java.util.Objects;
  *
  * @author mauricio
  */
-public class Empresa extends Endereco implements Entidade{ 
+public class Empresa extends PessoaJuridica implements Entidade{ 
     private int idEmpr;
-    private String cnpj, nome, fone, email;
 
     public Empresa() {
+
     }   
     
-    public Empresa(int idEmpr, String cnpj, String nome, String fone, String email) {
-        this.idEmpr = idEmpr;
+    public Empresa(String cnpj, String nome, String email, String fone, String rua, String bairro, String numero) {
         this.cnpj = cnpj;
         this.nome = nome;
-        this.fone = fone;
         this.email = email;
+        this.fone = fone;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.numero = numero;
     }    
         
     @Override
     public void setId(int id) {
-        this.idEmpr = idEmpr;        
+        this.idEmpr = id;        
     }
 
     @Override
     public int getId() {
         return idEmpr;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) throws ViolacaoRegraNegocioException {
-        if (cnpj == null || cnpj.length() < 14 || cnpj.length() > 14)
-            throw new ViolacaoRegraNegocioException("O CNPJ deve conter 14 digitos!"); 
-        this.cnpj = cnpj;
-    }    
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) throws ViolacaoRegraNegocioException {
-        if (nome == null || nome.length() < 5 || nome.length() > 100)
-            throw new ViolacaoRegraNegocioException("O nome deve conter no mínimo 5 e máximo de 100 caracteres!"); 
-        this.nome = nome;
-    }
-
-    public String getFone() {
-        return fone;
-    }
-
-    public void setFone(String fone) throws ViolacaoRegraNegocioException {
-        if (fone == null || fone.length() < 11 || fone.length() > 11)
-            throw new ViolacaoRegraNegocioException("O telefone deve conter entre 10 ou 11 caracteres!");
-        this.fone = fone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) throws ViolacaoRegraNegocioException {
-        if (email == null || email.length() > 150)
-            throw new ViolacaoRegraNegocioException("O email pode conter até no máximo 150 caracteres!");
-        this.email = email;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) throws ViolacaoRegraNegocioException {
-        if (bairro == null || bairro.length() > 50)
-            throw new ViolacaoRegraNegocioException("O bairro pode conter até no máximo 50 caracteres!");
-        this.bairro = bairro;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) throws ViolacaoRegraNegocioException {
-        if (numero == null || numero.length() > 8)
-            throw new ViolacaoRegraNegocioException("O numero pode conter até no máximo 8 caracteres!");
-        this.numero = numero;
-    }
-
-    public String getRua() {
-        return rua;
-    }
-
-    public void setRua(String rua) throws ViolacaoRegraNegocioException {
-        if (rua == null || rua.length() > 150)
-            throw new ViolacaoRegraNegocioException("A rua pode conter até no máximo 150 caracteres!");
-        this.rua = rua;
-    }
+    }        
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 4;
         hash = 43 * hash + this.idEmpr;
         hash = 43 * hash + Objects.hashCode(this.cnpj);
         hash = 43 * hash + Objects.hashCode(this.nome);

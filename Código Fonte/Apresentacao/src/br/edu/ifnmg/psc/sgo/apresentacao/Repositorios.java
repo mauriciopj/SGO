@@ -5,7 +5,9 @@
  */
 package br.edu.ifnmg.psc.sgo.apresentacao;
 
+import br.edu.ifnmg.psc.sgo.aplicacao.EmpresaRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.FornecedorRepositorio;
+import br.edu.ifnmg.psc.sgo.persistencia.EmpresaDAO;
 import br.edu.ifnmg.psc.sgo.persistencia.FornecedorDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -18,6 +20,19 @@ import java.util.logging.Logger;
 public class Repositorios {
     
     static FornecedorRepositorio fornecedorDAO = null;
+    static EmpresaRepositorio empresaDAO = null;
+    
+    public static EmpresaRepositorio getEmpresaRepositorio(){
+        if(empresaDAO == null)
+            try {
+                empresaDAO = new EmpresaDAO();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Repositorios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Repositorios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return empresaDAO;
+    }
     
     public static FornecedorRepositorio getFornecedorRepositorio(){
         if(fornecedorDAO == null)

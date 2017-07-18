@@ -83,6 +83,7 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
 
         setClosable(true);
         setTitle("Editar Fornecedor");
+        setNextFocusableComponent(txtNome);
 
         lblNome.setText("Nome: *");
 

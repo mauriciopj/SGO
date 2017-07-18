@@ -3,7 +3,7 @@ create database sgo;
 
 use sgo;
 
--- select * from fornecedores;
+select * from empresa;
 
 /*create table empresa(
 	idEmpresa int auto_increment not null,
@@ -65,3 +65,5 @@ create table empresa(
     numero varchar(8) not null, 
     rua varchar(150) not null
 );
+
+-- insert into empresa(idEmpr,cnpj,nome,fone,email,bairro,numero,rua) values (1,'12345678912345','SGO_Januária','38991586654','gfdg','gfdg','gfdg','dfg');

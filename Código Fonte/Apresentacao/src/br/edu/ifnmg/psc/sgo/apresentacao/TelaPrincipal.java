@@ -9,13 +9,12 @@ package br.edu.ifnmg.psc.sgo.apresentacao;
  *
  * @author mauricio
  */
-public class TelaPrincipal extends javax.swing.JFrame {
-
+public class TelaPrincipal extends javax.swing.JFrame {    
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
-        initComponents();
+        initComponents();                
     }
 
     /**
@@ -31,7 +30,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         mnuForn = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        mnuEmpresa = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SGO - Sistema de Gestão de Obras");
@@ -60,17 +59,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1.getAccessibleContext().setAccessibleDescription("");
 
         jMenu2.setForeground(new java.awt.Color(1, 1, 1));
-        jMenu2.setText("Editar");
+        jMenu2.setText("Configurações");
         jMenu2.setToolTipText("");
         jMenu2.setFocusable(false);
 
-        mnuEmpresa.setText("Empresa");
-        mnuEmpresa.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Minha Empresa");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuEmpresaActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu2.add(mnuEmpresa);
+        jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
 
@@ -97,13 +96,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_mnuFornActionPerformed
 
-    private void mnuEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEmpresaActionPerformed
-        EmpresaEditar tela = new EmpresaEditar();
-        abrir();
-        
-        this.add(tela);
-        tela.setVisible(true);
-    }//GEN-LAST:event_mnuEmpresaActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        if (Repositorios.getEmpresaRepositorio().Abrir(1) == null){                        
+            EmpresaBuscaDados tela = new EmpresaBuscaDados(Repositorios.getEmpresaRepositorio(), EmpresaEditar.class);       
+            this.add(tela);
+            tela.setVisible(true);
+        } else {            
+            EmpresaEditar tela = new EmpresaEditar();        
+            this.add(tela);
+            tela.setVisible(true);            
+        }                 
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,7 +148,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem mnuEmpresa;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem mnuForn;
     // End of variables declaration//GEN-END:variables
+
 }

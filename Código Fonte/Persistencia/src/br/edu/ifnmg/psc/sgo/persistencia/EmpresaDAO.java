@@ -25,12 +25,12 @@ public class EmpresaDAO extends DAOGenerico<Empresa> implements EmpresaRepositor
 
     @Override
     protected String getConsultaInsert() {
-        return "insert into empresa(idEmpr, cnpj, nome, email, fone, rua, bairro, numero) values(?,?,?,?,?,?,?,?)";
+        return "insert into empresa(cnpj, nome, email, fone, rua, bairro, numero) values(?,?,?,?,?,?,?)";
     }
     
     @Override
     protected String getConsultaUpdate() {
-        return "update empresa set idEmpr = ?, cnpj = ?, nome = ?, email =  ?, fone = ?, rua = ?, bairro = ?, numero = ? where idForn = ?";
+        return "update empresa set cnpj = ?, nome = ?, email = ?, fone = ?, rua = ?, bairro = ?, numero = ? where idEmpr = ?";
     }
     
     @Override
@@ -45,11 +45,8 @@ public class EmpresaDAO extends DAOGenerico<Empresa> implements EmpresaRepositor
 
     @Override
     protected void setBuscaFiltros(Empresa filtro) {
-        //if(filtro.getId() > 0)
-            //this.adicionarFiltro("idForn", filtro.getId());
-        
-        if(filtro.getNome() != null && !filtro.getNome().isEmpty())
-            this.adicionarFiltro("nome", filtro.getNome());
+        if(filtro.getId() > 0)
+            this.adicionarFiltro("idEmpr", filtro.getId());       
     }
 
     @Override
