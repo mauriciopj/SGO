@@ -200,7 +200,7 @@ public class EmpresaEditar extends TelaEdicao<Empresa> {
                 .addGap(27, 27, 27))
         );
 
-        pack();
+        setBounds(400, 100, 609, 374);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

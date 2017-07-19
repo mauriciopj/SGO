@@ -213,7 +213,7 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
                 .addGap(25, 25, 25))
         );
 
-        pack();
+        setBounds(450, 100, 450, 371);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

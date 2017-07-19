@@ -38,7 +38,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Tela Login");
+        setTitle("Autenticação");
         getContentPane().setLayout(null);
 
         btLogin.setText("Acessar");
@@ -48,7 +48,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLogin);
-        btLogin.setBounds(340, 330, 100, 23);
+        btLogin.setBounds(680, 350, 100, 23);
 
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
@@ -57,7 +57,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btSair);
-        btSair.setBounds(450, 330, 100, 23);
+        btSair.setBounds(810, 350, 100, 23);
 
         textUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textUsuario.setText("\n  Usuário");
@@ -67,13 +67,13 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textUsuario);
-        textUsuario.setBounds(120, 210, 450, 30);
+        textUsuario.setBounds(470, 200, 450, 30);
 
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 56)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Login");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(280, 130, 150, 60);
+        jLabel2.setBounds(640, 120, 150, 60);
 
         textPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,17 +81,17 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textPassword);
-        textPassword.setBounds(120, 260, 450, 30);
+        textPassword.setBounds(470, 270, 450, 30);
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iStock_000031663298_Large_1.jpg"))); // NOI18N
         jLabel1.setText("Tela Login");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 700, 500);
+        jLabel1.setBounds(-10, -60, 1400, 770);
         jLabel1.getAccessibleContext().setAccessibleName("Tela login");
 
-        setSize(new java.awt.Dimension(737, 536));
+        setSize(new java.awt.Dimension(1406, 743));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
