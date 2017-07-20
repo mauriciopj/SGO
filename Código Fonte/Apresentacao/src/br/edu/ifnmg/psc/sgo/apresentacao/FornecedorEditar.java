@@ -318,7 +318,7 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
         // TODO add your handling code here:
         if(evt.getKeyCode() == evt.VK_ENTER)  {
              btnSalvar.requestFocus();
-             salvar();
+           
           }
     }//GEN-LAST:event_txtNumeroKeyPressed
 

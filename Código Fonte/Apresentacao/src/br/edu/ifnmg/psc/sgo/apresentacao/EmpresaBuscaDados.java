@@ -199,7 +199,7 @@ public class EmpresaBuscaDados extends TelaBusca<Empresa> {
                 .addContainerGap())
         );
 
-        setBounds(900, 200, 607, 409);
+        setBounds(340, 100, 607, 409);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
