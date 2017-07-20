@@ -40,7 +40,7 @@ public class Empresa extends PessoaJuridica implements Entidade{
 
     @Override
     public int hashCode() {
-        int hash = 4;
+        int hash = 7;
         hash = 43 * hash + this.idEmpr;
         hash = 43 * hash + Objects.hashCode(this.cnpj);
         hash = 43 * hash + Objects.hashCode(this.nome);
