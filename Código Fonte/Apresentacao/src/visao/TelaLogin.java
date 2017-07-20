@@ -6,6 +6,7 @@
 package visao;
 
 import br.edu.ifnmg.psc.sgo.apresentacao.TelaPrincipal;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,6 +48,11 @@ public class TelaLogin extends javax.swing.JFrame {
                 btLoginActionPerformed(evt);
             }
         });
+        btLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btLoginKeyPressed(evt);
+            }
+        });
         getContentPane().add(btLogin);
         btLogin.setBounds(680, 350, 100, 23);
 
@@ -66,6 +72,11 @@ public class TelaLogin extends javax.swing.JFrame {
                 textUsuarioActionPerformed(evt);
             }
         });
+        textUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textUsuarioKeyPressed(evt);
+            }
+        });
         getContentPane().add(textUsuario);
         textUsuario.setBounds(470, 200, 450, 30);
 
@@ -78,6 +89,11 @@ public class TelaLogin extends javax.swing.JFrame {
         textPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textPasswordActionPerformed(evt);
+            }
+        });
+        textPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textPasswordKeyPressed(evt);
             }
         });
         getContentPane().add(textPassword);
@@ -96,7 +112,8 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void textUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUsuarioActionPerformed
-        // TODO add your handling code here:
+
+  
     }//GEN-LAST:event_textUsuarioActionPerformed
 
     private void textPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPasswordActionPerformed
@@ -124,6 +141,38 @@ public class TelaLogin extends javax.swing.JFrame {
            }
     
     }//GEN-LAST:event_btLoginActionPerformed
+
+    private void textUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textUsuarioKeyPressed
+    
+          
+          if(evt.getKeyCode() == evt.VK_ENTER)  {
+             textPassword.requestFocus();
+          }
+    }//GEN-LAST:event_textUsuarioKeyPressed
+
+    private void textPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPasswordKeyPressed
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == evt.VK_ENTER)  {
+             btLogin.requestFocus();
+          }
+    }//GEN-LAST:event_textPasswordKeyPressed
+
+    private void btLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btLoginKeyPressed
+         if(evt.getKeyCode() == evt.VK_ENTER)  {
+              if(textUsuario.getText().equals("admin") && textPassword.getText().equals("admin")){
+       TelaPrincipal tela = new TelaPrincipal();
+       
+        tela.setVisible(true);
+    
+ 
+        
+    dispose();
+    }else{
+           JOptionPane.showMessageDialog(null,"Usuario ou senha invalido!");
+            
+           }
+          }
+    }//GEN-LAST:event_btLoginKeyPressed
 
     /**
      * @param args the command line arguments

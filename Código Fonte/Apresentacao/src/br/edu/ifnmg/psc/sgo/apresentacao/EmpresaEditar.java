@@ -61,17 +61,49 @@ public class EmpresaEditar extends TelaEdicao<Empresa> {
         jLabel4.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
         jLabel4.setText("Preencha os campos informando os dados da empresa:");
 
+        txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeKeyPressed(evt);
+            }
+        });
+
         txtEmail.setToolTipText("Email");
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmailKeyPressed(evt);
+            }
+        });
 
         lblEmail.setText("Email: *");
 
         lblFone.setText("Telefone: *");
 
+        txtFone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFoneKeyPressed(evt);
+            }
+        });
+
         txtRua.setToolTipText("Rua, Av.:");
+        txtRua.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtRuaKeyPressed(evt);
+            }
+        });
 
         txtBairro.setToolTipText("Bairro");
+        txtBairro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBairroKeyPressed(evt);
+            }
+        });
 
         txtNumero.setToolTipText("Número");
+        txtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNumeroKeyPressed(evt);
+            }
+        });
 
         lblNumero.setText("Número: *");
 
@@ -83,6 +115,11 @@ public class EmpresaEditar extends TelaEdicao<Empresa> {
         lblEndereco.setText("Endereço:");
 
         txtCnpj.setToolTipText("Email");
+        txtCnpj.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCnpjKeyPressed(evt);
+            }
+        });
 
         lblCnpj.setText("CNPJ: *");
 
@@ -98,6 +135,11 @@ public class EmpresaEditar extends TelaEdicao<Empresa> {
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
+            }
+        });
+        btnSalvar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnSalvarKeyPressed(evt);
             }
         });
 
@@ -210,6 +252,72 @@ public class EmpresaEditar extends TelaEdicao<Empresa> {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         salvar();
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
+        // TODO add your handling code here:
+        
+        if(evt.getKeyCode() == evt.VK_ENTER)  {
+             txtCnpj.requestFocus();
+            
+          }
+    }//GEN-LAST:event_txtNomeKeyPressed
+
+    private void txtCnpjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCnpjKeyPressed
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == evt.VK_ENTER)  {
+             txtEmail.requestFocus();
+            
+          }
+        
+    }//GEN-LAST:event_txtCnpjKeyPressed
+
+    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER)  {
+             txtFone.requestFocus();
+            
+          }
+    }//GEN-LAST:event_txtEmailKeyPressed
+
+    private void txtFoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFoneKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER)  {
+             txtRua.requestFocus();
+            
+          }
+    }//GEN-LAST:event_txtFoneKeyPressed
+
+    private void txtRuaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRuaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER)  {
+             txtBairro.requestFocus();
+            
+          }
+    }//GEN-LAST:event_txtRuaKeyPressed
+
+    private void txtBairroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBairroKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER)  {
+             txtNumero.requestFocus();
+            
+          }
+    }//GEN-LAST:event_txtBairroKeyPressed
+
+    private void txtNumeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER)  {
+             btnSalvar.requestFocus();
+            
+          }
+    }//GEN-LAST:event_txtNumeroKeyPressed
+
+    private void btnSalvarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSalvarKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER)  {
+            
+             salvar();
+          }
+    }//GEN-LAST:event_btnSalvarKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

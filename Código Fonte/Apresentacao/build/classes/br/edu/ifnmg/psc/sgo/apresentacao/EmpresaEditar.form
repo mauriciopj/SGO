@@ -168,11 +168,17 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNome">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="Email"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmailKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEmail">
       <Properties>
@@ -185,21 +191,33 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFone">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtFoneKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRua">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="Rua, Av.:"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRuaKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBairro">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="Bairro"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBairroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNumero">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="N&#xfa;mero"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNumeroKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNumero">
       <Properties>
@@ -228,6 +246,9 @@
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="Email"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCnpjKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCnpj">
       <Properties>
@@ -249,6 +270,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnSalvarKeyPressed"/>
       </Events>
     </Component>
   </SubComponents>
