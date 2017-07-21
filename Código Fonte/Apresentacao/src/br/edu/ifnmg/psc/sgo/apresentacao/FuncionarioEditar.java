@@ -5,17 +5,28 @@
  */
 package br.edu.ifnmg.psc.sgo.apresentacao;
 
+import br.edu.ifnmg.psc.sgo.aplicacao.CargoFuncionario;
+import br.edu.ifnmg.psc.sgo.aplicacao.Funcionario;
+import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author mauricio
  */
-public class FuncionarioEditar extends javax.swing.JInternalFrame {
+public class FuncionarioEditar extends TelaEdicao<Funcionario> {
 
     /**
      * Creates new form FuncionarioEditar
      */
     public FuncionarioEditar() {
         initComponents();
+        
+        entidade = new Funcionario();
+        
+        ComboBoxModel model = new DefaultComboBoxModel(CargoFuncionario.values());               
+        cbxCargo.setModel(model);
     }
 
     /**
@@ -28,101 +39,48 @@ public class FuncionarioEditar extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         lblEndereco = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
+        txtNumero = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        txtFone = new javax.swing.JTextField();
         lblFone = new javax.swing.JLabel();
-        txtRua = new javax.swing.JTextField();
         lblRua = new javax.swing.JLabel();
         lblBairro = new javax.swing.JLabel();
-        txtBairro = new javax.swing.JTextField();
-        txtNumero = new javax.swing.JTextField();
         lblNumero = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
         lblEndereco1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblCpf = new javax.swing.JLabel();
-        cbxCargo = new javax.swing.JComboBox<>();
         lblCargo = new javax.swing.JLabel();
         lblSalario = new javax.swing.JLabel();
-        txtCpf = new javax.swing.JFormattedTextField();
         txtSalario = new javax.swing.JFormattedTextField();
+        txtNome = new javax.swing.JTextField();
+        txtCpf = new javax.swing.JFormattedTextField();
+        txtFone = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        btnSalvar = new javax.swing.JButton();
+        cbxCargo = new javax.swing.JComboBox<>();
+        txtBairro = new javax.swing.JTextField();
+        txtRua = new javax.swing.JTextField();
+        txtNumero1 = new javax.swing.JTextField();
 
         lblEndereco.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
         lblEndereco.setText("Endereço:");
+
+        txtNumero.setToolTipText("Número");
 
         setClosable(true);
         setTitle("Editar Funcionário");
         setToolTipText("");
 
-        txtNome.setToolTipText("Nome");
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
-        txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNomeKeyPressed(evt);
-            }
-        });
-
         lblNome.setText("Nome: *");
 
         lblEmail.setText("Email: *");
 
-        txtEmail.setToolTipText("Email");
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtEmailKeyPressed(evt);
-            }
-        });
-
-        txtFone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFoneActionPerformed(evt);
-            }
-        });
-        txtFone.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtFoneKeyPressed(evt);
-            }
-        });
-
         lblFone.setText("Telefone: *");
-
-        txtRua.setToolTipText("Rua, Av.:");
-        txtRua.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtRuaKeyPressed(evt);
-            }
-        });
 
         lblRua.setText("Rua: *");
 
         lblBairro.setText("Bairro: *");
-
-        txtBairro.setToolTipText("Bairro");
-        txtBairro.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtBairroKeyPressed(evt);
-            }
-        });
-
-        txtNumero.setToolTipText("Número");
-        txtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNumeroKeyPressed(evt);
-            }
-        });
 
         lblNumero.setText("Número: *");
 
@@ -130,19 +88,6 @@ public class FuncionarioEditar extends javax.swing.JInternalFrame {
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
-            }
-        });
-
-        btnSalvar.setText("Salvar");
-        btnSalvar.setToolTipText("");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
-            }
-        });
-        btnSalvar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnSalvarKeyPressed(evt);
             }
         });
 
@@ -154,38 +99,45 @@ public class FuncionarioEditar extends javax.swing.JInternalFrame {
 
         lblCpf.setText("CPF: *");
 
-        cbxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         lblCargo.setText("Cargo: *");
 
         lblSalario.setText("Salário: *");
+
+        txtSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        txtSalario.setText("R$ ");
+
+        txtNome.setToolTipText("Nome");
 
         try {
             txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtCpf.setText("   .   .   -  ");
-        txtCpf.addActionListener(new java.awt.event.ActionListener() {
+
+        txtEmail.setToolTipText("Email");
+
+        btnSalvar.setText("Salvar");
+        btnSalvar.setToolTipText("");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCpfActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
 
-        txtSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        cbxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtBairro.setToolTipText("Bairro");
+
+        txtRua.setToolTipText("Rua, Av.:");
+
+        txtNumero1.setToolTipText("Número");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,65 +153,66 @@ public class FuncionarioEditar extends javax.swing.JInternalFrame {
                                     .addComponent(lblSalario)
                                     .addComponent(lblEndereco1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtNome)
-                                        .addComponent(cbxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtCpf, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtFone, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNome)
+                                    .addComponent(txtCpf)
+                                    .addComponent(txtFone)
+                                    .addComponent(txtEmail)
+                                    .addComponent(cbxCargo, 0, 478, Short.MAX_VALUE)
+                                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblNumero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblBairro)
                             .addComponent(lblRua)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
-                            .addComponent(txtRua))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(109, 109, 109)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                                .addComponent(txtRua))
+                            .addGap(0, 0, Short.MAX_VALUE))))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNome)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCpf)
-                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmail))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCargo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFone))
-                        .addGap(0, 32, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSalario))))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel4)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNome)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCpf)
+                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmail)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCargo)
+                    .addComponent(cbxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFone)
+                    .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSalario))
+                .addGap(0, 21, Short.MAX_VALUE)
                 .addComponent(lblEndereco1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -267,12 +220,12 @@ public class FuncionarioEditar extends javax.swing.JInternalFrame {
                     .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBairro))
+                    .addComponent(lblBairro)
+                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNumero))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNumero)
+                    .addComponent(txtNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -280,64 +233,8 @@ public class FuncionarioEditar extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24))
         );
 
-        pack();
+        setBounds(390, 130, 632, 491);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
-    private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == evt.VK_ENTER)  {
-            txtEmail.requestFocus();
-        }
-    }//GEN-LAST:event_txtNomeKeyPressed
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
-        // TODO add your handling code here:
-        // if(evt.getKeyCode() == evt.VK_ENTER)  {
-            //    txtFone.requestFocus();
-            // }
-    }//GEN-LAST:event_txtEmailKeyPressed
-
-    private void txtFoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFoneActionPerformed
-
-    private void txtFoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFoneKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == evt.VK_ENTER)  {
-            txtRua.requestFocus();
-        }
-    }//GEN-LAST:event_txtFoneKeyPressed
-
-    private void txtRuaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRuaKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == evt.VK_ENTER)  {
-            txtBairro.requestFocus();
-        }
-    }//GEN-LAST:event_txtRuaKeyPressed
-
-    private void txtBairroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBairroKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == evt.VK_ENTER)  {
-            txtNumero.requestFocus();
-        }
-    }//GEN-LAST:event_txtBairroKeyPressed
-
-    private void txtNumeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == evt.VK_ENTER)  {
-            btnSalvar.requestFocus();
-
-        }
-    }//GEN-LAST:event_txtNumeroKeyPressed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         cancelar();
@@ -346,18 +243,6 @@ public class FuncionarioEditar extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         salvar();
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void btnSalvarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSalvarKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == evt.VK_ENTER)  {
-            salvar();
-        }
-    }//GEN-LAST:event_btnSalvarKeyPressed
-
-    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCpfActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -381,7 +266,47 @@ public class FuncionarioEditar extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtFone;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtNumero1;
     private javax.swing.JTextField txtRua;
     private javax.swing.JFormattedTextField txtSalario;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void carregaCampos() {
+        txtCpf.setText( entidade.getCpf() );
+        txtNome.setText( entidade.getNome() );
+        cbxCargo.setSelectedItem( entidade.getCpf() );
+        txtEmail.setText( entidade.getEmail() );
+        txtFone.setText( entidade.getFone() );
+        txtSalario.setValue( entidade.getSalario() );
+        txtRua.setText( entidade.getRua() );
+        txtBairro.setText( entidade.getBairro() );
+        txtNumero.setText( entidade.getNumero() );
+    }
+
+    @Override
+    public void carregaObjeto() throws ViolacaoRegraNegocioException {
+        entidade.setCpf( txtCpf.getText() );
+        entidade.setNome( txtNome.getText() );
+        entidade.setCargo( (CargoFuncionario) cbxCargo.getSelectedItem() );
+        entidade.setEmail( txtEmail.getText() );
+        entidade.setFone( txtFone.getText() );
+        entidade.setSalario( (float) txtSalario.getValue() );
+        entidade.setRua( txtRua.getText() );
+        entidade.setBairro( txtBairro.getText() );
+        entidade.setNumero( txtNumero.getText() ); 
+    }
+
+    @Override
+    public boolean verificarCamposObrigatorios() {
+        return !txtCpf.getText().isEmpty() || 
+               !txtNome.getText().isEmpty() ||
+                cbxCargo.getSelectedItem() != null || 
+               !txtEmail.getText().isEmpty() ||
+               !txtFone.getText().isEmpty() ||
+                txtSalario.getValue() != null || 
+               !txtRua.getText().isEmpty() || 
+               !txtBairro.getText().isEmpty() || 
+               !txtNumero.getText().isEmpty();
+    }
 }
