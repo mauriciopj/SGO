@@ -32,6 +32,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnuForn = new javax.swing.JMenuItem();
+        mnuFunc = new javax.swing.JMenuItem();
         mnuEmpresa = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -59,6 +60,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(mnuForn);
+
+        mnuFunc.setText("Funcionário");
+        mnuFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuFuncActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuFunc);
 
         jMenuBar1.add(jMenu1);
         jMenu1.getAccessibleContext().setAccessibleDescription("");
@@ -113,6 +122,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }                 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void mnuFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFuncActionPerformed
+        FuncionarioEditar tela = new FuncionarioEditar();     
+        planoFundo.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_mnuFuncActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -155,6 +170,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu mnuEmpresa;
     private javax.swing.JMenuItem mnuForn;
+    private javax.swing.JMenuItem mnuFunc;
     private javax.swing.JLabel planoFundo;
     // End of variables declaration//GEN-END:variables
 
