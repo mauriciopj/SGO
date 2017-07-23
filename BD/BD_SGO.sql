@@ -3,7 +3,7 @@ create database sgo;
 
 use sgo;
 
--- select * from empresa;
+select * from funcionarios;
 
 /*create table empresa(
 	idEmpresa int auto_increment not null,
@@ -18,10 +18,10 @@ create table funcionarios(
 	idFunc int auto_increment not null primary key,
 	nome varchar(150) not null,
     cpf varchar(11) not null,
-    cargo varchar(50) not null,
+    cargo int not null,
     fone varchar(50) not null,
     email varchar(150) not null,
-    salario numeric(4,2) not null,
+    salario numeric(8,2) not null,
     bairro varchar(150) not null,
     numero varchar(8) not null, 
     rua varchar(150) not null
@@ -66,4 +66,4 @@ create table empresa(
     rua varchar(150) not null
 );
 
--- insert into empresa(idEmpr,cnpj,nome,fone,email,bairro,numero,rua) values (1,'12345678912345','SGO_Januária','38991586654','gfdg','gfdg','gfdg','dfg');
+-- insert into funcionarios(idFunc,cpf,nome,fone,cargo,email,bairro,numero,rua,salario) values (1,'11111111111','Januária','38991586654',1,'gfdg','gfdg','dfg','fdsfsd',1222);

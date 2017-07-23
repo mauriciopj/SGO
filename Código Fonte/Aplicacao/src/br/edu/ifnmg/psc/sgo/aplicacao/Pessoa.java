@@ -83,11 +83,6 @@ public abstract class Pessoa {
        }
        soma = 11 - soma % 11;
        return soma > 9 ? 0 : soma;
-    }
+    }        
     
-    public String montaString(String s){
-        String nova = s.replace(".-", "");
-        System.out.printf("/n %s /n",nova);
-        return nova;
-    }
 }

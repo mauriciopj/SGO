@@ -134,16 +134,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void mnuFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFuncActionPerformed
-        FuncionarioEditar tela = new FuncionarioEditar();     
+        FuncionarioBuscar tela = new FuncionarioBuscar(Repositorios.getFuncionarioRepositorio(), FuncionarioEditar.class);        
         planoFundo.add(tela);
         tela.setVisible(true);
     }//GEN-LAST:event_mnuFuncActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-         MaterialBuscar tela = new MaterialBuscar (Repositorios.getMaterialConstrucaoRepositorio(), MaterialEditar.class);
-        
-      planoFundo.add(tela);
+        MaterialBuscar tela = new MaterialBuscar(Repositorios.getMaterialConstrucaoRepositorio(), MaterialEditar.class);        
+        planoFundo.add(tela);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

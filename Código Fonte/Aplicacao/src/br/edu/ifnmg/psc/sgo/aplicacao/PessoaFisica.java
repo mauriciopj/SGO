@@ -23,15 +23,13 @@ public class PessoaFisica extends Pessoa {
     public void setCpf(String cpf) throws ViolacaoRegraNegocioException {
         if (!validaCPF(cpf))
             throw new ViolacaoRegraNegocioException("CPF inválido!");
-        else
-            montaString(cpf);
         this.cpf = cpf;
     }  
     
     private static final int[] pesoCPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
        
     public static boolean validaCPF(String cpf) throws ViolacaoRegraNegocioException {
-        if (cpf==null || cpf.length()!=14)
+        if (cpf==null || cpf.length()!=11)
             throw new ViolacaoRegraNegocioException("O CPF deve conter 11 digitos!");
 
         Integer digito1 = calcularDigito(cpf.substring(0,9), pesoCPF);

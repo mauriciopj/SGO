@@ -64,7 +64,7 @@ public class FuncionarioDAO extends DAOGenerico<Funcionario> implements Funciona
             sql.setInt(3, obj.getCargo().getId());     
             sql.setString(4, obj.getEmail());
             sql.setString(5, obj.getFone());
-            sql.setFloat(6, obj.getSalario());
+            sql.setDouble(6, obj.getSalario());
             sql.setString(7, obj.getRua());
             sql.setString(8, obj.getBairro());
             sql.setString(9, obj.getNumero());
@@ -87,7 +87,7 @@ public class FuncionarioDAO extends DAOGenerico<Funcionario> implements Funciona
             obj.setCargo( CargoFuncionario.Abrir( resultado.getInt("cargo") ) );
             obj.setEmail( resultado.getString("email") );
             obj.setFone( resultado.getString("fone") );
-            obj.setSalario( resultado.getFloat("salario") );
+            obj.setSalario( resultado.getDouble("salario") );
             obj.setRua( resultado.getString("rua") );
             obj.setBairro( resultado.getString("bairro") );
             obj.setNumero( resultado.getString("numero") );
