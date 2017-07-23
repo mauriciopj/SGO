@@ -21,10 +21,12 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
      * Creates new form FuncionarioEditar
      */
     public FuncionarioEditar() {
+        super();
         initComponents();
         
+        repositorio = Repositorios.getFuncionarioRepositorio();
         entidade = new Funcionario();
-        
+                
         ComboBoxModel model = new DefaultComboBoxModel(CargoFuncionario.values());               
         cbxCargo.setModel(model);
     }
@@ -38,8 +40,6 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblEndereco = new javax.swing.JLabel();
-        txtNumero = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         lblFone = new javax.swing.JLabel();
@@ -47,7 +47,7 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
         lblBairro = new javax.swing.JLabel();
         lblNumero = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
-        lblEndereco1 = new javax.swing.JLabel();
+        lblEndereco = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblCpf = new javax.swing.JLabel();
         lblCargo = new javax.swing.JLabel();
@@ -61,12 +61,7 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
         cbxCargo = new javax.swing.JComboBox<>();
         txtBairro = new javax.swing.JTextField();
         txtRua = new javax.swing.JTextField();
-        txtNumero1 = new javax.swing.JTextField();
-
-        lblEndereco.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
-        lblEndereco.setText("Endereço:");
-
-        txtNumero.setToolTipText("Número");
+        txtNumero = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Editar Funcionário");
@@ -91,8 +86,8 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
             }
         });
 
-        lblEndereco1.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
-        lblEndereco1.setText("Endereço:");
+        lblEndereco.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
+        lblEndereco.setText("Endereço:");
 
         jLabel4.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
         jLabel4.setText("Preencha os campos informando os dados do funcionário:");
@@ -103,13 +98,12 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
 
         lblSalario.setText("Salário: *");
 
-        txtSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-        txtSalario.setText("R$ ");
+        txtSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
 
         txtNome.setToolTipText("Nome");
 
         try {
-            txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -130,58 +124,61 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
 
         txtRua.setToolTipText("Rua, Av.:");
 
-        txtNumero1.setToolTipText("Número");
+        txtNumero.setToolTipText("Número");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
+                                .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCargo)
-                                    .addComponent(lblFone)
-                                    .addComponent(lblEmail)
-                                    .addComponent(lblCpf)
-                                    .addComponent(lblNome)
-                                    .addComponent(lblSalario)
-                                    .addComponent(lblEndereco1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNome)
-                                    .addComponent(txtCpf)
-                                    .addComponent(txtFone)
-                                    .addComponent(txtEmail)
-                                    .addComponent(cbxCargo, 0, 478, Short.MAX_VALUE)
-                                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblCargo)
+                                            .addComponent(lblFone)
+                                            .addComponent(lblEmail)
+                                            .addComponent(lblCpf)
+                                            .addComponent(lblNome)
+                                            .addComponent(lblSalario))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNumero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblBairro)
-                            .addComponent(lblRua)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(109, 109, 109)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
-                                .addComponent(txtRua))
-                            .addGap(0, 0, Short.MAX_VALUE))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                                .addGap(37, 37, 37)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblRua, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblNumero)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(lblBairro)
+                                                .addGap(24, 24, 24)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(lblEndereco, javax.swing.GroupLayout.Alignment.LEADING))))
+                        .addGap(0, 8, Short.MAX_VALUE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +189,7 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCpf)
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -200,49 +197,49 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCargo)
                     .addComponent(cbxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFone)
                     .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSalario))
-                .addGap(0, 21, Short.MAX_VALUE)
-                .addComponent(lblEndereco1)
+                    .addComponent(lblSalario)
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 16, Short.MAX_VALUE)
+                .addComponent(lblEndereco)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRua)
                     .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBairro)
                     .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNumero)
-                    .addComponent(txtNumero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnSalvar))
                 .addGap(24, 24, 24))
         );
 
-        setBounds(390, 130, 632, 491);
+        setBounds(380, 40, 632, 491);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        cancelar();
-    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         salvar();
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        cancelar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -254,7 +251,6 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEndereco;
-    private javax.swing.JLabel lblEndereco1;
     private javax.swing.JLabel lblFone;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNumero;
@@ -266,16 +262,15 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
     private javax.swing.JTextField txtFone;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
-    private javax.swing.JTextField txtNumero1;
     private javax.swing.JTextField txtRua;
     private javax.swing.JFormattedTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void carregaCampos() {
-        txtCpf.setText( entidade.getCpf() );
+        txtCpf.setValue( entidade.getCpf() );
         txtNome.setText( entidade.getNome() );
-        cbxCargo.setSelectedItem( entidade.getCpf() );
+        cbxCargo.setSelectedItem( entidade.getCargo() );
         txtEmail.setText( entidade.getEmail() );
         txtFone.setText( entidade.getFone() );
         txtSalario.setValue( entidade.getSalario() );
@@ -286,20 +281,20 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
 
     @Override
     public void carregaObjeto() throws ViolacaoRegraNegocioException {
-        entidade.setCpf( txtCpf.getText() );
+        entidade.setCpf( (String) txtCpf.getValue() );
         entidade.setNome( txtNome.getText() );
         entidade.setCargo( (CargoFuncionario) cbxCargo.getSelectedItem() );
         entidade.setEmail( txtEmail.getText() );
         entidade.setFone( txtFone.getText() );
-        entidade.setSalario( (float) txtSalario.getValue() );
+        entidade.setSalario( (double)(Long) txtSalario.getValue() );
         entidade.setRua( txtRua.getText() );
         entidade.setBairro( txtBairro.getText() );
-        entidade.setNumero( txtNumero.getText() ); 
+        entidade.setNumero(txtNumero.getText() ); 
     }
 
     @Override
     public boolean verificarCamposObrigatorios() {
-        return !txtCpf.getText().isEmpty() || 
+        return  txtCpf.getValue() != null || 
                !txtNome.getText().isEmpty() ||
                 cbxCargo.getSelectedItem() != null || 
                !txtEmail.getText().isEmpty() ||
