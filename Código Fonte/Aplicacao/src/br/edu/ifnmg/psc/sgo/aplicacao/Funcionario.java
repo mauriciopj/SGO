@@ -14,12 +14,12 @@ import java.util.Objects;
 public class Funcionario extends PessoaFisica implements Entidade {
     private int idFunc;
     private CargoFuncionario cargo;
-    private double salario;
+    private Long salario;
 
     public Funcionario() {
     }
 
-    public Funcionario(String cpf, String nome, CargoFuncionario cargo, String fone, double salario, String email, String rua, String bairro, String numero) {
+    public Funcionario(String cpf, String nome, CargoFuncionario cargo, String fone, Long salario, String email, String rua, String bairro, String numero) {
         this.cpf = cpf;
         this.nome = nome;
         this.cargo = cargo;
@@ -41,11 +41,11 @@ public class Funcionario extends PessoaFisica implements Entidade {
         return idFunc;
     }
 
-    public double getSalario() {
+    public Long getSalario() {
         return salario;
     }
 
-    public void setSalario(double salario) throws ViolacaoRegraNegocioException {
+    public void setSalario(Long salario) throws ViolacaoRegraNegocioException {
         if(salario <= 0)
             throw new ViolacaoRegraNegocioException("O campo salario é obrigatório");
         this.salario = salario;
@@ -64,9 +64,9 @@ public class Funcionario extends PessoaFisica implements Entidade {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 17 * hash + this.idFunc;
-        hash = 17 * hash + Objects.hashCode(this.cargo);
-        hash = 17 * hash + (int) (Double.doubleToLongBits(this.salario) ^ (Double.doubleToLongBits(this.salario) >>> 32));
+        hash = 61 * hash + this.idFunc;
+        hash = 61 * hash + Objects.hashCode(this.cargo);
+        hash = 61 * hash + Objects.hashCode(this.salario);
         return hash;
     }
 
@@ -85,13 +85,13 @@ public class Funcionario extends PessoaFisica implements Entidade {
         if (this.idFunc != other.idFunc) {
             return false;
         }
-        if (Double.doubleToLongBits(this.salario) != Double.doubleToLongBits(other.salario)) {
-            return false;
-        }
         if (this.cargo != other.cargo) {
             return false;
         }
+        if (!Objects.equals(this.salario, other.salario)) {
+            return false;
+        }
         return true;
-    }   
+    }     
            
 }

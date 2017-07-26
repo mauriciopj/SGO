@@ -286,7 +286,7 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
         entidade.setCargo( (CargoFuncionario) cbxCargo.getSelectedItem() );
         entidade.setEmail( txtEmail.getText() );
         entidade.setFone( txtFone.getText() );
-        entidade.setSalario( (double)(Long) txtSalario.getValue() );
+        entidade.setSalario( (Long) txtSalario.getValue() );
         entidade.setRua( txtRua.getText() );
         entidade.setBairro( txtBairro.getText() );
         entidade.setNumero(txtNumero.getText() ); 
