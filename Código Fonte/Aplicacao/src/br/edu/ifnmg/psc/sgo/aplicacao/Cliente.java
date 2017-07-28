@@ -3,15 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifnmg.psc.sgo.apresentacao;
-
-import br.edu.ifnmg.psc.sgo.aplicacao.PessoaFisica;
+package br.edu.ifnmg.psc.sgo.aplicacao;
 
 /**
  *
- * @author mauricio
+ * @author aluno
  */
 public class Cliente extends PessoaFisica {
+    private int idCli;
 
+    public Cliente() {
+        
+    }   
+    
+    public int getId() {
+        return idCli;
+    }
+
+    public void setId(int id) {
+        this.idCli = id;
+    }   
     
 }
