@@ -11,7 +11,11 @@ package br.edu.ifnmg.psc.sgo.aplicacao;
  * @param <T>
  */
 public abstract class Pessoa<T extends Entidade> {
-    protected String nome, fone, email, bairro, numero, rua;    
+    protected String nome, fone, email, bairro, numero, rua;
+    
+    enum TipoPessoa {
+	PESSOA_FISICA, PESSOA_JURIDICA;
+    }    
 
     public Pessoa() {
     }
