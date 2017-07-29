@@ -3,16 +3,19 @@ create database sgo;
 
 use sgo;
 
-select * from funcionarios;
+-- select * from clientes;
 
-/*create table empresa(
-	idEmpresa int auto_increment not null,
-	razaoSocial varchar(100) not null,
-    cnpj varchar(150) not null,
-    endereco varchar(8) not null, 
-    fone varchar(150) not null,
-    primary key(idEmpresa)
-); */
+create table clientes(
+	idCli int auto_increment not null primary key,
+	nome varchar(150) not null,
+	cpf varchar(11) not null,
+	cnpj varchar(14) not null,
+    fone varchar(11) not null,
+    email varchar(150) not null,
+    bairro varchar(150) not null,
+    numero varchar(8) not null, 
+    rua varchar(150) not null
+); 
 
 create table funcionarios(
 	idFunc int auto_increment not null primary key,
@@ -27,17 +30,16 @@ create table funcionarios(
     rua varchar(150) not null
 );
 
-/*create table obrasEServicos(
-	idObra int auto_increment not null,
+create table obrasEServicos(
+	idObra int auto_increment not null primary key,
 	descricao varchar(150) not null,
     bairro varchar(150) not null,
     numero varchar(8) not null, 
     complemento varchar(150) not null,
     rua varchar(150) not null,
-    cidade varchar(50) not null,
-    idCliente int,
-    primary key(idObra)    
-);*/
+    cidade int not null,
+    idCliente int
+);
 
 create table fornecedores(
 	idForn int auto_increment not null primary key,

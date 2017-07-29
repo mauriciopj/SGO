@@ -39,6 +39,14 @@
             <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
           </AccessibilityProperties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuCliente">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cliente"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuClienteActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuForn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Fornecedor"/>

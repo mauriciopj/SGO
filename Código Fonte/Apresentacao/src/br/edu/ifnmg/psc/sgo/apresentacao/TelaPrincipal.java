@@ -29,6 +29,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         planoFundo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        mnuCliente = new javax.swing.JMenuItem();
         mnuForn = new javax.swing.JMenuItem();
         mnuFunc = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -51,6 +52,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenu1.setFocusCycleRoot(true);
         jMenu1.setNextFocusableComponent(jMenu1);
+
+        mnuCliente.setText("Cliente");
+        mnuCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuCliente);
 
         mnuForn.setText("Fornecedor");
         mnuForn.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +122,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void mnuFornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFornActionPerformed
         FornecedorBuscar tela = new FornecedorBuscar(Repositorios.getFornecedorRepositorio(), FornecedorEditar.class);
         
-      planoFundo.add(tela);
+        planoFundo.add(tela);
         tela.setVisible(true);
     }//GEN-LAST:event_mnuFornActionPerformed
 
@@ -140,6 +149,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         planoFundo.add(tela);
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void mnuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuClienteActionPerformed
+        ClienteBuscar tela = new ClienteBuscar(Repositorios.getClienteRepositorio(), ClienteEditar.class);        
+        planoFundo.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_mnuClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,6 +198,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem mnuCliente;
     private javax.swing.JMenu mnuEmpresa;
     private javax.swing.JMenuItem mnuForn;
     private javax.swing.JMenuItem mnuFunc;

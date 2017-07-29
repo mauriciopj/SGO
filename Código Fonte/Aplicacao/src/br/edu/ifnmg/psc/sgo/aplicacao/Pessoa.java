@@ -8,14 +8,9 @@ package br.edu.ifnmg.psc.sgo.aplicacao;
 /**
  *
  * @author mauricio
- * @param <T>
  */
-public abstract class Pessoa<T extends Entidade> {
-    protected String nome, fone, email, bairro, numero, rua;
-    
-    enum TipoPessoa {
-	PESSOA_FISICA, PESSOA_JURIDICA;
-    }    
+public abstract class Pessoa {
+    protected String nome, fone, email, bairro, numero, rua;      
 
     public Pessoa() {
     }

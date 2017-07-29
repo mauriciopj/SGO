@@ -15,22 +15,22 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author aluno
+ * @author mauricio
  */
 public class ClienteDAO extends DAOGenerico<Cliente> implements ClienteRepositorio {
 
     public ClienteDAO() throws ClassNotFoundException, SQLException {
         super();
-    }   
+    }    
     
     @Override
     protected String getConsultaInsert() {
-        return "insert into clientes(nome, email, fone, rua, bairro, numero) values(?,?,?,?,?,?)";
+        return "insert into clientes(nome, cpf, cnpj, email, fone, rua, bairro, numero) values(?,?,?,?,?,?,?,?)";
     }
     
     @Override
     protected String getConsultaUpdate() {
-        return "update clientes set nome = ?, email =  ?, fone = ?, rua = ?, bairro = ?, numero = ? where idCli = ?";
+        return "update clientes set nome = ?, cpf = ?, cnpj = ?, email =  ?, fone = ?, rua = ?, bairro = ?, numero = ? where idCli = ?";
     }
     
     @Override
@@ -40,12 +40,12 @@ public class ClienteDAO extends DAOGenerico<Cliente> implements ClienteRepositor
     
     @Override
     protected String getConsultaAbrir() {
-        return "select idCli, nome, email, fone, rua, bairro, numero from clientes where idCli = ?";
+        return "select idCli, nome, cpf, cnpj, email, fone, rua, bairro, numero from clientes where idCli = ?";
     }
 
     @Override
     protected String getConsultaBuscar() {
-        return "select idCli, nome, email, fone, rua, bairro, numero from clientes ";
+        return "select idCli, nome, cpf, cnpj, email, fone, rua, bairro, numero from clientes ";
     }
 
     @Override
@@ -55,20 +55,26 @@ public class ClienteDAO extends DAOGenerico<Cliente> implements ClienteRepositor
         
         if(filtro.getNome() != null && !filtro.getNome().isEmpty())
             this.adicionarFiltro("nome", filtro.getNome());
+        //if(filtro.getCpf() != null && !filtro.getCpf().isEmpty())
+            //this.adicionarFiltro("cpf", filtro.getCpf());
+        //if(filtro.getCnpj() != null && !filtro.getCnpj().isEmpty())
+            //this.adicionarFiltro("cnpj", filtro.getCnpj());
     }
 
     @Override
     protected void setParametros(PreparedStatement sql, Cliente obj) {
         try {
-            sql.setString(1, obj.getNome());            
-            sql.setString(2, obj.getEmail());
-            sql.setString(3, obj.getFone());
-            sql.setString(4, obj.getRua());
-            sql.setString(5, obj.getBairro());
-            sql.setString(6, obj.getNumero());
+            sql.setString(1, obj.getNome());
+            sql.setString(2, (String) obj.getCpf());            
+            //sql.setString(3, obj.getCnpj());
+            sql.setString(4, obj.getEmail());
+            sql.setString(5, obj.getFone());
+            sql.setString(6, obj.getRua());
+            sql.setString(7, obj.getBairro());
+            sql.setString(8, obj.getNumero());
             
             if(obj.getId() > 0)
-                sql.setInt(7, obj.getId());
+                sql.setInt(9, obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,8 +85,10 @@ public class ClienteDAO extends DAOGenerico<Cliente> implements ClienteRepositor
     protected Cliente setDados(ResultSet resultado) {
         try {
             Cliente obj = new Cliente();
-            obj.setId( resultado.getInt("idForn") );
+            obj.setId( resultado.getInt("idCli") );
             obj.setNome( resultado.getString("nome") );
+            obj.setCpf( resultado.getString("cpf") );
+            //obj.setCnpj( resultado.getString("cnpj") );
             obj.setEmail( resultado.getString("email") );
             obj.setFone( resultado.getString("fone") );
             obj.setRua( resultado.getString("rua") );

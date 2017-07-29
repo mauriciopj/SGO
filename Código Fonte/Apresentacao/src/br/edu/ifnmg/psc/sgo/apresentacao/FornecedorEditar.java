@@ -275,13 +275,6 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
         salvar();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
-        // TODO add your handling code here:
-         if(evt.getKeyCode() == evt.VK_ENTER)  {
-             txtEmail.requestFocus();
-          }
-    }//GEN-LAST:event_txtNomeKeyPressed
-
     private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
         // TODO add your handling code here:
        // if(evt.getKeyCode() == evt.VK_ENTER)  {
@@ -333,6 +326,13 @@ public class FornecedorEditar extends TelaEdicao<Fornecedor> {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER)  {
+            txtEmail.requestFocus();
+        }
+    }//GEN-LAST:event_txtNomeKeyPressed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:

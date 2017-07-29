@@ -16,6 +16,10 @@ public class PessoaFisica extends Pessoa {
         
     }
 
+    public PessoaFisica(String cpf) {
+        this.cpf = cpf;
+    }        
+
     public String getCpf() {
         return cpf;
     }
