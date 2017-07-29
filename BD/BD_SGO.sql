@@ -54,6 +54,8 @@ create table fornecedores(
 create table materiais(
 	idMate int auto_increment not null primary key,
 	nome varchar(50) not null,
+    qtd int not null,
+    valor varchar(50) not null,
     descricao varchar(150) not null
 );	
 
