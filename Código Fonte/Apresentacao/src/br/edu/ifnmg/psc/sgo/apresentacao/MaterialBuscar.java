@@ -65,16 +65,16 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
 
         tblBusca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "Descrição"
+                "Id", "Nome", "Quantidade", "valor", "Descrição"
             }
         ));
         tblBusca.setPreferredSize(new java.awt.Dimension(445, 112));
@@ -194,6 +194,8 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
         
         modelo.addColumn("ID");
         modelo.addColumn("Nome");
+        modelo.addColumn("Quantidade");
+        modelo.addColumn("valor");
         modelo.addColumn("Descrição");
         
         
@@ -201,7 +203,9 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
             Vector linha = new Vector();
             linha.add(f.getId());
             linha.add(f.getNome());            
-            linha.add(f.getDescricao());
+            linha.add(f.getValor());
+             linha.add(f.getQtd());
+             linha.add(f.getDescricao());
             
                         
             modelo.addRow(linha);

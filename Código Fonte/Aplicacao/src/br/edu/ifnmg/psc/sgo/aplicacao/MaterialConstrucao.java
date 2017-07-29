@@ -9,22 +9,42 @@ import br.edu.ifnmg.psc.sgo.aplicacao.Entidade;
 import java.util.Objects;
 /**
  *
- * @author Dougla_Castro
+ * @author Douglas_Castro
  */
 public class MaterialConstrucao implements Entidade {
     
     private int idMate;
     private String nome;
     private String descricao;
+    private String valor; 
+    private int qtd;
 
     public MaterialConstrucao() {
     } 
     
     
-      public MaterialConstrucao( String nome, String descricao) {
+      public MaterialConstrucao( String nome, String descricao, String valor,int qtd) {
         this.nome = nome;
         this.descricao = descricao;
+        this.qtd=qtd;
+        this.valor=valor;
     }  
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+
+    public int getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(int qtd) {
+        this.qtd = qtd;
+    }
            
     @Override
     public void setId(int id) {
@@ -60,7 +80,8 @@ public class MaterialConstrucao implements Entidade {
         hash = 43 * hash + this.idMate;
         hash = 43 * hash + Objects.hashCode(this.nome);
         hash = 43 * hash + Objects.hashCode(this.descricao);
-        
+         hash = 43 * hash + Objects.hashCode(this.qtd);
+        hash = 43 * hash + Objects.hashCode(this.valor);
         return hash;
     }
     
@@ -86,6 +107,12 @@ public class MaterialConstrucao implements Entidade {
             return false;
         }
         
+         if (!Objects.equals(this.qtd, other.qtd)) {
+            return false;
+        }
+         if (!Objects.equals(this.valor, other.valor)) {
+            return false;
+        }
         return true;
     }       
     

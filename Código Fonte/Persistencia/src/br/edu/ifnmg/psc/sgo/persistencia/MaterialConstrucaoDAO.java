@@ -27,12 +27,12 @@ public class MaterialConstrucaoDAO extends DAOGenerico<MaterialConstrucao> imple
 
     @Override
     protected String getConsultaInsert() {
-        return "insert into materiais(nome,descricao) values(?,?)";
+        return "insert into materiais(nome,descricao,qtd,valor) values(?,?,?,?)";
     }
 
     @Override
     protected String getConsultaUpdate() {
-      return "update materiais set  nome = ?, descricao = ? where idMate = ?";
+      return "update materiais set  nome = ?, descricao = ?, qtd = ? ,valor = ? where idMate = ?";
     }
     @Override
     protected String getConsultaDelete() {
@@ -40,7 +40,7 @@ public class MaterialConstrucaoDAO extends DAOGenerico<MaterialConstrucao> imple
     }
     @Override
     protected String getConsultaAbrir() {
-       return "select idMate, nome, descricao from materiais where idMate = ?";
+       return "select idMate, nome, descricao ,qtd ,valor from materiais where idMate = ?";
     }
 
     
@@ -56,10 +56,11 @@ public class MaterialConstrucaoDAO extends DAOGenerico<MaterialConstrucao> imple
            
             sql.setString(1, obj.getNome());            
             sql.setString(2, obj.getDescricao());
-         
+            sql.setString(3, obj.getValor());            
+            sql.setInt(4, obj.getQtd());
   
             if(obj.getId() > 0)
-                sql.setInt(3, obj.getId());
+                sql.setInt(5, obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(MaterialConstrucaoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,6 +76,9 @@ public class MaterialConstrucaoDAO extends DAOGenerico<MaterialConstrucao> imple
             obj.setId( resultado.getInt("idMate") );
             obj.setNome( resultado.getString("nome") );
             obj.setDescricao( resultado.getString("descricao") );
+             obj.setQtd(resultado.getInt("qtd") );
+            obj.setValor(resultado.getString("valor") );
+           
            
             return obj;
             
@@ -87,7 +91,7 @@ public class MaterialConstrucaoDAO extends DAOGenerico<MaterialConstrucao> imple
 
     @Override
     protected String getConsultaBuscar() {
-        return "select idMate, nome, descricao from materiais ";
+        return "select idMate, nome, descricao , qtd ,valor from materiais ";
     }
     
 }

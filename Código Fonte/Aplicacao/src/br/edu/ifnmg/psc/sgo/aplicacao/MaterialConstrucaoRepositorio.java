@@ -10,7 +10,7 @@ import br.edu.ifnmg.psc.sgo.aplicacao.Repositorio;
 
 /**
  *
- * @author Dougla_Castro
+ * @author Douglas_Castro
  */
 public interface MaterialConstrucaoRepositorio extends Repositorio<MaterialConstrucao> {
     
