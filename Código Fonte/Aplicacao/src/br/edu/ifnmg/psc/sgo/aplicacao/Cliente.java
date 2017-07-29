@@ -71,8 +71,8 @@ public class Cliente extends Pessoa implements Entidade {
         return true;
     }       
 
-    public void setCpf(String s) {
-        this.cpf = cpf;
+    public void setCpf(String cpf) {
+        this.cpf= cpf;
     }
         
 }
