@@ -83,11 +83,23 @@ create table empresa(
 create table pedidos(
 	id int auto_increment not null primary key,
 	data date,
-    qtd int,
-	material int,
 	fornecedor int,
-	foreign key(material) references materiais(idMate),
 	foreign key(fornecedor) references fornecedores(idForn)
+);
+
+create table listafuncionarios (
+	idLF int auto_increment not null primary key,
+    funcionario int,
+    trabalho int,
+    foreign key(funcionario) references funcionarios(idFunc), 
+    foreign key(trabalho) references trabalhos(idTrab)
+);
+
+create table listamaterial (
+	idLM int auto_increment not null primary key,
+    material int,
+    qtd int,
+    foreign key(material) references materiais(idMate)    
 );
 
 -- insert into funcionarios(idFunc,cpf,nome,fone,cargo,email,bairro,numero,rua,salario) values (1,'11111111111','Januária','38991586654',1,'gfdg','gfdg','dfg','fdsfsd',1222);
