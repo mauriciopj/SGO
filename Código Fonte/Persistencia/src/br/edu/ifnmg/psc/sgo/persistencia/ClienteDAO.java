@@ -87,7 +87,7 @@ public class ClienteDAO extends DAOGenerico<Cliente> implements ClienteRepositor
             Cliente obj = new Cliente();
             obj.setId( resultado.getInt("idCli") );
             obj.setNome( resultado.getString("nome") );
-            obj.setCpf( resultado.getString("cpf") );
+            //obj.setCpf( resultado.getString("cpf") );
             //obj.setCnpj( resultado.getString("cnpj") );
             obj.setEmail( resultado.getString("email") );
             obj.setFone( resultado.getString("fone") );

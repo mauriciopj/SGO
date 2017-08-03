@@ -41,24 +41,14 @@ create table obrasEServicos(
     idCliente int
 );
 
-
-
-create table pedidos(
-	id int auto_increment not null primary key,
-	data date,
-    qtd int,
-     material int,
-	fornecedor int
-);
-
-
 create table trabalhos(
-	idTrabalhos int auto_increment not null primary key,
-	dataInicio varchar(150) not null,
-    previsaoTermino varchar(150) not null,
-    situacao int not null,
-    ultimaModificacao date,
-    idCliente int
+	idTrab int auto_increment not null primary key,
+	dataInicio date not null,
+	dataTermino date not null,
+	andamento int not null,
+	ultimaModificacao date,
+	obraEServico int,
+	foreign key(obraEServico) references obrasEServicos(idObra)
 );
 
 create table fornecedores(

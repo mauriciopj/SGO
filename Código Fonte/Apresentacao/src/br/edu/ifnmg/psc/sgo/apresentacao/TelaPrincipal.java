@@ -28,13 +28,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         planoFundo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        mnuForm = new javax.swing.JMenu();
         mnuCliente = new javax.swing.JMenuItem();
         mnuForn = new javax.swing.JMenuItem();
         mnuFunc = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        mnuMaterial = new javax.swing.JMenuItem();
+        mnuObraEServico = new javax.swing.JMenuItem();
+        mnuPedidos = new javax.swing.JMenuItem();
+        mnuTrabalho = new javax.swing.JMenuItem();
         mnuEmpresa = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -49,11 +50,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.setMargin(new java.awt.Insets(10, 0, 0, 0));
         jMenuBar1.setName(""); // NOI18N
 
-        jMenu1.setForeground(new java.awt.Color(1, 1, 1));
-        jMenu1.setText("Novo");
-        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenu1.setFocusCycleRoot(true);
-        jMenu1.setNextFocusableComponent(jMenu1);
+        mnuForm.setForeground(new java.awt.Color(1, 1, 1));
+        mnuForm.setText("Novo");
+        mnuForm.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        mnuForm.setFocusCycleRoot(true);
+        mnuForm.setNextFocusableComponent(mnuForm);
 
         mnuCliente.setText("Cliente");
         mnuCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +62,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 mnuClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(mnuCliente);
+        mnuForm.add(mnuCliente);
 
         mnuForn.setText("Fornecedor");
         mnuForn.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +70,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 mnuFornActionPerformed(evt);
             }
         });
-        jMenu1.add(mnuForn);
+        mnuForm.add(mnuForn);
 
         mnuFunc.setText("Funcionário");
         mnuFunc.addActionListener(new java.awt.event.ActionListener() {
@@ -77,34 +78,42 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 mnuFuncActionPerformed(evt);
             }
         });
-        jMenu1.add(mnuFunc);
+        mnuForm.add(mnuFunc);
 
-        jMenuItem1.setText("Material");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mnuMaterial.setText("Material");
+        mnuMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mnuMaterialActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        mnuForm.add(mnuMaterial);
 
-        jMenuItem3.setText("Obras e Serviços");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        mnuObraEServico.setText("Obra e/ou Serviço");
+        mnuObraEServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                mnuObraEServicoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        mnuForm.add(mnuObraEServico);
 
-        jMenuItem4.setText("Pedidos");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        mnuPedidos.setText("Pedido");
+        mnuPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                mnuPedidosActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem4);
+        mnuForm.add(mnuPedidos);
 
-        jMenuBar1.add(jMenu1);
-        jMenu1.getAccessibleContext().setAccessibleDescription("");
+        mnuTrabalho.setText("Trabalho");
+        mnuTrabalho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuTrabalhoActionPerformed(evt);
+            }
+        });
+        mnuForm.add(mnuTrabalho);
+
+        jMenuBar1.add(mnuForm);
+        mnuForm.getAccessibleContext().setAccessibleDescription("");
 
         mnuEmpresa.setForeground(new java.awt.Color(1, 1, 1));
         mnuEmpresa.setText("Configurações");
@@ -138,8 +147,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnuFornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFornActionPerformed
-        FornecedorBuscar tela = new FornecedorBuscar(Repositorios.getFornecedorRepositorio(), FornecedorEditar.class);
-        
+        FornecedorBuscar tela = new FornecedorBuscar(Repositorios.getFornecedorRepositorio(), FornecedorEditar.class);        
         planoFundo.add(tela);
         tela.setVisible(true);
     }//GEN-LAST:event_mnuFornActionPerformed
@@ -162,11 +170,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_mnuFuncActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mnuMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMaterialActionPerformed
         MaterialBuscar tela = new MaterialBuscar(Repositorios.getMaterialConstrucaoRepositorio(), MaterialEditar.class);        
         planoFundo.add(tela);
         tela.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mnuMaterialActionPerformed
 
     private void mnuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuClienteActionPerformed
         ClienteBuscar tela = new ClienteBuscar(Repositorios.getClienteRepositorio(), ClienteEditar.class);        
@@ -174,21 +182,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_mnuClienteActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        
-          ObrasEServicosBuscar tela = new ObrasEServicosBuscar(Repositorios.getObrasEServicosRepositorio(), ObrasEServicosEditar.class);        
+    private void mnuObraEServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuObraEServicoActionPerformed
+        ObrasEServicosBuscar tela = new ObrasEServicosBuscar(Repositorios.getObrasEServicosRepositorio(), ObrasEServicosEditar.class);        
         planoFundo.add(tela);
         tela.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_mnuObraEServicoActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-       
+    private void mnuPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuPedidosActionPerformed
         PedidosBuscar tela = new PedidosBuscar(Repositorios.getPedidosRepositorio(), PedidoEditar.class);        
         planoFundo.add(tela);
-        tela.setVisible(true); 
-      
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+        tela.setVisible(true);       
+    }//GEN-LAST:event_mnuPedidosActionPerformed
+
+    private void mnuTrabalhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuTrabalhoActionPerformed
+        TrabalhoBuscar tela = new TrabalhoBuscar(Repositorios.getTrabalhoRepositorio(), TrabalhoEditar.class);        
+        planoFundo.add(tela);
+        tela.setVisible(true);
+    }//GEN-LAST:event_mnuTrabalhoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,16 +238,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem mnuCliente;
     private javax.swing.JMenu mnuEmpresa;
+    private javax.swing.JMenu mnuForm;
     private javax.swing.JMenuItem mnuForn;
     private javax.swing.JMenuItem mnuFunc;
+    private javax.swing.JMenuItem mnuMaterial;
+    private javax.swing.JMenuItem mnuObraEServico;
+    private javax.swing.JMenuItem mnuPedidos;
+    private javax.swing.JMenuItem mnuTrabalho;
     private javax.swing.JLabel planoFundo;
     // End of variables declaration//GEN-END:variables
 

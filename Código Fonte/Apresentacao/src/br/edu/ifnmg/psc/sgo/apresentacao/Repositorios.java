@@ -13,12 +13,14 @@ import br.edu.ifnmg.psc.sgo.aplicacao.ObrasEServicosRepositorio;
 import br.edu.ifnmg.psc.sgo.persistencia.ObrasEServicosDAO;
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucaoRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.PedidosRepositorio;
+import br.edu.ifnmg.psc.sgo.aplicacao.TrabalhoRepositorio;
 import br.edu.ifnmg.psc.sgo.persistencia.ClienteDAO;
 import br.edu.ifnmg.psc.sgo.persistencia.EmpresaDAO;
 import br.edu.ifnmg.psc.sgo.persistencia.FornecedorDAO;
 import br.edu.ifnmg.psc.sgo.persistencia.FuncionarioDAO;
 import br.edu.ifnmg.psc.sgo.persistencia.MaterialConstrucaoDAO;
 import br.edu.ifnmg.psc.sgo.persistencia.PedidosDAO;
+import br.edu.ifnmg.psc.sgo.persistencia.TrabalhoDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,8 +36,9 @@ public class Repositorios {
     static EmpresaRepositorio empresaDAO = null;
     static MaterialConstrucaoRepositorio materialConstrucaoDAO = null;
     static ClienteRepositorio clienteDAO = null;
-      static ObrasEServicosRepositorio obrasEServicosDAO = null;
-      static PedidosRepositorio pedidosDAO = null;
+    static ObrasEServicosRepositorio obrasEServicosDAO = null;
+    static PedidosRepositorio pedidosDAO = null;
+    static TrabalhoRepositorio trabalhoDAO = null;
     
     public static EmpresaRepositorio getEmpresaRepositorio(){
         if(empresaDAO == null)
@@ -110,7 +113,7 @@ public class Repositorios {
     }
     
     
-     public static PedidosRepositorio getPedidosRepositorio(){
+    public static PedidosRepositorio getPedidosRepositorio(){
         if(pedidosDAO == null)
             try {
                 pedidosDAO = new PedidosDAO();
@@ -121,5 +124,17 @@ public class Repositorios {
             }
         return pedidosDAO;
         
+    }
+    
+    public static TrabalhoRepositorio getTrabalhoRepositorio(){
+        if(trabalhoDAO == null)
+            try {
+                trabalhoDAO = new TrabalhoDAO();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Repositorios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Repositorios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return trabalhoDAO;
     }
 }

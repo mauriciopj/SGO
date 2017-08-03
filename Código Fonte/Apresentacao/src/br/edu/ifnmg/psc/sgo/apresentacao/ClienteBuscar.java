@@ -185,7 +185,7 @@ public class ClienteBuscar extends TelaBusca<Cliente> {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        pack();
+        setBounds(250, 60, 850, 412);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
