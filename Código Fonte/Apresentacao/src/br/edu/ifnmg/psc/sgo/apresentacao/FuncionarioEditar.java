@@ -291,7 +291,6 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
         entidade.setBairro( txtBairro.getText() );
         entidade.setNumero(txtNumero.getText() ); 
     }
-
     @Override
     public boolean verificarCamposObrigatorios() {
         return  txtCpf.getValue() != null || 

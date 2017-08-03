@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Dougla_Castro
+ * @author Douglas_Castro
  */
 public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
 
