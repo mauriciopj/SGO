@@ -19,7 +19,7 @@ public class Pedidos implements Entidade {
     private MaterialConstrucao material;
 
     
-    
+   
     
     public int getId() {
         return id;
@@ -111,6 +111,8 @@ public class Pedidos implements Entidade {
     public void setNome(String text) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
     
     
 }

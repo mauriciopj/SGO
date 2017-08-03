@@ -7,8 +7,12 @@ package br.edu.ifnmg.psc.sgo.apresentacao;
 
 import br.edu.ifnmg.psc.sgo.aplicacao.Fornecedor;
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucao;
+import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucaoRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.Pedidos;
+import br.edu.ifnmg.psc.sgo.aplicacao.PedidosRepositorio;
+import br.edu.ifnmg.psc.sgo.aplicacao.Repositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.ButtonModel;
@@ -22,19 +26,41 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PedidoEditar extends  TelaEdicao<Pedidos> {
 
+     MaterialConstrucaoRepositorio materiais = Repositorios.getMaterialConstrucaoRepositorio();
+     
+     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+     
+     
+     
+      public PedidoEditar() {
+       super();
+        
+        initComponents();
+        
+        List<MaterialConstrucao> lista = materiais.Buscar(null);
+    
+        lista.add(0, null);
+        
+        ComboBoxModel modelo = new DefaultComboBoxModel(lista.toArray());
+        
+        cbxMaterial.setModel(modelo);
+        
+        
+        
+    }
     /**
      * Creates new form PedidoEditar
      * @param MaterialConstrucao
      * @param Fornecedor
      */
-    public PedidoEditar() {
-        super();
-        initComponents();
+   // public PedidoEditar() {
+      //  super();
+    //    initComponents();
         
-        repositorio = Repositorios.getPedidosRepositorio();
-        entidade = new Pedidos();
+      //  repositorio = Repositorios.getPedidosRepositorio();
+       // entidade = new Pedidos();
         
-         
+        
         
         
        // ComboBoxModel model = new DefaultComboBoxModel(MaterialConstrucao.values());               
@@ -44,7 +70,7 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
          
        // cbxFornecedor.setModel(model);
     
-    }
+   // }
 
     /**
      * This method is called from within the constructor to initialize the form.

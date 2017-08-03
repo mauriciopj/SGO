@@ -8,16 +8,12 @@ package br.edu.ifnmg.psc.sgo.persistencia;
 
 
 
-import br.edu.ifnmg.psc.sgo.aplicacao.ObrasEServicos;
-import br.edu.ifnmg.psc.sgo.aplicacao.ObrasEServicosRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.Pedidos;
 import br.edu.ifnmg.psc.sgo.aplicacao.PedidosRepositorio;
-import br.edu.ifnmg.psc.sgo.persistencia.DAOGenerico;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
