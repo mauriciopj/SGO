@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package br.edu.ifnmg.psc.sgo.aplicacao;
-import br.edu.ifnmg.psc.sgo.aplicacao.Entidade;
-import br.edu.ifnmg.psc.sgo.aplicacao.Entidade;
+
 import java.util.Objects;
 /**
  *
@@ -27,7 +26,7 @@ public class MaterialConstrucao implements Entidade {
     } 
     
     
-      public MaterialConstrucao( String nome, String descricao, String valor,int qtd) {
+    public MaterialConstrucao( String nome, String descricao, String valor,int qtd) {
         this.nome = nome;
         this.descricao = descricao;
         this.qtd=qtd;
@@ -76,15 +75,13 @@ public class MaterialConstrucao implements Entidade {
         this.descricao = descricao;
     }
     
-    
-    
-      @Override
+    @Override
     public int hashCode() {
         int hash = 2;
         hash = 43 * hash + this.idMate;
         hash = 43 * hash + Objects.hashCode(this.nome);
         hash = 43 * hash + Objects.hashCode(this.descricao);
-         hash = 43 * hash + Objects.hashCode(this.qtd);
+        hash = 43 * hash + Objects.hashCode(this.qtd);
         hash = 43 * hash + Objects.hashCode(this.valor);
         return hash;
     }
@@ -118,7 +115,12 @@ public class MaterialConstrucao implements Entidade {
             return false;
         }
         return true;
-    }       
+    }
+    
+    @Override
+    public String toString() {
+        return nome;
+    }
     
 }
 

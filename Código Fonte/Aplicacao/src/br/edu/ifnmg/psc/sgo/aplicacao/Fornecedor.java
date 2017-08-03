@@ -73,4 +73,8 @@ public class Fornecedor extends Pessoa implements Entidade {
         return true;
     }
     
+    @Override
+    public String toString() {
+        return nome;
+    }
 }

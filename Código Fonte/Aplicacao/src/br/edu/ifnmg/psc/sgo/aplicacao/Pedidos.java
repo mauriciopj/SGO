@@ -12,19 +12,29 @@ import java.util.Objects;
  * @author Douglas_Castro
  */
 public class Pedidos implements Entidade {
-    private int id;
+    private int id, qtd;
     private Date data;
-    private int qtd;
     private Fornecedor fornecedor;
     private MaterialConstrucao material;
 
+    public Pedidos() {
+        
+    }
+
+    public Pedidos(int id, int qtd, Date data, Fornecedor fornecedor, MaterialConstrucao material) {
+        this.id = id;
+        this.qtd = qtd;
+        this.data = data;
+        this.fornecedor = fornecedor;
+        this.material = material;
+    }
     
-   
-    
+    @Override
     public int getId() {
         return id;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
     }
@@ -60,13 +70,9 @@ public class Pedidos implements Entidade {
 
     public void setMaterial(MaterialConstrucao material) {
         this.material = material;
-    }
+    }            
     
-    
-    public Pedidos() {
-    }
-    
-     @Override
+    @Override
     public int hashCode() {
         int hash = 5;
         hash = 97 * hash + this.id;
@@ -108,11 +114,4 @@ public class Pedidos implements Entidade {
         return true;
     }
 
-    public void setNome(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-   
-    
-    
 }

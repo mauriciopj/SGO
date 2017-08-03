@@ -21,11 +21,10 @@ public class PedidosBuscar extends TelaBusca<Pedidos> {
      * Creates new form PedidosBuscar
      */
     public PedidosBuscar(Repositorio<Pedidos> repositorio, Class tipo_tela){
-          super(repositorio, tipo_tela);
+        super(repositorio, tipo_tela);
         initComponents();
         
-        
-              filtro = new Pedidos(); 
+        filtro = new Pedidos(); 
     }
 
     /**
@@ -136,22 +135,16 @@ public class PedidosBuscar extends TelaBusca<Pedidos> {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-
-            novo();
+        novo();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-        
-           editar();
+        editar();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        
-         buscar();
+        buscar();
     }//GEN-LAST:event_btnBuscarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
@@ -173,8 +166,8 @@ public class PedidosBuscar extends TelaBusca<Pedidos> {
 
     @Override
     public void preencheFiltro() {
-          if(! txtNome.getText().isEmpty())
-                filtro.setNome(txtNome.getText()); 
+        //if(! txtNome.getText().isEmpty())
+            //filtro.setNome(txtNome.getText()); 
     }
 
     @Override
@@ -182,27 +175,22 @@ public class PedidosBuscar extends TelaBusca<Pedidos> {
        DefaultTableModel modelo = new DefaultTableModel();
         
         modelo.addColumn("ID");
-      
-        
         modelo.addColumn("material");
         modelo.addColumn("Quantidade");
         modelo.addColumn("Fornecedor");
-           modelo.addColumn("Data");
+        modelo.addColumn("Data");
         
-        
-         for(Pedidos f : listagem){
+        for(Pedidos f : listagem){
             Vector linha = new Vector();
             linha.add(f.getId());
             linha.add(f.getMaterial());            
             linha.add(f.getQtd());
-             linha.add(f.getFornecedor());
-             linha.add(f.getData());
-            
-                        
+            linha.add(f.getFornecedor());
+            linha.add(f.getData());
+                    
             modelo.addRow(linha);
         }
       tblBusca.setModel(modelo);
     }
-    
     
 }
