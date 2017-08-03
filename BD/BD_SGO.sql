@@ -41,6 +41,17 @@ create table obrasEServicos(
     idCliente int
 );
 
+
+
+create table pedidos(
+	id int auto_increment not null primary key,
+	data date,
+    qtd int,
+     material int,
+	fornecedor int
+);
+
+
 create table trabalhos(
 	idTrabalhos int auto_increment not null primary key,
 	dataInicio varchar(150) not null,
