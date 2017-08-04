@@ -51,7 +51,7 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
         rbtnFisica = new javax.swing.JRadioButton();
         rbtnJuridica = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
-        txtCpf = new javax.swing.JFormattedTextField();
+        Cpf = new javax.swing.JFormattedTextField();
         jSeparator2 = new javax.swing.JSeparator();
         txtRua = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
@@ -96,6 +96,11 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
             ex.printStackTrace();
         }
         txtCnpj.setEnabled(false);
+        txtCnpj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCnpjActionPerformed(evt);
+            }
+        });
 
         rbtnFisica.setText("Física");
         rbtnFisica.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -115,11 +120,16 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         try {
-            txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("")));
+            Cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##############")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtCpf.setEnabled(false);
+        Cpf.setEnabled(false);
+        Cpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CpfActionPerformed(evt);
+            }
+        });
 
         jLayeredPane1.setLayer(lblCpf, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblCnpj, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -127,7 +137,7 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
         jLayeredPane1.setLayer(rbtnFisica, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(rbtnJuridica, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jSeparator1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtCpf, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(Cpf, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -147,29 +157,29 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(rbtnFisica)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbtnJuridica)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCpf)
-                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCnpj)))
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(rbtnFisica)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbtnJuridica)))
-                .addGap(0, 8, Short.MAX_VALUE))
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addComponent(jSeparator1)
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCnpj)
+                            .addComponent(txtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 22, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -219,7 +229,7 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
                             .addComponent(jLayeredPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(lblNome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,19 +292,21 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
                 .addGap(290, 290, 290))
         );
 
-        setBounds(360, 50, 617, 475);
+        setBounds(360, 50, 617, 524);
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbtnJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnJuridicaActionPerformed
+        txtCnpj.setEnabled(true);  
         rbtnFisica.setSelected(false);
-        txtCpf.setEnabled(false);                       
-        txtCnpj.setEnabled(true);        
+        Cpf.setEnabled(false);                       
+             
     }//GEN-LAST:event_rbtnJuridicaActionPerformed
 
     private void rbtnFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnFisicaActionPerformed
+        Cpf.setEnabled(true); 
         rbtnJuridica.setSelected(false);              
         txtCnpj.setEnabled(false);
-        txtCpf.setEnabled(true);           
+                  
     }//GEN-LAST:event_rbtnFisicaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -304,8 +316,17 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         cancelar();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCnpjActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCnpjActionPerformed
+
+    private void CpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CpfActionPerformed
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField Cpf;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel4;
@@ -325,7 +346,6 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
     private javax.swing.JRadioButton rbtnJuridica;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCnpj;
-    private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFone;
     private javax.swing.JTextField txtNome;
@@ -336,7 +356,7 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
     @Override
     public void carregaCampos() {
         txtNome.setText( entidade.getNome() );
-        txtCpf.setValue( entidade.getCpf() );
+        //Cpf.setValue( entidade.getCpf() );
         //txtCnpj.setValue( entidade.getCnpj() );
         txtEmail.setText( entidade.getEmail() );
         txtFone.setText( entidade.getFone() );
@@ -348,10 +368,10 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
     @Override
     public void carregaObjeto() throws ViolacaoRegraNegocioException {
         entidade.setNome( txtNome.getText() );
-        if (txtCpf.getValue() != null){
+        if (txtCnpj.getValue() != null){
             //entidade.setCpf( (String) txtCpf.getValue() );
             //entidade.setCnpj( "--------------" );
-        } else if (txtCnpj.getValue() != null){
+        } else if (Cpf.getValue() != null){
             //entidade.setCnpj( (String) txtCnpj.getValue() );
             //entidade.setCpf( "-----------" );
         }
@@ -365,7 +385,7 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
     @Override
     public boolean verificarCamposObrigatorios() {
         return !txtNome.getText().isEmpty() ||
-                txtCpf.getValue() != null ||
+                Cpf.getValue() != null ||
                 txtCnpj.getValue() != null ||
                !txtEmail.getText().isEmpty() ||
                !txtFone.getText().isEmpty() ||

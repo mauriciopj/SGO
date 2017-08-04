@@ -70,5 +70,9 @@ public class Cliente extends Pessoa implements Entidade {
         }
         return true;
     }       
+
+    public Object getCnpj() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         
 }
