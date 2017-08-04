@@ -69,11 +69,18 @@ public class Cliente extends Pessoa implements Entidade {
             return false;
         }
         return true;
+<<<<<<< HEAD
     }
     
     @Override
     public String toString() {
         return nome;
+=======
+    }       
+
+    public Object getCnpj() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+>>>>>>> 985199c9d2654f11bec90adcc914c28d82fd732f
     }
         
 }

@@ -1,4 +1,4 @@
--- drop database sgo;
+﻿-- drop database sgo;
 create database sgo;
 
 use sgo;
@@ -8,8 +8,13 @@ use sgo;
 create table clientes(
 	idCli int auto_increment not null primary key,
 	nome varchar(150) not null,
+<<<<<<< HEAD
 	cpf varchar(11),
 	cnpj varchar(14),
+=======
+	cpf varchar(11) ,
+	cnpj varchar(14) ,
+>>>>>>> 985199c9d2654f11bec90adcc914c28d82fd732f
     fone varchar(11) not null,
     email varchar(150) not null,
     bairro varchar(150) not null,
