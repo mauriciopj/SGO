@@ -1,4 +1,5 @@
-﻿-- drop database sgo;
+-- drop database sgo;
+
 create database sgo;
 
 use sgo;
@@ -16,6 +17,9 @@ create table clientes(
     numero varchar(8) not null, 
     rua varchar(150) not null
 ); 
+
+insert into clientes() 
+values('1','Maurício','11111111111',null,'11111111111','jose@hgfg','dsadas','25','fdsfdsa');
 
 create table funcionarios(
 	idFunc int auto_increment not null primary key,
@@ -84,8 +88,18 @@ create table empresa(
 create table pedidos(
 	id int auto_increment not null primary key,
 	data date,
+    qtd int,
 	fornecedor int,
 	foreign key(fornecedor) references fornecedores(idForn)
+);
+
+create table itemPedido(
+	id int auto_increment not null primary key,
+    material int,
+    quantidade int,
+    pedido int,
+    foreign key(material) references materiais(idMate),   
+    foreign key(pedido) references pedidos(id)
 );
 
 create table listafuncionarios (
@@ -94,13 +108,6 @@ create table listafuncionarios (
     trabalho int,
     foreign key(funcionario) references funcionarios(idFunc), 
     foreign key(trabalho) references trabalhos(idTrab)
-);
-
-create table listamaterial (
-	idLM int auto_increment not null primary key,
-    material int,
-    qtd int,
-    foreign key(material) references materiais(idMate)    
 );
 
 -- insert into funcionarios(idFunc,cpf,nome,fone,cargo,email,bairro,numero,rua,salario) values (1,'11111111111','Januária','38991586654',1,'gfdg','gfdg','dfg','fdsfsd',1222);

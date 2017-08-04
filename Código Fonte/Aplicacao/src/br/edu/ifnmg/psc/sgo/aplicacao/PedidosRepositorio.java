@@ -9,6 +9,6 @@ package br.edu.ifnmg.psc.sgo.aplicacao;
  *
  * @author Dougla_Castro
  */
-public interface PedidosRepositorio extends Repositorio<Pedidos> {
+public interface PedidosRepositorio extends Repositorio<Pedido> {
     
 }

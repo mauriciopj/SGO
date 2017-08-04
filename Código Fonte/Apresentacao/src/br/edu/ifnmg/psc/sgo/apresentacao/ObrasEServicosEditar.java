@@ -30,6 +30,10 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
        
         entidade = new ObrasEServicos();
         
+        
+        ComboBoxModel model = new DefaultComboBoxModel(ObrasCidade.values());               
+        cbxCidade.setModel(model);
+        
         preencheCbx(clientes, cbxClientes);
     }
 
@@ -188,7 +192,7 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
                 .addGap(20, 20, 20))
         );
 
-        pack();
+        setBounds(320, 55, 811, 415);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed

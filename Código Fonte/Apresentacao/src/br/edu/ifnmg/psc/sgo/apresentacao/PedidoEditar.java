@@ -5,32 +5,28 @@
  */
 package br.edu.ifnmg.psc.sgo.apresentacao;
 
-import br.edu.ifnmg.psc.sgo.aplicacao.Entidade;
 import br.edu.ifnmg.psc.sgo.aplicacao.Fornecedor;
 import br.edu.ifnmg.psc.sgo.aplicacao.FornecedorRepositorio;
-import br.edu.ifnmg.psc.sgo.aplicacao.ListaMaterial;
-import br.edu.ifnmg.psc.sgo.aplicacao.ListaMaterialRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucao;
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucaoRepositorio;
-import br.edu.ifnmg.psc.sgo.aplicacao.Pedidos;
-import br.edu.ifnmg.psc.sgo.aplicacao.Repositorio;
+import br.edu.ifnmg.psc.sgo.aplicacao.Pedido;
+import br.edu.ifnmg.psc.sgo.aplicacao.PedidoItem;
 import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
-import br.edu.ifnmg.psc.sgo.persistencia.ListaMaterialDAO;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.ButtonModel;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Dougla_Castro
  */
-public class PedidoEditar extends  TelaEdicao<Pedidos> {
+public class PedidoEditar extends  TelaEdicao<Pedido> {
     
     MaterialConstrucaoRepositorio materiais = Repositorios.getMaterialConstrucaoRepositorio();
     FornecedorRepositorio fornecedores = Repositorios.getFornecedorRepositorio();
+    List<PedidoItem> itens = null;    
          
     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm");
      
@@ -39,7 +35,8 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
         
         initComponents();
                        
-        entidade = new Pedidos();
+        entidade = new Pedido();
+        itens = (List<PedidoItem>) new PedidoItem();
 
         preencheCbx(materiais, cbxMaterial);
         preencheCbx(fornecedores, cbxFornecedor);
@@ -191,27 +188,10 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
-        if (!verificarCamposObrigatorios()){
-            JOptionPane.showMessageDialog(rootPane, "Todos os campos são de preenchimento obrigatório!");
-            return;
-        }
-        if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar o objeto?") == 0 ){
-            try{
-                carregaObjeto();
-            } catch (ViolacaoRegraNegocioException ex) {
-                JOptionPane.showMessageDialog(rootPane, ex.getMessage());
-                return; 
-            }
-        ListaMaterial listamaterial = new ListaMaterial();
-        
-        if (Repositorios.getListaMaterialRepositorio().Salvar(listamaterial)){
-                JOptionPane.showMessageDialog(rootPane, "Registro salvo com sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Falha ao salvar o registro!");
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Operação Cancelada!");
-        }   
+        PedidoItem item = new PedidoItem();
+        item.setQuantidade( (int) txtQtd.getValue() );
+        item.setMaterial((MaterialConstrucao) cbxMaterial.getSelectedItem());
+        entidade.addItem(item);               
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -234,29 +214,26 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
         txtQtd.setValue(entidade.getQtd());
         if (btSalvar.isSelected())
             cbxFornecedor.setSelectedItem( entidade.getFornecedor());
-        cbxMaterial.setSelectedItem( entidade.getMaterial());
-       
+        
     }
 
     @Override
     public void carregaObjeto() throws ViolacaoRegraNegocioException {
         entidade.setQtd((int) txtQtd.getValue() );
-        if (btSalvar.isSelected())
-            entidade.setFornecedor((Fornecedor) cbxFornecedor.getSelectedItem() );
-        entidade.setMaterial((MaterialConstrucao) cbxMaterial.getSelectedItem() );
+        entidade.setFornecedor((Fornecedor) cbxFornecedor.getSelectedItem() );
+        entidade.setItens(itens);
     
     }
 
     @Override
     public boolean verificarCamposObrigatorios() {
-        if (btSalvar.isSelected())
-            return cbxFornecedor.getSelectedItem() != null;
         return txtQtd.getValue() != null || 
-               cbxMaterial.getSelectedItem() != null;
+               cbxMaterial.getSelectedItem() != null ||
+               cbxFornecedor.getSelectedItem() != null;
                
     }
 
-    public void preencheTabela(List<Pedidos> listagem) {
+    public void preencheTabela(List<Pedido> listagem) {
         DefaultTableModel modelo = new DefaultTableModel();
         
         modelo.addColumn("ID");
@@ -264,10 +241,9 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
         modelo.addColumn("Quantidade");
         modelo.addColumn("Fornecedor");
       
-        for(Pedidos f : listagem){
+        for(Pedido f : listagem){
             Vector linha = new Vector();
-            linha.add(f.getId());
-            linha.add(f.getMaterial());            
+            linha.add(f.getId());         
             linha.add(f.getQtd());
             linha.add(f.getFornecedor());
                         

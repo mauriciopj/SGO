@@ -94,7 +94,7 @@ public abstract class TelaEdicao<T extends Entidade> extends javax.swing.JIntern
     }
     
     public void preencheCbx(Repositorio repositorio, JComboBox cbx){
-        List<T> lista = repositorio.Buscar(null);
+        List lista = repositorio.Buscar(null);
         lista.add(0, null);
         ComboBoxModel model = new DefaultComboBoxModel(lista.toArray());
         cbx.setModel(model);

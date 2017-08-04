@@ -137,7 +137,7 @@ public class ObrasEServicosBuscar extends TelaBusca<ObrasEServicos> {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        pack();
+        setBounds(280, 55, 863, 365);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed

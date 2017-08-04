@@ -5,27 +5,29 @@
  */
 package br.edu.ifnmg.psc.sgo.aplicacao;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 /**
  *
  * @author Douglas_Castro
  */
-public class Pedidos implements Entidade {
+public class Pedido implements Entidade {
     private int id, qtd;
     private Date data;
     private Fornecedor fornecedor;
-    private MaterialConstrucao material;
+    private List<PedidoItem> itens;
 
-    public Pedidos() {
+    public Pedido() {
         
     }
 
-    public Pedidos(int qtd, Date data, Fornecedor fornecedor, MaterialConstrucao material) {
+    public Pedido(int qtd, Date data, Fornecedor fornecedor) {
         this.qtd = qtd;
         this.data = data;
         this.fornecedor = fornecedor;
-        this.material = material;
+        this.itens = new ArrayList<>();
     }
     
     @Override
@@ -63,14 +65,19 @@ public class Pedidos implements Entidade {
         this.fornecedor = fornecedor;
     }
 
-    public MaterialConstrucao getMaterial() {
-        return material;
+    public List<PedidoItem> getItens() {
+        return itens;
     }
 
-    public void setMaterial(MaterialConstrucao material) {
-        this.material = material;
-    }            
+    public void setItens(List<PedidoItem> itens) {
+        this.itens = itens;
+    }
     
+    public void addItem(PedidoItem item){
+        item.setPedido(this);
+        this.itens.add(item);
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
@@ -78,7 +85,6 @@ public class Pedidos implements Entidade {
         hash = 97 * hash + Objects.hashCode(this.data);
         hash = 97 * hash + Objects.hashCode(this.qtd);
         hash = 97 * hash + Objects.hashCode(this.fornecedor);
-        hash = 97 * hash + Objects.hashCode(this.material);
         return hash;
     }
     
@@ -94,7 +100,7 @@ public class Pedidos implements Entidade {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Pedidos other = (Pedidos) obj;
+        final Pedido other = (Pedido) obj;
         if (this.id != other.id) {
             return false;
         }
@@ -102,12 +108,6 @@ public class Pedidos implements Entidade {
             return false;
         }
         if (!Objects.equals(this.qtd, other.qtd)) {
-            return false;
-        }
-        if (!Objects.equals(this.fornecedor, other.material)) {
-            return false;
-        }
-        if (!Objects.equals(this.material, other.material)) {
             return false;
         }
         return true;

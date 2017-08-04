@@ -8,7 +8,7 @@ package br.edu.ifnmg.psc.sgo.persistencia;
 
 
 
-import br.edu.ifnmg.psc.sgo.aplicacao.Pedidos;
+import br.edu.ifnmg.psc.sgo.aplicacao.Pedido;
 import br.edu.ifnmg.psc.sgo.aplicacao.PedidosRepositorio;
 
 import java.sql.PreparedStatement;
@@ -21,22 +21,22 @@ import java.util.logging.Logger;
  *
  * @author Douglas_Castro
  */
-public class PedidosDAO extends DAOGenerico<Pedidos> implements PedidosRepositorio {
+public class PedidoDAO extends DAOGenerico<Pedido> implements PedidosRepositorio {
     
-   public PedidosDAO() throws ClassNotFoundException, SQLException {
+    public PedidoDAO() throws ClassNotFoundException, SQLException {
         super();  
         materiais = new MaterialConstrucaoDAO();
         fornecedores = new FornecedorDAO();
-}
+    }
 
     @Override
     protected String getConsultaInsert() {
-        return "insert into pedidos(data, qtd, material, fornecedor) values(?,?,?,?)";
+        return "insert into pedidos(data, qtd, fornecedor) values(?,?,?,?)";
     }
 
     @Override
     protected String getConsultaUpdate() {
-        return "update pedidos set data = ?, qtd = ?, material = ?, fornecedor = ? where id = ?";
+        return "update pedidos set data = ?, qtd = ?, fornecedor = ? where id = ?";
     }
 
     @Override
@@ -46,44 +46,34 @@ public class PedidosDAO extends DAOGenerico<Pedidos> implements PedidosRepositor
 
     @Override
     protected String getConsultaAbrir() {
-         return "select id, data, qtd, material, fornecedor from pedidos where id = ?";
+         return "select id, data, qtd, fornecedor from pedidos where id = ?";
     }
 
     @Override
     protected String getConsultaBuscar() {
-         return "select id, data, qtd, material, fornecedor from pedidos ";
+         return "select id, data, qtd,  fornecedor from pedidos ";
     }
 
     @Override
-    protected void setBuscaFiltros(Pedidos filtro) {
-         
-               
-  
+    protected void setBuscaFiltros(Pedido filtro) {
         if(filtro.getId() > 0)
             this.adicionarFiltro("id", filtro.getId());
-        
-        if(filtro.getMaterial()!= null)
-            this.adicionarFiltro("material", filtro.getMaterial().getId());
-        
         if(filtro.getFornecedor()!= null)
             this.adicionarFiltro("fornecedor", filtro.getFornecedor().getId());
-        
     }
 
     @Override
-    protected void setParametros(PreparedStatement sql, Pedidos obj) {
+    protected void setParametros(PreparedStatement sql, Pedido obj) {
         try {
-            
             sql.setDate(1, new java.sql.Date( obj.getData().getTime() ));
             sql.setInt(2, obj.getQtd());
-            sql.setInt(3, obj.getMaterial().getId());
-            sql.setInt(4, obj.getFornecedor().getId());
+            sql.setInt(3, obj.getFornecedor().getId());
             
             if(obj.getId() > 0)
-                sql.setInt(5, obj.getId());
+                sql.setInt(4, obj.getId());
             
         } catch (SQLException ex) {
-            Logger.getLogger(PedidosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -91,19 +81,18 @@ public class PedidosDAO extends DAOGenerico<Pedidos> implements PedidosRepositor
      FornecedorDAO fornecedores;
 
     @Override
-    protected Pedidos setDados(ResultSet resultado) {
+    protected Pedido setDados(ResultSet resultado) {
         try {
-            Pedidos obj = new Pedidos();
+            Pedido obj = new Pedido();
             obj.setId( resultado.getInt("id") );
             obj.setData( new Date( resultado.getDate("data").getTime() ) );
             obj.setQtd( resultado.getInt("qtd") );
-            obj.setMaterial(materiais.Abrir( resultado.getInt("material") ) );
             obj.setFornecedor(fornecedores.Abrir( resultado.getInt("fornecedor") ) );
             
             return obj;
             
         } catch (Exception ex) {
-            Logger.getLogger(PedidosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

@@ -5,7 +5,7 @@
  */
 package br.edu.ifnmg.psc.sgo.apresentacao;
 
-import br.edu.ifnmg.psc.sgo.aplicacao.Pedidos;
+import br.edu.ifnmg.psc.sgo.aplicacao.Pedido;
 import br.edu.ifnmg.psc.sgo.aplicacao.Repositorio;
 import java.util.List;
 import java.util.Vector;
@@ -15,16 +15,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Dougla_Castro
  */
-public class PedidosBuscar extends TelaBusca<Pedidos> {
+public class PedidosBuscar extends TelaBusca<Pedido> {
 
     /**
      * Creates new form PedidosBuscar
      */
-    public PedidosBuscar(Repositorio<Pedidos> repositorio, Class tipo_tela){
+    public PedidosBuscar(Repositorio<Pedido> repositorio, Class tipo_tela){
         super(repositorio, tipo_tela);
         initComponents();
         
-        filtro = new Pedidos(); 
+        filtro = new Pedido(); 
     }
 
     /**
@@ -171,7 +171,7 @@ public class PedidosBuscar extends TelaBusca<Pedidos> {
     }
 
     @Override
-    public void preencheTabela(List<Pedidos> listagem) {
+    public void preencheTabela(List<Pedido> listagem) {
        DefaultTableModel modelo = new DefaultTableModel();
         
         modelo.addColumn("ID");
@@ -180,10 +180,10 @@ public class PedidosBuscar extends TelaBusca<Pedidos> {
         modelo.addColumn("Fornecedor");
         modelo.addColumn("Data");
         
-        for(Pedidos f : listagem){
+        for(Pedido f : listagem){
             Vector linha = new Vector();
             linha.add(f.getId());
-            linha.add(f.getMaterial());            
+            //linha.add(f.getMaterial());            
             linha.add(f.getQtd());
             linha.add(f.getFornecedor());
             linha.add(f.getData());

@@ -7,8 +7,8 @@ package br.edu.ifnmg.psc.sgo.aplicacao;
 
 /**
  *
- * @author mauricio
+ * @author aluno
  */
-public interface ListaMaterialRepositorio extends Repositorio<ListaMaterial> {
+public interface PedidoItemRepositorio extends Repositorio<PedidoItem> {
     
 }
