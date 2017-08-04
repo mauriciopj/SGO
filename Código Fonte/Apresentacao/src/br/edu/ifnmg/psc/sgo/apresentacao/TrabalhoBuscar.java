@@ -31,6 +31,7 @@ public class TrabalhoBuscar extends TelaBusca<Trabalho> {
         initComponents();                
         
         filtro = new Trabalho();
+        
         ComboBoxModel model = new DefaultComboBoxModel(StatusAndamento.values());               
         cbxAndamento.setModel(model);
     }

@@ -21,7 +21,8 @@ import java.util.logging.Logger;
  * @author Dougla_Castro
  */
 public class MaterialConstrucaoDAO extends DAOGenerico<MaterialConstrucao> implements MaterialConstrucaoRepositorio{
-     public MaterialConstrucaoDAO() throws ClassNotFoundException, SQLException {
+     
+    public MaterialConstrucaoDAO() throws ClassNotFoundException, SQLException {
         super();
     }
 

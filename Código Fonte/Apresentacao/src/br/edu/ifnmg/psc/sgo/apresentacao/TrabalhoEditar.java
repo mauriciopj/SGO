@@ -6,40 +6,38 @@
 package br.edu.ifnmg.psc.sgo.apresentacao;
 
 import br.edu.ifnmg.psc.sgo.aplicacao.Funcionario;
+import br.edu.ifnmg.psc.sgo.aplicacao.ObrasEServicosRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.Repositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.StatusAndamento;
 import br.edu.ifnmg.psc.sgo.aplicacao.Trabalho;
 import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Vector;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.ListModel;
 
 /**
  *
  * @author mauricio
  */
 public class TrabalhoEditar extends TelaEdicao<Trabalho> {
-
+    
+    ObrasEServicosRepositorio obrasEServicos = Repositorios.getObrasEServicosRepositorio();
     /**
      * Creates new form TrabalhoEditar
      */
     public TrabalhoEditar() {
         super();
         initComponents();
-        
-        repositorio = Repositorios.getTrabalhoRepositorio();
+                
         entidade = new Trabalho();
+        
+        preencheCbx(obrasEServicos, cbxObras);
                 
         ComboBoxModel model = new DefaultComboBoxModel(StatusAndamento.values());               
-        cbxAndamento.setModel(model);
-        preencheLista();
+        cbxAndamento.setModel(model);                
     }
 
     /**

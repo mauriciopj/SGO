@@ -69,6 +69,11 @@ public class Cliente extends Pessoa implements Entidade {
             return false;
         }
         return true;
-    }       
+    }
+    
+    @Override
+    public String toString() {
+        return nome;
+    }
         
 }

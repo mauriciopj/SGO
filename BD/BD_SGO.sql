@@ -8,8 +8,8 @@ use sgo;
 create table clientes(
 	idCli int auto_increment not null primary key,
 	nome varchar(150) not null,
-	cpf varchar(11) not null,
-	cnpj varchar(14) not null,
+	cpf varchar(11),
+	cnpj varchar(14),
     fone varchar(11) not null,
     email varchar(150) not null,
     bairro varchar(150) not null,
@@ -38,7 +38,8 @@ create table obrasEServicos(
     complemento varchar(150) not null,
     rua varchar(150) not null,
     cidade int not null,
-    idCliente int
+    cliente int,
+	foreign key(cliente) references clientes(idCli)
 );
 
 create table trabalhos(

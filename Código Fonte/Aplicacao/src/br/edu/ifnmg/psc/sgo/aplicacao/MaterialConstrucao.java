@@ -11,10 +11,6 @@ import java.util.Objects;
  * @author Douglas_Castro
  */
 public class MaterialConstrucao implements Entidade {
-
-    public static Object[] values() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     private int idMate;
     private String nome;

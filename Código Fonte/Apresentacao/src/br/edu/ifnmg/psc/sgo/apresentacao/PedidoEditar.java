@@ -5,8 +5,11 @@
  */
 package br.edu.ifnmg.psc.sgo.apresentacao;
 
+import br.edu.ifnmg.psc.sgo.aplicacao.Entidade;
 import br.edu.ifnmg.psc.sgo.aplicacao.Fornecedor;
 import br.edu.ifnmg.psc.sgo.aplicacao.FornecedorRepositorio;
+import br.edu.ifnmg.psc.sgo.aplicacao.ListaMaterial;
+import br.edu.ifnmg.psc.sgo.aplicacao.ListaMaterialRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucao;
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucaoRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.Pedidos;
@@ -15,8 +18,6 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.ButtonModel;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,53 +25,24 @@ import javax.swing.table.DefaultTableModel;
  * @author Dougla_Castro
  */
 public class PedidoEditar extends  TelaEdicao<Pedidos> {
+    
     MaterialConstrucaoRepositorio materiais = Repositorios.getMaterialConstrucaoRepositorio();
     FornecedorRepositorio fornecedores = Repositorios.getFornecedorRepositorio();
+         
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm");
      
-     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-     
-     
-     
-      public PedidoEditar() {
-       super();
+    public PedidoEditar() {
+        super();
         
         initComponents();
         
-        List<MaterialConstrucao> listaMateriais = materiais.Buscar(null);
-        List<Fornecedor> listaFornecedores = fornecedores.Buscar(null);
-    
-        listaMateriais.add(0, null);
-        listaFornecedores.add(0, null);
-        
-        ComboBoxModel modelo1 = new DefaultComboBoxModel(listaMateriais.toArray());
-        ComboBoxModel modelo2 = new DefaultComboBoxModel(listaFornecedores.toArray());
-        
-        cbxMaterial.setModel(modelo1);
-        cbxFornecedor.setModel(modelo2);
+        entidade = new Pedidos();
+
+        preencheCbx(materiais, cbxMaterial);
+        preencheCbx(fornecedores, cbxFornecedor);
     }
     /**
      * Creates new form PedidoEditar
-     * @param MaterialConstrucao
-     * @param Fornecedor
-     */
-   // public PedidoEditar() {
-      //  super();
-    //    initComponents();
-        
-      //  repositorio = Repositorios.getPedidosRepositorio();
-       // entidade = new Pedidos();
-        
-        
-        
-        
-       // ComboBoxModel model = new DefaultComboBoxModel(MaterialConstrucao.values());               
-      //  cbxMaterial.setModel(model);
-          
-      //  ComboBoxModel model = new DefaultComboBoxModel(Fornecedor.v);               
-         
-       // cbxFornecedor.setModel(model);
-    
-   // }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -137,6 +109,11 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
         cbxFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnIncluir.setText("Incluir");
+        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Materiais a serem incluídos no pedido:");
 
@@ -210,6 +187,12 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
         cancelar();
     }//GEN-LAST:event_btCancelarActionPerformed
 
+    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
+        ListaMaterialRepositorio repositorio = Repositorios.getListaMaterialRepositorio();
+        Entidade entidade = new ListaMaterial();
+        salvar();
+    }//GEN-LAST:event_btnIncluirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btSalvar;
@@ -228,7 +211,8 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
     @Override
     public void carregaCampos() {
         txtQtd.setValue(entidade.getQtd());
-        cbxFornecedor.setSelectedItem( entidade.getFornecedor());
+        if (btSalvar.isSelected())
+            cbxFornecedor.setSelectedItem( entidade.getFornecedor());
         cbxMaterial.setSelectedItem( entidade.getMaterial());
        
     }
@@ -236,7 +220,8 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
     @Override
     public void carregaObjeto() throws ViolacaoRegraNegocioException {
         entidade.setQtd((int) txtQtd.getValue() );
-        entidade.setFornecedor((Fornecedor) cbxFornecedor.getSelectedItem() );
+        if (btSalvar.isSelected())
+            entidade.setFornecedor((Fornecedor) cbxFornecedor.getSelectedItem() );
         entidade.setMaterial((MaterialConstrucao) cbxMaterial.getSelectedItem() );
     
     }
@@ -266,7 +251,7 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
                         
             modelo.addRow(linha);
         }
-      btnIncluir.setModel((ButtonModel) modelo);
+        btnIncluir.setModel((ButtonModel) modelo);
     }
 
 }

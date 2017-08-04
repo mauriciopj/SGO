@@ -7,8 +7,6 @@ package br.edu.ifnmg.psc.sgo.persistencia;
 import br.edu.ifnmg.psc.sgo.aplicacao.ObrasCidade;
 import br.edu.ifnmg.psc.sgo.aplicacao.ObrasEServicos;
 import br.edu.ifnmg.psc.sgo.aplicacao.ObrasEServicosRepositorio;
-import br.edu.ifnmg.psc.sgo.persistencia.DAOGenerico;
-import br.edu.ifnmg.psc.sgo.persistencia.DAOGenerico;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,94 +17,84 @@ import java.util.logging.Logger;
  * @author Dougla_Castro
  */
 public class ObrasEServicosDAO extends DAOGenerico<ObrasEServicos> implements ObrasEServicosRepositorio{
-public ObrasEServicosDAO() throws ClassNotFoundException, SQLException {
-        super();    
-}
+    
+    public ObrasEServicosDAO() throws ClassNotFoundException, SQLException {
+        super();
+        //clientes = new ClienteDAO();
+    }
 
-@Override
+    @Override
     protected String getConsultaInsert() {
-        return "insert into obraseservicos(descricao, bairro, numero, complemento, rua, cidade, idCliente) "
+        return "insert into obrasEServicos(descricao, bairro, numero, complemento, rua, cidade, cliente) "
                 + "values(?,?,?,?,?,?,?)";
     }
     
-     @Override
+    @Override
     protected String getConsultaUpdate() {
-        return "update obraseservicos set descricao = ?, bairro = ?, numero = ?, complemento = ?, rua = ?, cidade = ?, idCliente = ? where idObras = ?";
+        return "update obrasEServicos set descricao = ?, bairro = ?, numero = ?, complemento = ?, rua = ?, cidade = ?, cliente = ? where idObra = ?";
     }
- @Override
+    
+    @Override
     protected String getConsultaDelete() {
-        return "delete from obraseservicos where idObras = ?";
+        return "delete from obrasEServicos where idObra = ?";
     }
     
     @Override
     protected String getConsultaAbrir() {
-        return "select idObras, descricao, bairro, numero, complemento, rua, cidade, idCliente from obraseservicos where idObras = ?";
+        return "select idObra, descricao, bairro, numero, complemento, rua, cidade, cliente from obrasEServicos where idObra = ?";
     }
     
     @Override
     protected String getConsultaBuscar() {
-        return "select idObras,descricao, bairro, numero, complemento, rua, cidade, idCliente from obraseservicos";
+        return "select idObra, descricao, bairro, numero, complemento, rua, cidade, cliente from obrasEServicos";
     }
     
+    @Override
+    protected void setBuscaFiltros(ObrasEServicos filtro) {
+        if(filtro.getDescricao()!= null && !filtro.getDescricao().isEmpty())
+            this.adicionarFiltro("cpf", filtro.getDescricao());
+   }
     
-    
-    
-     @Override
+    @Override
     protected void setParametros(PreparedStatement sql, ObrasEServicos obj) {
         try {
             sql.setString(1, obj.getDescricao());
-           sql.setString(2, obj.getBairro());            
-                
+            sql.setString(2, obj.getBairro());                         
             sql.setString(3, obj.getNumero());
-            sql.setString(4, obj.getComplemento());
-            
+            sql.setString(4, obj.getComplemento());  
             sql.setString(5, obj.getRua());
             sql.setInt(6, obj.getCidade().getId());
-            setInt(7, obj.getidCliente());
-            sql.setString(8, obj.getNumero());
+            sql.setInt(7, obj.getCliente().getId());
             
             if(obj.getId() > 0)
-                sql.setInt(9, obj.getId());
+                sql.setInt(8, obj.getId());
             
         } catch (SQLException ex) {
             Logger.getLogger(ObrasEServicosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-       @Override
+    
+    ClienteDAO clientes;
+    
+    @Override
     protected ObrasEServicos setDados(ResultSet resultado) {
         try {
             ObrasEServicos obj = new ObrasEServicos();
-            obj.setId( resultado.getInt("idObras") );
+            obj.setId( resultado.getInt("idObra") );
             obj.setDescricao(resultado.getString("descricao") );
             obj.setBairro( resultado.getString("bairro") );
-
             obj.setNumero( resultado.getString("numero") );
             obj.setComplemento( resultado.getString("complemento") );
-            
             obj.setRua( resultado.getString("rua") );
             obj.setCidade( ObrasCidade.Abrir( resultado.getInt("cidade") ) );
-            obj.setidCliente( resultado.getInt("idCliente") );
-      
-            
+            obj.setCliente( clientes.Abrir( resultado.getInt("cliente") ) );
+
             return obj;
             
         } catch (Exception ex) {
             Logger.getLogger(ObrasEServicosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-}
-
-    private void setInt(int i, Object idCliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void adicionarFiltro(String idCliente, Object idCliente0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-   @Override
-    protected void setBuscaFiltros(ObrasEServicos filtro) {
-        if(filtro.getDescricao()!= null && !filtro.getDescricao().isEmpty())
-            this.adicionarFiltro("cpf", filtro.getDescricao());
-   }
 }

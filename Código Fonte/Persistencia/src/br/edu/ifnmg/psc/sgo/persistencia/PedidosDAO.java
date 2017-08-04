@@ -25,11 +25,8 @@ public class PedidosDAO extends DAOGenerico<Pedidos> implements PedidosRepositor
     
    public PedidosDAO() throws ClassNotFoundException, SQLException {
         super();  
-         materiais = new MaterialConstrucaoDAO();
-         fornecedores = new FornecedorDAO();
-    
-        
-        
+        materiais = new MaterialConstrucaoDAO();
+        fornecedores = new FornecedorDAO();
 }
 
     @Override

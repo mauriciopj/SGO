@@ -7,8 +7,6 @@
 package br.edu.ifnmg.psc.sgo.apresentacao;
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucao;
 import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
-import br.edu.ifnmg.psc.sgo.apresentacao.TelaEdicao;
-import br.edu.ifnmg.psc.sgo.apresentacao.TelaEdicao;
 /**
  *
  * @author Dougla_Castro
@@ -38,8 +36,6 @@ public class MaterialEditar extends TelaEdicao<MaterialConstrucao> {
         entidade.setDescricao(txtDescricao.getText() );
         entidade.setQtd((int) jSpQuantidade.getValue());
         entidade.setValor( jTValor.getText());
-        
-           
     }
     
     @Override
@@ -49,17 +45,7 @@ public class MaterialEditar extends TelaEdicao<MaterialConstrucao> {
                jSpQuantidade.getValue()!= null||
                !jTValor.getText().isEmpty() ;
     }
-                                            
-
-       
-  // private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {                                   
-        // TODO add your handling code here:
-       //  if(evt.getKeyCode() == evt.VK_ENTER)  {
-        //     txtNome.requestFocus();
-      //    }
-  //  }   
-
-   
+                                              
     private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {                                   
         // TODO add your handling code here:
              if(evt.getKeyCode() == evt.VK_ENTER)  {

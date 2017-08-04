@@ -8,6 +8,10 @@ package br.edu.ifnmg.psc.sgo.apresentacao;
 import br.edu.ifnmg.psc.sgo.aplicacao.Entidade;
 import br.edu.ifnmg.psc.sgo.aplicacao.Repositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
+import java.util.List;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -87,6 +91,13 @@ public abstract class TelaEdicao<T extends Entidade> extends javax.swing.JIntern
             JOptionPane.showMessageDialog(rootPane, "Operação Cancelada!");
         }
         cancelar();
+    }
+    
+    public void preencheCbx(Repositorio repositorio, JComboBox cbx){
+        List<T> lista = repositorio.Buscar(null);
+        lista.add(0, null);
+        ComboBoxModel model = new DefaultComboBoxModel(lista.toArray());
+        cbx.setModel(model);
     }
     
     public void cancelar(){

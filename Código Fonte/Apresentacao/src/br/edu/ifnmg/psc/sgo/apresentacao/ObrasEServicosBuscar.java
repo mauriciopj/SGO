@@ -7,12 +7,8 @@ package br.edu.ifnmg.psc.sgo.apresentacao;
 
 import br.edu.ifnmg.psc.sgo.aplicacao.ObrasEServicos;
 import br.edu.ifnmg.psc.sgo.aplicacao.Repositorio;
-import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
-import br.edu.ifnmg.psc.sgo.apresentacao.Repositorios;
-import br.edu.ifnmg.psc.sgo.apresentacao.TelaBusca;
 import java.util.List;
 import java.util.Vector;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -27,8 +23,7 @@ public class ObrasEServicosBuscar extends TelaBusca<ObrasEServicos> {
      * @param tipo_tela
      */
     public ObrasEServicosBuscar(Repositorio<ObrasEServicos> repositorio, Class tipo_tela) {
-       super(repositorio, tipo_tela) ;
-  
+        super(repositorio, tipo_tela) ;
         initComponents();
         
         filtro = new ObrasEServicos(); 
@@ -53,7 +48,6 @@ public class ObrasEServicosBuscar extends TelaBusca<ObrasEServicos> {
         btnBuscar = new javax.swing.JButton();
 
         setClosable(true);
-        setIconifiable(true);
         setTitle("Buscar Obras e Serviços");
 
         lblNome.setText("Descrição: *");
@@ -147,20 +141,16 @@ public class ObrasEServicosBuscar extends TelaBusca<ObrasEServicos> {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-      
-         editar();
+        editar();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-      
-         novo();
+        novo();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-       
-           buscar();
+        buscar();
     }//GEN-LAST:event_btnBuscarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
@@ -172,9 +162,6 @@ public class ObrasEServicosBuscar extends TelaBusca<ObrasEServicos> {
     private javax.swing.JTable tblBusca;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
-
-   
-    
    
     @Override
     public int retornaIdSelecionado() {
@@ -197,15 +184,11 @@ public class ObrasEServicosBuscar extends TelaBusca<ObrasEServicos> {
          modelo.addColumn("Descrição");
          modelo.addColumn("Complemento");
     
-    
-        
-    
-     for(ObrasEServicos f : listagem){
+        for(ObrasEServicos f : listagem){
             Vector linha = new Vector();
-            linha.add(f.getidCliente());
+            linha.add(f.getCliente().getId());
             linha.add(f.getDescricao());
-                    
-                        
+                              
             modelo.addRow(linha);
         } 
         tblBusca.setModel(modelo);

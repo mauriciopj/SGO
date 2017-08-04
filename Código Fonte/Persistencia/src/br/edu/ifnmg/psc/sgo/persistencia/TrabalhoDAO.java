@@ -75,7 +75,7 @@ public class TrabalhoDAO extends DAOGenerico<Trabalho> implements TrabalhoReposi
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     @Override
     protected Trabalho setDados(ResultSet resultado) {
         try {

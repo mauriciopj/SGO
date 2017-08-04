@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package br.edu.ifnmg.psc.sgo.apresentacao;
+import br.edu.ifnmg.psc.sgo.aplicacao.Cliente;
+import br.edu.ifnmg.psc.sgo.aplicacao.ClienteRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.ObrasCidade;
 import br.edu.ifnmg.psc.sgo.aplicacao.ObrasEServicos;
 import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
 import br.edu.ifnmg.psc.sgo.apresentacao.Repositorios;
 import br.edu.ifnmg.psc.sgo.apresentacao.TelaEdicao;
+import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 /**
@@ -17,18 +20,17 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
 
+    ClienteRepositorio clientes = Repositorios.getClienteRepositorio();
     /**
      * Creates new form ObrasEServicosEditar
      */
     public ObrasEServicosEditar() {
       super();
         initComponents();
-        
-         repositorio = Repositorios.getObrasEServicosRepositorio();
+       
         entidade = new ObrasEServicos();
-                
-        ComboBoxModel model = new DefaultComboBoxModel(ObrasCidade.values());               
-        cbxCidade.setModel(model);
+        
+        preencheCbx(clientes, cbxClientes);
     }
 
     /**
@@ -42,12 +44,12 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
+        txtDescricao = new javax.swing.JTextField();
         lblEndereco = new javax.swing.JLabel();
         cbxCidade = new javax.swing.JComboBox<>();
         txtComplemento = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        cbxCliente = new javax.swing.JComboBox<>();
+        cbxClientes = new javax.swing.JComboBox<>();
         btnCancelar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         txtBairro = new javax.swing.JTextField();
@@ -59,15 +61,16 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
+        setClosable(true);
         setTitle("Editar Obras e Serviços");
 
         jLabel1.setText("Preencha os campos informando os dados da Obra ou Serviço:");
 
         jLabel2.setText("Descrição * :");
 
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
+        txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
+                txtDescricaoActionPerformed(evt);
             }
         });
 
@@ -78,7 +81,7 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
 
         jLabel4.setText("Complemento: *");
 
-        cbxCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +119,7 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,7 +134,7 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(cbxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtComplemento)
-                                .addComponent(cbxCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbxClientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,7 +156,7 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(lblEndereco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -176,7 +179,7 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
                     .addComponent(jLabel4))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -188,18 +191,16 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+    private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
+    }//GEN-LAST:event_txtDescricaoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
         salvar();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-           cancelar();
+        cancelar();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
 
@@ -207,7 +208,7 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbxCidade;
-    private javax.swing.JComboBox<String> cbxCliente;
+    private javax.swing.JComboBox<String> cbxClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -219,18 +220,14 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
     private javax.swing.JLabel lblEndereco;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtComplemento;
-    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtRua;
     // End of variables declaration//GEN-END:variables
 
       @Override
     public void carregaCampos() {
-       
-       
-   
-     
-        txtNome.setText( entidade.getDescricao());
+        txtDescricao.setText( entidade.getDescricao());
         cbxCidade.setSelectedItem( entidade.getCidade());
         txtComplemento.setText( entidade.getComplemento());
         txtRua.setText( entidade.getRua() );
@@ -239,27 +236,24 @@ public class ObrasEServicosEditar extends TelaEdicao<ObrasEServicos>  {
     }
 
     @Override
-    public void carregaObjeto() throws ViolacaoRegraNegocioException {
-        entidade.setComplemento(txtComplemento.getText() );
-        entidade.setDescricao(txtNome.getText() );
-        entidade.setCidade((ObrasCidade) cbxCidade.getSelectedItem() );
-
-       
-        entidade.setRua( txtRua.getText() );
+    public void carregaObjeto() throws ViolacaoRegraNegocioException {        
+        entidade.setDescricao(txtDescricao.getText() );              
         entidade.setBairro( txtBairro.getText() );
-        entidade.setNumero(txtNumero.getText() ); 
+        entidade.setNumero(txtNumero.getText() );
+        entidade.setComplemento(txtComplemento.getText() );
+        entidade.setRua( txtRua.getText() );
+        entidade.setCidade((ObrasCidade) cbxCidade.getSelectedItem() );
+        entidade.setCliente((Cliente) cbxClientes.getSelectedItem() );
     }
     
     @Override
     public boolean verificarCamposObrigatorios() {
-        return  txtComplemento.getText().isEmpty() ||
-                !txtNome.getText().isEmpty() ||
-                cbxCidade.getSelectedItem() != null || 
-               
-             
-               
-               !txtRua.getText().isEmpty() || 
-               !txtBairro.getText().isEmpty() || 
-               !txtNumero.getText().isEmpty();
+        return  !txtDescricao.getText().isEmpty() ||                 
+                !txtBairro.getText().isEmpty() || 
+                !txtNumero.getText().isEmpty() ||
+                !txtRua.getText().isEmpty() ||
+                !txtComplemento.getText().isEmpty() ||
+                 cbxCidade.getSelectedItem() != null ||
+                 cbxClientes.getSelectedItem() != null;
     }
 }

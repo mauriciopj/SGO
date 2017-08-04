@@ -92,6 +92,11 @@ public class Funcionario extends PessoaFisica implements Entidade {
             return false;
         }
         return true;
-    }     
+    } 
+
+    @Override
+    public String toString() {
+        return nome;
+    }    
            
 }
