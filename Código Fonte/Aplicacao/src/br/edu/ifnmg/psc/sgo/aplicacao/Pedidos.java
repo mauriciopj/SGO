@@ -21,8 +21,7 @@ public class Pedidos implements Entidade {
         
     }
 
-    public Pedidos(int id, int qtd, Date data, Fornecedor fornecedor, MaterialConstrucao material) {
-        this.id = id;
+    public Pedidos(int qtd, Date data, Fornecedor fornecedor, MaterialConstrucao material) {
         this.qtd = qtd;
         this.data = data;
         this.fornecedor = fornecedor;

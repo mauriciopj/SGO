@@ -11,7 +11,7 @@ package br.edu.ifnmg.psc.sgo.aplicacao;
  */
 public class ListaMaterial implements Entidade {
     private int idLM, qtd;
-    MaterialConstrucao material;
+    private MaterialConstrucao material;
 
     public ListaMaterial() {
         

@@ -13,11 +13,14 @@ import br.edu.ifnmg.psc.sgo.aplicacao.ListaMaterialRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucao;
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucaoRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.Pedidos;
+import br.edu.ifnmg.psc.sgo.aplicacao.Repositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
+import br.edu.ifnmg.psc.sgo.persistencia.ListaMaterialDAO;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.ButtonModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,7 +38,7 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
         super();
         
         initComponents();
-        
+                       
         entidade = new Pedidos();
 
         preencheCbx(materiais, cbxMaterial);
@@ -188,9 +191,27 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
-        ListaMaterialRepositorio repositorio = Repositorios.getListaMaterialRepositorio();
-        Entidade entidade = new ListaMaterial();
-        salvar();
+        if (!verificarCamposObrigatorios()){
+            JOptionPane.showMessageDialog(rootPane, "Todos os campos são de preenchimento obrigatório!");
+            return;
+        }
+        if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente salvar o objeto?") == 0 ){
+            try{
+                carregaObjeto();
+            } catch (ViolacaoRegraNegocioException ex) {
+                JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                return; 
+            }
+        ListaMaterial listamaterial = new ListaMaterial();
+        
+        if (Repositorios.getListaMaterialRepositorio().Salvar(listamaterial)){
+                JOptionPane.showMessageDialog(rootPane, "Registro salvo com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Falha ao salvar o registro!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Operação Cancelada!");
+        }   
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -228,9 +249,10 @@ public class PedidoEditar extends  TelaEdicao<Pedidos> {
 
     @Override
     public boolean verificarCamposObrigatorios() {
+        if (btSalvar.isSelected())
+            return cbxFornecedor.getSelectedItem() != null;
         return txtQtd.getValue() != null || 
-               cbxMaterial.getSelectedItem() != null || 
-               cbxFornecedor.getSelectedItem() != null;
+               cbxMaterial.getSelectedItem() != null;
                
     }
 
