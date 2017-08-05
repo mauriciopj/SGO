@@ -7,12 +7,8 @@ package br.edu.ifnmg.psc.sgo.apresentacao;
 
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucao;
 import br.edu.ifnmg.psc.sgo.aplicacao.Repositorio;
-import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
-import br.edu.ifnmg.psc.sgo.apresentacao.TelaBusca;
-import br.edu.ifnmg.psc.sgo.apresentacao.TelaBusca;
 import java.util.List;
 import java.util.Vector;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -144,11 +140,6 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
 
         setBounds(270, 100, 814, 364);
     }// </editor-fold>//GEN-END:initComponents
-
-    
-                                       
-
-                                         
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:

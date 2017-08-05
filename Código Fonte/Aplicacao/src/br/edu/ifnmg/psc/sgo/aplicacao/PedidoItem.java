@@ -41,7 +41,9 @@ public class PedidoItem implements Entidade {
         return material;
     }
 
-    public void setMaterial(MaterialConstrucao material) {
+    public void setMaterial(MaterialConstrucao material) throws ViolacaoRegraNegocioException {
+        if(material == null)
+            throw new ViolacaoRegraNegocioException("Você deve selecionar o material para o pedido!");
         this.material = material;
     }
 
@@ -49,7 +51,9 @@ public class PedidoItem implements Entidade {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(int quantidade) throws ViolacaoRegraNegocioException {
+        if(quantidade <= 0)
+            throw new ViolacaoRegraNegocioException("Você deve informar a quantidade!");
         this.quantidade = quantidade;
     }
 
@@ -57,7 +61,9 @@ public class PedidoItem implements Entidade {
         return pedido;
     }
 
-    public void setPedido(Pedido pedido) {
+    public void setPedido(Pedido pedido) throws ViolacaoRegraNegocioException {
+        if(pedido == null)
+            throw new ViolacaoRegraNegocioException("O pedido não foi selecionado!");
         this.pedido = pedido;
     }
 

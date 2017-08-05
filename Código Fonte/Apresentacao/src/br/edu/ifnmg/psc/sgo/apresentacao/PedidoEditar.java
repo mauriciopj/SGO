@@ -15,8 +15,9 @@ import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
-import javax.swing.ButtonModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -25,19 +26,16 @@ import javax.swing.table.DefaultTableModel;
 public class PedidoEditar extends  TelaEdicao<Pedido> {
     
     MaterialConstrucaoRepositorio materiais = Repositorios.getMaterialConstrucaoRepositorio();
-    FornecedorRepositorio fornecedores = Repositorios.getFornecedorRepositorio();
-    List<PedidoItem> itens = null;    
-         
+    FornecedorRepositorio fornecedores = Repositorios.getFornecedorRepositorio();    
+    
     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm");
      
     public PedidoEditar() {
         super();
+        initComponents();                
         
-        initComponents();
-                       
-        entidade = new Pedido();
-        itens = (List<PedidoItem>) new PedidoItem();
-
+        entidade = new Pedido();        
+        
         preencheCbx(materiais, cbxMaterial);
         preencheCbx(fornecedores, cbxFornecedor);
     }
@@ -56,15 +54,17 @@ public class PedidoEditar extends  TelaEdicao<Pedido> {
         jLabel1 = new javax.swing.JLabel();
         cbxMaterial = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        txtQtd = new javax.swing.JSpinner();
+        txtQuantidade = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMateriais = new javax.swing.JTable();
-        btCancelar = new javax.swing.JButton();
-        btSalvar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cbxFornecedor = new javax.swing.JComboBox<>();
         btnIncluir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        lblLabel = new javax.swing.JLabel();
+        lblQuantidade = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setTitle("Realizar Pedido");
@@ -75,32 +75,50 @@ public class PedidoEditar extends  TelaEdicao<Pedido> {
 
         jLabel2.setText("Quantidade: *");
 
-        txtQtd.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        txtQuantidade.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         tblMateriais.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-
+                "ID", "Material Construção", "Quantidade"
             }
-        ));
-        jScrollPane1.setViewportView(tblMateriais);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
 
-        btCancelar.setText("Cancelar");
-        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblMateriais);
+        if (tblMateriais.getColumnModel().getColumnCount() > 0) {
+            tblMateriais.getColumnModel().getColumn(0).setResizable(false);
+            tblMateriais.getColumnModel().getColumn(0).setPreferredWidth(10);
+            tblMateriais.getColumnModel().getColumn(1).setResizable(false);
+            tblMateriais.getColumnModel().getColumn(1).setPreferredWidth(200);
+            tblMateriais.getColumnModel().getColumn(2).setResizable(false);
+            tblMateriais.getColumnModel().getColumn(2).setPreferredWidth(40);
+        }
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCancelarActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
-        btSalvar.setText("Salvar");
-        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSalvarActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
 
@@ -117,19 +135,29 @@ public class PedidoEditar extends  TelaEdicao<Pedido> {
 
         jLabel4.setText("Materiais a serem incluídos no pedido:");
 
+        lblLabel.setText("Total de Itens:");
+
+        lblQuantidade.setEditable(false);
+        lblQuantidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
@@ -140,7 +168,7 @@ public class PedidoEditar extends  TelaEdicao<Pedido> {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbxMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
@@ -159,10 +187,13 @@ public class PedidoEditar extends  TelaEdicao<Pedido> {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtQtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIncluir))
-                .addGap(11, 11, 11)
-                .addComponent(jLabel4)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(lblLabel)
+                    .addComponent(lblQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -171,33 +202,39 @@ public class PedidoEditar extends  TelaEdicao<Pedido> {
                     .addComponent(cbxFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btSalvar)
-                    .addComponent(btCancelar))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(btnSalvar)
+                    .addComponent(btnCancelar))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        pack();
+        setBounds(280, 55, 746, 414);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         salvar();
-    }//GEN-LAST:event_btSalvarActionPerformed
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         cancelar();
-    }//GEN-LAST:event_btCancelarActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
         PedidoItem item = new PedidoItem();
-        item.setQuantidade( (int) txtQtd.getValue() );
-        item.setMaterial((MaterialConstrucao) cbxMaterial.getSelectedItem());
-        entidade.addItem(item);               
+        try{
+            item.setQuantidade( (int) txtQuantidade.getValue() );
+            item.setMaterial((MaterialConstrucao) cbxMaterial.getSelectedItem());
+            entidade.addItem(item);
+        } catch(ViolacaoRegraNegocioException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+        lblQuantidade.setValue( entidade.getQuantidade() );  
+        preencheTabela( entidade.getItens() );
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCancelar;
-    private javax.swing.JButton btSalvar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnIncluir;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbxFornecedor;
     private javax.swing.JComboBox<String> cbxMaterial;
     private javax.swing.JLabel jLabel1;
@@ -205,51 +242,47 @@ public class PedidoEditar extends  TelaEdicao<Pedido> {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblLabel;
+    private javax.swing.JFormattedTextField lblQuantidade;
     private javax.swing.JTable tblMateriais;
-    private javax.swing.JSpinner txtQtd;
+    private javax.swing.JSpinner txtQuantidade;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void carregaCampos() {
-        txtQtd.setValue(entidade.getQtd());
-        if (btSalvar.isSelected())
-            cbxFornecedor.setSelectedItem( entidade.getFornecedor());
-        
+        cbxFornecedor.setSelectedItem( entidade.getFornecedor());
     }
 
     @Override
     public void carregaObjeto() throws ViolacaoRegraNegocioException {
-        entidade.setQtd((int) txtQtd.getValue() );
+        entidade.setQuantidade((int) txtQuantidade.getValue() );
         entidade.setFornecedor((Fornecedor) cbxFornecedor.getSelectedItem() );
-        entidade.setItens(itens);
-    
+        entidade.setItens( entidade.getItens() );
     }
 
     @Override
     public boolean verificarCamposObrigatorios() {
-        return txtQtd.getValue() != null || 
+        return txtQuantidade.getValue() != null || 
                cbxMaterial.getSelectedItem() != null ||
                cbxFornecedor.getSelectedItem() != null;
                
     }
-
-    public void preencheTabela(List<Pedido> listagem) {
+    
+    public void preencheTabela(List<PedidoItem> listagem) {
         DefaultTableModel modelo = new DefaultTableModel();
         
         modelo.addColumn("ID");
         modelo.addColumn("Material");
         modelo.addColumn("Quantidade");
-        modelo.addColumn("Fornecedor");
-      
-        for(Pedido f : listagem){
+
+        for(PedidoItem f : listagem){
             Vector linha = new Vector();
-            linha.add(f.getId());         
-            linha.add(f.getQtd());
-            linha.add(f.getFornecedor());
-                        
+            linha.add(f.getMaterial().getId()); 
+            linha.add(f.getMaterial().getNome());
+            linha.add(f.getQuantidade());
+
             modelo.addRow(linha);
         }
-        btnIncluir.setModel((ButtonModel) modelo);
+        tblMateriais.setModel((TableModel) modelo);
     }
-
 }

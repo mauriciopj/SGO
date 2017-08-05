@@ -184,7 +184,7 @@ public class PedidosBuscar extends TelaBusca<Pedido> {
             Vector linha = new Vector();
             linha.add(f.getId());
             //linha.add(f.getMaterial());            
-            linha.add(f.getQtd());
+            linha.add(f.getQuantidade());
             linha.add(f.getFornecedor());
             linha.add(f.getData());
                     

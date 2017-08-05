@@ -66,7 +66,7 @@ public class PedidoDAO extends DAOGenerico<Pedido> implements PedidosRepositorio
     protected void setParametros(PreparedStatement sql, Pedido obj) {
         try {
             sql.setDate(1, new java.sql.Date( obj.getData().getTime() ));
-            sql.setInt(2, obj.getQtd());
+            sql.setInt(2, obj.getQuantidade());
             sql.setInt(3, obj.getFornecedor().getId());
             
             if(obj.getId() > 0)
@@ -86,7 +86,7 @@ public class PedidoDAO extends DAOGenerico<Pedido> implements PedidosRepositorio
             Pedido obj = new Pedido();
             obj.setId( resultado.getInt("id") );
             obj.setData( new Date( resultado.getDate("data").getTime() ) );
-            obj.setQtd( resultado.getInt("qtd") );
+            obj.setQuantidade( resultado.getInt("qtd") );
             obj.setFornecedor(fornecedores.Abrir( resultado.getInt("fornecedor") ) );
             
             return obj;

@@ -14,17 +14,17 @@ import java.util.Objects;
  * @author Douglas_Castro
  */
 public class Pedido implements Entidade {
-    private int id, qtd;
+    private int id, quantidade = 0;
     private Date data;
     private Fornecedor fornecedor;
     private List<PedidoItem> itens;
 
     public Pedido() {
-        
+        this.itens = new ArrayList<>();
     }
 
     public Pedido(int qtd, Date data, Fornecedor fornecedor) {
-        this.qtd = qtd;
+        this.quantidade = qtd;
         this.data = data;
         this.fornecedor = fornecedor;
         this.itens = new ArrayList<>();
@@ -48,20 +48,23 @@ public class Pedido implements Entidade {
         this.data = data;
     }
 
-     public int getQtd() {
-        return qtd;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setQtd(int qtd) {
-        this.qtd = qtd;
+    public void setQuantidade(int quantidade) throws ViolacaoRegraNegocioException {
+        if(quantidade <= 0)
+            throw new ViolacaoRegraNegocioException("Você deve informar a quantidade!");
+        this.quantidade = quantidade;
     }
    
-
     public Fornecedor getFornecedor() {
         return fornecedor;
     }
 
-    public void setFornecedor(Fornecedor fornecedor) {
+    public void setFornecedor(Fornecedor fornecedor) throws ViolacaoRegraNegocioException {
+        if(fornecedor == null)
+            throw new ViolacaoRegraNegocioException("O fornecedor deve ser selecionado!");
         this.fornecedor = fornecedor;
     }
 
@@ -69,13 +72,18 @@ public class Pedido implements Entidade {
         return itens;
     }
 
-    public void setItens(List<PedidoItem> itens) {
+    public void setItens(List<PedidoItem> itens) throws ViolacaoRegraNegocioException {
+        if(itens == null)
+            throw new ViolacaoRegraNegocioException("Você deve selecionar os itens para o pedido!");
         this.itens = itens;
     }
     
-    public void addItem(PedidoItem item){
+    public void addItem(PedidoItem item) throws ViolacaoRegraNegocioException {
         item.setPedido(this);
+        if(item == null)
+            throw new ViolacaoRegraNegocioException("Falha ao adicionar o item do pedido!");
         this.itens.add(item);
+        this.quantidade += 1;
     }
 
     @Override
@@ -83,13 +91,12 @@ public class Pedido implements Entidade {
         int hash = 5;
         hash = 97 * hash + this.id;
         hash = 97 * hash + Objects.hashCode(this.data);
-        hash = 97 * hash + Objects.hashCode(this.qtd);
+        hash = 97 * hash + Objects.hashCode(this.quantidade);
         hash = 97 * hash + Objects.hashCode(this.fornecedor);
         return hash;
     }
     
-    
-     @Override
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -107,7 +114,7 @@ public class Pedido implements Entidade {
         if (!Objects.equals(this.data, other.data)) {
             return false;
         }
-        if (!Objects.equals(this.qtd, other.qtd)) {
+        if (!Objects.equals(this.quantidade, other.quantidade)) {
             return false;
         }
         return true;
