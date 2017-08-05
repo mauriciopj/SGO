@@ -4,7 +4,7 @@ create database sgo;
 
 use sgo;
 
--- select * from clientes;
+-- select * from itemPedido;
 
 create table clientes(
 	idCli int auto_increment not null primary key,
@@ -20,6 +20,8 @@ create table clientes(
 
 insert into clientes() 
 values('1','Maurício','11111111111',null,'11111111111','jose@hgfg','dsadas','25','fdsfdsa');
+
+
 
 create table funcionarios(
 	idFunc int auto_increment not null primary key,
@@ -66,13 +68,19 @@ create table fornecedores(
     rua varchar(150) not null
 );
 
+insert into fornecedores() 
+values('1','Construservs','11111111111','jose@hgfg','dsadas','25','fdsfdsa');
+
 create table materiais(
 	idMate int auto_increment not null primary key,
 	nome varchar(50) not null,
     qtd int not null,
     valor varchar(50) not null,
     descricao varchar(150) not null
-);	
+);
+
+insert into materiais(idMate, nome, qtd, valor, descricao) 
+values('1','Cimento',2000,'24','Saco');	
 
 create table empresa(
 	idEmpr int auto_increment not null primary key,
@@ -87,8 +95,8 @@ create table empresa(
 
 create table pedidos(
 	id int auto_increment not null primary key,
-	data date,
-    qtd int,
+	data varchar(17) not null,
+    qtdItens int,
 	fornecedor int,
 	foreign key(fornecedor) references fornecedores(idForn)
 );

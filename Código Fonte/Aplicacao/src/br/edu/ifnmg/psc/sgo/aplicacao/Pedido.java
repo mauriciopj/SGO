@@ -6,7 +6,6 @@
 package br.edu.ifnmg.psc.sgo.aplicacao;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 /**
@@ -15,19 +14,19 @@ import java.util.Objects;
  */
 public class Pedido implements Entidade {
     private int id, quantidade = 0;
-    private Date data;
+    private String data;
     private Fornecedor fornecedor;
-    private List<PedidoItem> itens;
+    private List<PedidoItem> itens = null;
 
     public Pedido() {
         this.itens = new ArrayList<>();
     }
 
-    public Pedido(int qtd, Date data, Fornecedor fornecedor) {
+    public Pedido(int qtd, String data, Fornecedor fornecedor) {
         this.quantidade = qtd;
         this.data = data;
         this.fornecedor = fornecedor;
-        this.itens = new ArrayList<>();
+        this.itens = new ArrayList<>();        
     }
     
     @Override
@@ -40,11 +39,11 @@ public class Pedido implements Entidade {
         this.id = id;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

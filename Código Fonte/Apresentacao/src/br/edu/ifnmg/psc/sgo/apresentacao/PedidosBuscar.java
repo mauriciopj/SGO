@@ -5,10 +5,15 @@
  */
 package br.edu.ifnmg.psc.sgo.apresentacao;
 
+import br.edu.ifnmg.psc.sgo.aplicacao.Fornecedor;
+import br.edu.ifnmg.psc.sgo.aplicacao.FornecedorRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.Pedido;
 import br.edu.ifnmg.psc.sgo.aplicacao.Repositorio;
+import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,7 +21,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Dougla_Castro
  */
 public class PedidosBuscar extends TelaBusca<Pedido> {
-
+    
+    FornecedorRepositorio fornecedores = Repositorios.getFornecedorRepositorio();
     /**
      * Creates new form PedidosBuscar
      */
@@ -24,7 +30,8 @@ public class PedidosBuscar extends TelaBusca<Pedido> {
         super(repositorio, tipo_tela);
         initComponents();
         
-        filtro = new Pedido(); 
+        filtro = new Pedido();
+        preencheCbx(fornecedores, cbxFornecedores);
     }
 
     /**
@@ -37,13 +44,13 @@ public class PedidosBuscar extends TelaBusca<Pedido> {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBusca = new javax.swing.JTable();
         btnEditar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        cbxFornecedores = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setMaximizable(true);
@@ -87,29 +94,33 @@ public class PedidosBuscar extends TelaBusca<Pedido> {
 
         jLabel2.setText("Pedidos Realizados:");
 
+        cbxFornecedores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane1)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbxFornecedores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -118,20 +129,20 @@ public class PedidosBuscar extends TelaBusca<Pedido> {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxFornecedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(1, 1, 1)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(btnBuscar)
                     .addComponent(btnEditar))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        pack();
+        setBounds(260, 55, 756, 380);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -150,11 +161,11 @@ public class PedidosBuscar extends TelaBusca<Pedido> {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JComboBox<String> cbxFornecedores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblBusca;
-    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -166,27 +177,29 @@ public class PedidosBuscar extends TelaBusca<Pedido> {
 
     @Override
     public void preencheFiltro() {
-        //if(! txtNome.getText().isEmpty())
-            //filtro.setNome(txtNome.getText()); 
+        if(cbxFornecedores.getSelectedItem() != null)
+            try {
+                filtro.setFornecedor((Fornecedor) cbxFornecedores.getSelectedItem());
+        } catch (ViolacaoRegraNegocioException ex) {
+            Logger.getLogger(PedidosBuscar.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     @Override
     public void preencheTabela(List<Pedido> listagem) {
        DefaultTableModel modelo = new DefaultTableModel();
         
-        modelo.addColumn("ID");
-        modelo.addColumn("material");
-        modelo.addColumn("Quantidade");
+        modelo.addColumn("ID");       
         modelo.addColumn("Fornecedor");
         modelo.addColumn("Data");
+        modelo.addColumn("Qtd. de Itens");
         
         for(Pedido f : listagem){
             Vector linha = new Vector();
-            linha.add(f.getId());
-            //linha.add(f.getMaterial());            
-            linha.add(f.getQuantidade());
+            linha.add(f.getId());                      
             linha.add(f.getFornecedor());
             linha.add(f.getData());
+            linha.add(f.getQuantidade());
                     
             modelo.addRow(linha);
         }

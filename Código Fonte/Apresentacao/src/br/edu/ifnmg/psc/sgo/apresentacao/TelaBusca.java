@@ -10,6 +10,9 @@ import br.edu.ifnmg.psc.sgo.aplicacao.Repositorio;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -76,6 +79,13 @@ public abstract class TelaBusca<T extends Entidade> extends javax.swing.JInterna
         this.getParent().add(tela_edicao);
         tela_edicao.setVisible(true);
         this.setVisible(false);
+    }
+    
+    public void preencheCbx(Repositorio repositorio, JComboBox cbx){
+        List lista = repositorio.Buscar(null);
+        lista.add(0, null);
+        ComboBoxModel model = new DefaultComboBoxModel(lista.toArray());
+        cbx.setModel(model);
     }
 
 }

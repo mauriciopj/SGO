@@ -31,12 +31,12 @@ public class PedidoDAO extends DAOGenerico<Pedido> implements PedidosRepositorio
 
     @Override
     protected String getConsultaInsert() {
-        return "insert into pedidos(data, qtd, fornecedor) values(?,?,?,?)";
+        return "insert into pedidos(data, qtdItens, fornecedor) values(?,?,?)";
     }
 
     @Override
     protected String getConsultaUpdate() {
-        return "update pedidos set data = ?, qtd = ?, fornecedor = ? where id = ?";
+        return "update pedidos set data = ?, qtdItens = ?, fornecedor = ? where id = ?";
     }
 
     @Override
@@ -46,12 +46,12 @@ public class PedidoDAO extends DAOGenerico<Pedido> implements PedidosRepositorio
 
     @Override
     protected String getConsultaAbrir() {
-         return "select id, data, qtd, fornecedor from pedidos where id = ?";
+         return "select id, data, qtdItens, fornecedor from pedidos where id = ?";
     }
 
     @Override
     protected String getConsultaBuscar() {
-         return "select id, data, qtd,  fornecedor from pedidos ";
+         return "select id, data, qtdItens, fornecedor from pedidos ";
     }
 
     @Override
@@ -65,7 +65,7 @@ public class PedidoDAO extends DAOGenerico<Pedido> implements PedidosRepositorio
     @Override
     protected void setParametros(PreparedStatement sql, Pedido obj) {
         try {
-            sql.setDate(1, new java.sql.Date( obj.getData().getTime() ));
+            sql.setString(1, obj.getData() );
             sql.setInt(2, obj.getQuantidade());
             sql.setInt(3, obj.getFornecedor().getId());
             
@@ -85,8 +85,8 @@ public class PedidoDAO extends DAOGenerico<Pedido> implements PedidosRepositorio
         try {
             Pedido obj = new Pedido();
             obj.setId( resultado.getInt("id") );
-            obj.setData( new Date( resultado.getDate("data").getTime() ) );
-            obj.setQuantidade( resultado.getInt("qtd") );
+            obj.setData( resultado.getString("data") );
+            obj.setQuantidade( resultado.getInt("qtdItens") );
             obj.setFornecedor(fornecedores.Abrir( resultado.getInt("fornecedor") ) );
             
             return obj;
