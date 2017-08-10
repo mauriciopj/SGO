@@ -5,9 +5,14 @@
  */
 package visao;
 
+import br.edu.ifnmg.psc.sgo.aplicacao.Aplicacao;
+import br.edu.ifnmg.psc.sgo.apresentacao.Repositorios;
 import br.edu.ifnmg.psc.sgo.apresentacao.TelaPrincipal;
-import java.awt.event.KeyEvent;
+import br.edu.ifnmg.psc.sgo.aplicacao.Usuario;
+
+import java.util.List;
 import javax.swing.JOptionPane;
+import br.edu.ifnmg.psc.sgo.aplicacao.UsuarioRepositorio;
 
 /**
  *
@@ -15,7 +20,10 @@ import javax.swing.JOptionPane;
  */
 public class TelaLogin extends javax.swing.JFrame {
 
-    /**
+    
+     UsuarioRepositorio dao = Repositorios.getUsuarioRepositorio();
+    
+     /**
      * Creates new form TelaLogin
      */
     public TelaLogin() {
@@ -35,7 +43,7 @@ public class TelaLogin extends javax.swing.JFrame {
         btSair = new javax.swing.JButton();
         textUsuario = new java.awt.TextField();
         jLabel2 = new javax.swing.JLabel();
-        textPassword = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,7 +62,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLogin);
-        btLogin.setBounds(680, 350, 100, 23);
+        btLogin.setBounds(660, 350, 100, 25);
 
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +71,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btSair);
-        btSair.setBounds(810, 350, 100, 23);
+        btSair.setBounds(810, 350, 100, 25);
 
         textUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textUsuario.setText("\n  Usuário");
@@ -86,25 +94,25 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(640, 120, 150, 60);
 
-        textPassword.addActionListener(new java.awt.event.ActionListener() {
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textPasswordActionPerformed(evt);
+                txtSenhaActionPerformed(evt);
             }
         });
-        textPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                textPasswordKeyPressed(evt);
+                txtSenhaKeyPressed(evt);
             }
         });
-        getContentPane().add(textPassword);
-        textPassword.setBounds(470, 270, 450, 30);
+        getContentPane().add(txtSenha);
+        txtSenha.setBounds(470, 270, 450, 30);
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iStock_000031663298_Large_1.jpg"))); // NOI18N
         jLabel1.setText("Tela Login");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-10, -60, 1400, 770);
+        jLabel1.setBounds(0, -60, 1390, 770);
         jLabel1.getAccessibleContext().setAccessibleName("Tela login");
 
         setSize(new java.awt.Dimension(1406, 743));
@@ -116,10 +124,6 @@ public class TelaLogin extends javax.swing.JFrame {
   
     }//GEN-LAST:event_textUsuarioActionPerformed
 
-    private void textPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textPasswordActionPerformed
-
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         // botao tela login sair
         System.exit(0);
@@ -127,18 +131,27 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         //botao acessar:
-      if(textUsuario.getText().equals("admin") && textPassword.getText().equals("admin")){
-       TelaPrincipal tela = new TelaPrincipal();
-       
-        tela.setVisible(true);
-    
- 
+    Usuario p = new Usuario(0, null, textUsuario.getText(), String.valueOf( txtSenha.getPassword() ));
         
-    dispose();
-    }else{
-           JOptionPane.showMessageDialog(null,"Usuario ou senha invalido!");
+        List<Usuario> lista = dao.Buscar(p);
+        
+        if(lista.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Usuario ou senha invalido!");
             
-           }
+        } else {
+            
+           Aplicacao.setUsuario(lista.get(0));
+            
+            TelaPrincipal principal = new TelaPrincipal();
+            
+          
+            principal.setTelalogin(this);
+           
+           principal.setVisible(true);
+           this.setVisible(false);
+        
+        }
+        
     
     }//GEN-LAST:event_btLoginActionPerformed
 
@@ -146,33 +159,24 @@ public class TelaLogin extends javax.swing.JFrame {
     
           
           if(evt.getKeyCode() == evt.VK_ENTER)  {
-             textPassword.requestFocus();
+             txtSenha.requestFocus();
           }
     }//GEN-LAST:event_textUsuarioKeyPressed
 
-    private void textPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPasswordKeyPressed
-        // TODO add your handling code here:
-         if(evt.getKeyCode() == evt.VK_ENTER)  {
-             btLogin.requestFocus();
-          }
-    }//GEN-LAST:event_textPasswordKeyPressed
-
     private void btLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btLoginKeyPressed
-         if(evt.getKeyCode() == evt.VK_ENTER)  {
-              if(textUsuario.getText().equals("admin") && textPassword.getText().equals("admin")){
-       TelaPrincipal tela = new TelaPrincipal();
-       
-        tela.setVisible(true);
-    
- 
         
-    dispose();
-    }else{
-           JOptionPane.showMessageDialog(null,"Usuario ou senha invalido!");
-            
-           }
-          }
     }//GEN-LAST:event_btLoginKeyPressed
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER)  {
+            btLogin.requestFocus();
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
+
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,11 +218,9 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField textPassword;
     private java.awt.TextField textUsuario;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 
-    private void show(String usuario_ou_senha_invalido) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

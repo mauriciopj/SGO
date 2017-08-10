@@ -4,19 +4,37 @@
  * and open the template in the editor.
  */
 package br.edu.ifnmg.psc.sgo.apresentacao;
+import br.edu.ifnmg.psc.sgo.aplicacao.Aplicacao;
+
+import visao.TelaLogin;
 
 /**
  *
  * @author mauricio
  */
 public class TelaPrincipal extends javax.swing.JFrame {    
+    
+     TelaLogin telalogin;
+     
+     public void setTelalogin(TelaLogin telalogin) {
+        this.telalogin = telalogin;
+    }
+    
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
-        initComponents();                
+        if(!Aplicacao.isLogged()){
+          if(telalogin == null)
+                telalogin = new TelaLogin();
+            
+            telalogin.setVisible(true);
+            this.setVisible(false);
+            return;
+                 
     }
-
+        initComponents();   
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,12 +56,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mnuTrabalho = new javax.swing.JMenuItem();
         mnuEmpresa = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SGO - Sistema de Gestão de Obras");
         setAlwaysOnTop(true);
 
         planoFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/telaLogin_1.jpg"))); // NOI18N
+        planoFundo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        planoFundo.setMaximumSize(new java.awt.Dimension(1220, 800));
 
         jMenuBar1.setBackground(new java.awt.Color(208, 208, 208));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SGO - Sistema de Gestão de Obras", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Loma", 1, 14), new java.awt.Color(74, 74, 74))); // NOI18N
@@ -128,6 +149,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mnuEmpresa.add(jMenuItem2);
 
+        jMenuItem1.setText("Usuário");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mnuEmpresa.add(jMenuItem1);
+
         jMenuBar1.add(mnuEmpresa);
 
         setJMenuBar(jMenuBar1);
@@ -136,11 +165,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(planoFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 1338, Short.MAX_VALUE)
+            .addComponent(planoFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 1437, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(planoFundo)
+            .addComponent(planoFundo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -200,6 +229,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_mnuTrabalhoActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+     
+     
+        
+        BuscarUsuario tela = new  BuscarUsuario(Repositorios.getUsuarioRepositorio(), EditarUsuario.class);        
+        planoFundo.add(tela);
+        tela.setVisible(true);   
+        
+     
+
+       
+       
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -232,13 +275,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new TelaPrincipal().setVisible(true);
+                new TelaPrincipal().setVisible(false);
             }
         });
     }
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem mnuCliente;
     private javax.swing.JMenu mnuEmpresa;
@@ -251,5 +298,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuTrabalho;
     private javax.swing.JLabel planoFundo;
     // End of variables declaration//GEN-END:variables
+
+
 
 }

@@ -16,6 +16,7 @@ import br.edu.ifnmg.psc.sgo.aplicacao.PedidoItemRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.PedidosRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.TrabalhoRepositorio;
 import br.edu.ifnmg.psc.sgo.persistencia.ClienteDAO;
+import br.edu.ifnmg.psc.sgo.persistencia.UsuarioDAO;
 import br.edu.ifnmg.psc.sgo.persistencia.EmpresaDAO;
 import br.edu.ifnmg.psc.sgo.persistencia.FornecedorDAO;
 import br.edu.ifnmg.psc.sgo.persistencia.FuncionarioDAO;
@@ -26,6 +27,7 @@ import br.edu.ifnmg.psc.sgo.persistencia.TrabalhoDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import br.edu.ifnmg.psc.sgo.aplicacao.UsuarioRepositorio;
 
 /**
  *
@@ -42,6 +44,7 @@ public class Repositorios {
     static PedidosRepositorio pedidosDAO = null;
     static TrabalhoRepositorio trabalhoDAO = null;
     static PedidoItemRepositorio itemPedidoDAO = null;
+    static UsuarioRepositorio usuarioDAO = null;
     
     public static EmpresaRepositorio getEmpresaRepositorio(){
         if(empresaDAO == null)
@@ -151,5 +154,19 @@ public class Repositorios {
                 Logger.getLogger(Repositorios.class.getName()).log(Level.SEVERE, null, ex);
             }
         return itemPedidoDAO;
+    }
+    
+    
+    
+    public static UsuarioRepositorio getUsuarioRepositorio(){
+        if(usuarioDAO == null)
+            try {
+               usuarioDAO = new UsuarioDAO();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Repositorios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Repositorios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return usuarioDAO;
     }
 }
