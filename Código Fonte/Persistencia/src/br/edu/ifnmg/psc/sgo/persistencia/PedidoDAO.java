@@ -9,7 +9,6 @@ package br.edu.ifnmg.psc.sgo.persistencia;
 
 
 import br.edu.ifnmg.psc.sgo.aplicacao.Pedido;
-import br.edu.ifnmg.psc.sgo.aplicacao.PedidosRepositorio;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,11 +16,12 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import br.edu.ifnmg.psc.sgo.aplicacao.PedidoRepositorio;
 /**
  *
  * @author Douglas_Castro
  */
-public class PedidoDAO extends DAOGenerico<Pedido> implements PedidosRepositorio {
+public class PedidoDAO extends DAOGenerico<Pedido> implements PedidoRepositorio {
     
     public PedidoDAO() throws ClassNotFoundException, SQLException {
         super();  

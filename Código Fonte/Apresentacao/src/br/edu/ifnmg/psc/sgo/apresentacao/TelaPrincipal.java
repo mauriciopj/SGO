@@ -189,7 +189,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuObraEServicoActionPerformed
 
     private void mnuPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuPedidosActionPerformed
-        PedidosBuscar tela = new PedidosBuscar(Repositorios.getPedidosRepositorio(), PedidoEditar.class);        
+        PedidoBuscar tela = new PedidoBuscar(Repositorios.getPedidosRepositorio(), PedidoEditar.class);        
         planoFundo.add(tela);
         tela.setVisible(true);       
     }//GEN-LAST:event_mnuPedidosActionPerformed

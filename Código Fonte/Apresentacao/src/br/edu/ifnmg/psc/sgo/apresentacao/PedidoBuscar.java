@@ -20,13 +20,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Dougla_Castro
  */
-public class PedidosBuscar extends TelaBusca<Pedido> {
+public class PedidoBuscar extends TelaBusca<Pedido> {
     
     FornecedorRepositorio fornecedores = Repositorios.getFornecedorRepositorio();
     /**
      * Creates new form PedidosBuscar
      */
-    public PedidosBuscar(Repositorio<Pedido> repositorio, Class tipo_tela){
+    public PedidoBuscar(Repositorio<Pedido> repositorio, Class tipo_tela){
         super(repositorio, tipo_tela);
         initComponents();
         
@@ -181,7 +181,7 @@ public class PedidosBuscar extends TelaBusca<Pedido> {
             try {
                 filtro.setFornecedor((Fornecedor) cbxFornecedores.getSelectedItem());
         } catch (ViolacaoRegraNegocioException ex) {
-            Logger.getLogger(PedidosBuscar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PedidoBuscar.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
 
