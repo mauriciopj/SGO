@@ -233,7 +233,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      
      
         
-        BuscarUsuario tela = new  BuscarUsuario(Repositorios.getUsuarioRepositorio(), EditarUsuario.class);        
+        UsuarioBuscar tela = new  UsuarioBuscar(Repositorios.getUsuarioRepositorio(), UsuarioEditar.class);        
         planoFundo.add(tela);
         tela.setVisible(true);   
         

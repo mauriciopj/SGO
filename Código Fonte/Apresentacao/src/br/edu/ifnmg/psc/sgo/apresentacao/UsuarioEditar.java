@@ -11,15 +11,15 @@ import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
 
 /**
  *
- * @author Dougla_Castro
+ * @author Douglas_Castro
  */
-public class EditarUsuario extends TelaEdicao<Usuario> {
+public class UsuarioEditar extends TelaEdicao<Usuario> {
 
-     // UsuarioRepositorio usuario = Repositorios.getUsuarioRepositorio();
+    // UsuarioRepositorio usuario = Repositorios.getUsuarioRepositorio();
     /**
      * Creates new form EditarUsuario
      */
-    public EditarUsuario() {
+    public UsuarioEditar() {
          super();
         initComponents();
            entidade = new Usuario() ; 
@@ -41,6 +41,8 @@ public class EditarUsuario extends TelaEdicao<Usuario> {
          entidade.setSenha(txtLogin.getText() );
         
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -171,6 +173,11 @@ public class EditarUsuario extends TelaEdicao<Usuario> {
 
     @Override
     public boolean verificarCamposObrigatorios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return !txtNome.getText().isEmpty() || 
+               !txtLogin.getText().isEmpty() ||
+              
+               !txtSenha.getText().isEmpty() ;
     }
+
+   
 }
