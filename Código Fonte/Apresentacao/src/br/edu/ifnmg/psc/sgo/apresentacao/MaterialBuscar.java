@@ -37,6 +37,7 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnEditar1 = new javax.swing.JButton();
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -45,6 +46,9 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
         btnEditar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+
+        btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/documentediting_editdocuments_text_documentedi_2820.png"))); // NOI18N
+        btnEditar1.setText("Editar");
 
         setClosable(true);
         setTitle("Buscar Material");
@@ -76,6 +80,7 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
         tblBusca.setPreferredSize(new java.awt.Dimension(445, 112));
         jScrollPane1.setViewportView(tblBusca);
 
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/documentediting_editdocuments_text_documentedi_2820.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +88,7 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
             }
         });
 
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/new-file_40454.png"))); // NOI18N
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +96,7 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
             }
         });
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/search_icon-icons.com_74448.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,9 +113,9 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnEditar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNovo)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnBuscar))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
@@ -117,7 +124,7 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,13 +139,13 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscar)
                     .addComponent(btnNovo)
-                    .addComponent(btnEditar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEditar)
+                    .addComponent(btnBuscar))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        setBounds(270, 100, 814, 364);
+        setBounds(270, 100, 814, 397);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -146,24 +153,24 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        // TODO add your handling code here:
-           novo();
+        novo();
     }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        buscar();
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
         editar();
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-         buscar();
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnNovo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -44,6 +44,7 @@ public class PessoaJuridica extends Pessoa {
         return cnpj.equals(cnpj.substring(0,12) + digito1.toString() + digito2.toString());
     }        
 
+<<<<<<< HEAD
     @Override
     public int getId() {
         return id;
@@ -54,5 +55,7 @@ public class PessoaJuridica extends Pessoa {
         this.id = id;
     }
 
+=======
+>>>>>>> 0237a51305c0293bd44c2711a478a6e3bbbdda64
    
 }

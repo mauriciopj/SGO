@@ -188,6 +188,7 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
         rbtnJuridica.getAccessibleContext().setAccessibleName("");
         rbtnJuridica.getAccessibleContext().setAccessibleDescription("");
 
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cancel_icon-icons.com_73703.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,6 +196,7 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
             }
         });
 
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Save_37110.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,13 +244,14 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
                                         .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(txtRua)
-                                    .addComponent(txtBairro)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(31, 31, 31))))
+                                    .addComponent(txtBairro))))
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,12 +290,12 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnCancelar))
-                .addGap(290, 290, 290))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnSalvar))
+                .addGap(273, 273, 273))
         );
 
-        setBounds(360, 50, 617, 524);
+        setBounds(360, 50, 617, 468);
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbtnJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnJuridicaActionPerformed
@@ -309,14 +312,6 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
                   
     }//GEN-LAST:event_rbtnFisicaActionPerformed
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        salvar();
-    }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        cancelar();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
     private void txtCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCnpjActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCnpjActionPerformed
@@ -324,6 +319,15 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
     private void CpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CpfActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        cancelar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        salvar();
+    }//GEN-LAST:event_btnSalvarActionPerformed
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField Cpf;
