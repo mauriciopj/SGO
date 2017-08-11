@@ -1,4 +1,4 @@
--- drop database sgo;
+﻿-- drop database sgo;
 
 create database sgo;
 
@@ -20,8 +20,6 @@ create table clientes(
 
 insert into clientes() 
 values('1','Maurício','11111111111',null,'11111111111','jose@hgfg','dsadas','25','fdsfdsa');
-
-
 
 create table funcionarios(
 	idFunc int auto_increment not null primary key,
@@ -92,6 +90,16 @@ create table empresa(
     numero varchar(8) not null, 
     rua varchar(150) not null
 );
+
+create table usuario(	
+   id int auto_increment not null primary key,
+   nome varchar(100) not null,
+   login varchar(100) not null,
+   senha varchar(100) not null 
+);
+
+insert into usuario(nome, login, senha) 
+values('Mauricio','12173367617','123');	
 
 create table pedidos(
 	id int auto_increment not null primary key,

@@ -3,17 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package visao;
+package br.edu.ifnmg.psc.sgo.apresentacao;
 
-import br.edu.ifnmg.psc.sgo.apresentacao.TelaPrincipal;
-import java.awt.event.KeyEvent;
+import br.edu.ifnmg.psc.sgo.aplicacao.Aplicacao;
+import br.edu.ifnmg.psc.sgo.aplicacao.Usuario;
+
+import java.util.List;
 import javax.swing.JOptionPane;
+import br.edu.ifnmg.psc.sgo.aplicacao.UsuarioRepositorio;
 
 /**
  *
  * @author Douglas_Castro
  */
 public class TelaLogin extends javax.swing.JFrame {
+
+    UsuarioRepositorio dao = Repositorios.getUsuarioRepositorio();
 
     /**
      * Creates new form TelaLogin
@@ -35,27 +40,24 @@ public class TelaLogin extends javax.swing.JFrame {
         btSair = new javax.swing.JButton();
         textUsuario = new java.awt.TextField();
         jLabel2 = new javax.swing.JLabel();
-        textPassword = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Autenticação");
         getContentPane().setLayout(null);
 
+        btLogin.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
         btLogin.setText("Acessar");
         btLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLoginActionPerformed(evt);
             }
         });
-        btLogin.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btLoginKeyPressed(evt);
-            }
-        });
         getContentPane().add(btLogin);
-        btLogin.setBounds(680, 350, 100, 23);
+        btLogin.setBounds(640, 380, 100, 30);
 
+        btSair.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,62 +65,48 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btSair);
-        btSair.setBounds(810, 350, 100, 23);
+        btSair.setBounds(520, 380, 110, 30);
 
+        textUsuario.setBackground(new java.awt.Color(254, 254, 254));
         textUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        textUsuario.setText("\n  Usuário");
+        textUsuario.setForeground(new java.awt.Color(132, 132, 132));
+        textUsuario.setText("Usuário");
+        textUsuario.setSelectionStart(-1);
         textUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textUsuarioActionPerformed(evt);
             }
         });
-        textUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                textUsuarioKeyPressed(evt);
-            }
-        });
         getContentPane().add(textUsuario);
-        textUsuario.setBounds(470, 200, 450, 30);
+        textUsuario.setBounds(410, 230, 450, 40);
 
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 56)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 56)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Login");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("<html><center>SGO</center>Login</html>");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(640, 120, 150, 60);
+        jLabel2.setBounds(420, 70, 430, 140);
 
-        textPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textPasswordActionPerformed(evt);
-            }
-        });
-        textPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                textPasswordKeyPressed(evt);
-            }
-        });
-        getContentPane().add(textPassword);
-        textPassword.setBounds(470, 270, 450, 30);
+        txtSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(txtSenha);
+        txtSenha.setBounds(410, 300, 450, 40);
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iStock_000031663298_Large_1.jpg"))); // NOI18N
         jLabel1.setText("Tela Login");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-10, -60, 1400, 770);
+        jLabel1.setBounds(0, -60, 1450, 870);
         jLabel1.getAccessibleContext().setAccessibleName("Tela login");
 
-        setSize(new java.awt.Dimension(1406, 743));
+        setSize(new java.awt.Dimension(1406, 837));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void textUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUsuarioActionPerformed
 
-  
-    }//GEN-LAST:event_textUsuarioActionPerformed
 
-    private void textPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textPasswordActionPerformed
+    }//GEN-LAST:event_textUsuarioActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         // botao tela login sair
@@ -127,52 +115,28 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         //botao acessar:
-      if(textUsuario.getText().equals("admin") && textPassword.getText().equals("admin")){
-       TelaPrincipal tela = new TelaPrincipal();
-       
-        tela.setVisible(true);
-    
- 
-        
-    dispose();
-    }else{
-           JOptionPane.showMessageDialog(null,"Usuario ou senha invalido!");
-            
-           }
-    
+        Usuario p = new Usuario(0, null, textUsuario.getText(), String.valueOf(txtSenha.getPassword()));
+
+        List<Usuario> lista = dao.Buscar(p);
+
+        if (lista.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Usuario ou senha invalido!");
+
+        } else {
+
+            Aplicacao.setUsuario(lista.get(0));
+
+            TelaPrincipal principal = new TelaPrincipal();
+
+            principal.setTelalogin(this);
+
+            principal.setVisible(true);
+            this.setVisible(false);
+
+        }
+
+
     }//GEN-LAST:event_btLoginActionPerformed
-
-    private void textUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textUsuarioKeyPressed
-    
-          
-          if(evt.getKeyCode() == evt.VK_ENTER)  {
-             textPassword.requestFocus();
-          }
-    }//GEN-LAST:event_textUsuarioKeyPressed
-
-    private void textPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPasswordKeyPressed
-        // TODO add your handling code here:
-         if(evt.getKeyCode() == evt.VK_ENTER)  {
-             btLogin.requestFocus();
-          }
-    }//GEN-LAST:event_textPasswordKeyPressed
-
-    private void btLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btLoginKeyPressed
-         if(evt.getKeyCode() == evt.VK_ENTER)  {
-              if(textUsuario.getText().equals("admin") && textPassword.getText().equals("admin")){
-       TelaPrincipal tela = new TelaPrincipal();
-       
-        tela.setVisible(true);
-    
- 
-        
-    dispose();
-    }else{
-           JOptionPane.showMessageDialog(null,"Usuario ou senha invalido!");
-            
-           }
-          }
-    }//GEN-LAST:event_btLoginKeyPressed
 
     /**
      * @param args the command line arguments
@@ -214,11 +178,8 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField textPassword;
     private java.awt.TextField textUsuario;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 
-    private void show(String usuario_ou_senha_invalido) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

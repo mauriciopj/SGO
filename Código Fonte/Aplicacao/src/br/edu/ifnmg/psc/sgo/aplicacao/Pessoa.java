@@ -9,7 +9,7 @@ package br.edu.ifnmg.psc.sgo.aplicacao;
  *
  * @author mauricio
  */
-public abstract class Pessoa {
+public abstract class Pessoa implements Entidade {
     protected String nome, fone, email, bairro, numero, rua;      
 
     public Pessoa() {
