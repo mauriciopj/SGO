@@ -9,11 +9,11 @@ package br.edu.ifnmg.psc.sgo.persistencia;
 
 
 import br.edu.ifnmg.psc.sgo.aplicacao.Pedido;
+import br.edu.ifnmg.psc.sgo.aplicacao.PedidoItem;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import br.edu.ifnmg.psc.sgo.aplicacao.PedidoRepositorio;
@@ -22,6 +22,8 @@ import br.edu.ifnmg.psc.sgo.aplicacao.PedidoRepositorio;
  * @author Douglas_Castro
  */
 public class PedidoDAO extends DAOGenerico<Pedido> implements PedidoRepositorio {
+    
+    ItemPedidoDAO itens = new ItemPedidoDAO();
     
     public PedidoDAO() throws ClassNotFoundException, SQLException {
         super();  
@@ -89,6 +91,11 @@ public class PedidoDAO extends DAOGenerico<Pedido> implements PedidoRepositorio 
             obj.setQuantidade( resultado.getInt("qtdItens") );
             obj.setFornecedor(fornecedores.Abrir( resultado.getInt("fornecedor") ) );
             
+            PedidoItem filtro = new PedidoItem();
+            filtro.setPedido(obj);
+            
+            obj.setItens( itens.Buscar(filtro) );
+            
             return obj;
             
         } catch (Exception ex) {
@@ -96,4 +103,17 @@ public class PedidoDAO extends DAOGenerico<Pedido> implements PedidoRepositorio 
         }
         return null;
     }
+    
+    @Override
+    public boolean Salvar(Pedido obj) {
+        if(super.Salvar(obj)){
+            for(PedidoItem p : obj.getItens())
+                itens.Salvar(p);
+            
+            return true;
+        }
+        
+        return false;
+    }
+    
 }

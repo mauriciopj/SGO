@@ -40,5 +40,15 @@ public class PessoaFisica extends Pessoa {
         Integer digito2 = calcularDigito(cpf.substring(0,9) + digito1, pesoCPF);
         return cpf.equals(cpf.substring(0,9) + digito1.toString() + digito2.toString());
    }
+
+    @Override
+    public void setId(int id) {
+        
+    }
+
+    @Override
+    public int getId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         
 }

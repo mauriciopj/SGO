@@ -27,7 +27,7 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> 
 
     public DAOGenerico() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");  
-        conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/sgo","root","123");
+        conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/sgo","mauriciopj","123");
     }
 
     protected abstract String getConsultaInsert();
@@ -59,10 +59,16 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> 
             
             setParametros(sql, obj);
 
-            if (sql.executeUpdate() > 0)
-                return true;
-            else 
+            if (sql.executeUpdate() <= 0)
                 return false;
+            
+            List<T> busca = Buscar(obj);
+            
+            T maiorid = busca.get(0);
+            
+            obj.setId(maiorid.getId());
+            
+            return true;
             
         } catch(Exception ex) {
              return false;

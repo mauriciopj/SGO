@@ -10,6 +10,9 @@ package br.edu.ifnmg.psc.sgo.aplicacao;
  * @author mauricio
  */
 public class PessoaJuridica extends Pessoa {
+    
+    int id;
+    
     protected String cnpj;
 
     public PessoaJuridica() {
@@ -40,4 +43,16 @@ public class PessoaJuridica extends Pessoa {
         Integer digito2 = calcularDigito(cnpj.substring(0,12) + digito1, pesoCNPJ);
         return cnpj.equals(cnpj.substring(0,12) + digito1.toString() + digito2.toString());
     }        
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+   
 }
