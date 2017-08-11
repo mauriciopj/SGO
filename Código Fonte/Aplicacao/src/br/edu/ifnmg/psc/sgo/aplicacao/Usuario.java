@@ -28,8 +28,6 @@ public class Usuario implements Entidade {
         this.senha = senha;
     }
     
-    
-
     @Override
     public int getId() {
         return id;

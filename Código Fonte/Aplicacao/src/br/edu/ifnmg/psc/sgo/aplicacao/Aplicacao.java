@@ -21,10 +21,8 @@ public class Aplicacao {
         Aplicacao.usuario = usuario;
     }
     
-    
     public static boolean isLogged() {
-        return true;
-        //return usuario != null;
-    }
-    
+        //return true;
+        return usuario != null;
+    }   
 }

@@ -5,6 +5,21 @@
  */
 package br.edu.ifnmg.psc.sgo.apresentacao;
 import br.edu.ifnmg.psc.sgo.aplicacao.Aplicacao;
+import br.edu.ifnmg.psc.sgo.aplicacao.FuncionarioRepositorio;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 /**
@@ -23,23 +38,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
-      /*  if(!Aplicacao.isLogged()){
+        if(!Aplicacao.isLogged()){
             if(telalogin == null)
                 telalogin = new TelaLogin();
           
             telalogin.setVisible(true);
             this.setVisible(false);
             return;                 
-        }*/ 
+        } 
       
         // Para voltar a tela de login novamente,
         // basta ir na classe Aplicacao e retornar 
         //a linha comentada e descomentar aqui acima!
       
         initComponents();
-        this.setVisible(true);
-        telalogin.setVisible(false);
-           
+        //this.setVisible(true);
+        //telalogin.setVisible(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,7 +76,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         mnuTrabalho = new javax.swing.JMenuItem();
         mnuEmpresa = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mnuUsuario = new javax.swing.JMenuItem();
+        mnuRelatorios = new javax.swing.JMenu();
+        mnuListFuncionarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SGO - Sistema de Gestão de Obras");
@@ -155,15 +171,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mnuEmpresa.add(jMenuItem2);
 
-        jMenuItem1.setText("Usuário");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mnuUsuario.setText("Usuário");
+        mnuUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mnuUsuarioActionPerformed(evt);
             }
         });
-        mnuEmpresa.add(jMenuItem1);
+        mnuEmpresa.add(mnuUsuario);
 
         jMenuBar1.add(mnuEmpresa);
+
+        mnuRelatorios.setForeground(new java.awt.Color(1, 1, 1));
+        mnuRelatorios.setText("Relatórios");
+        mnuRelatorios.setFont(new java.awt.Font("Ubuntu", 0, 13)); // NOI18N
+
+        mnuListFuncionarios.setText("Funcionários");
+        mnuListFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuListFuncionariosActionPerformed(evt);
+            }
+        });
+        mnuRelatorios.add(mnuListFuncionarios);
+
+        jMenuBar1.add(mnuRelatorios);
 
         setJMenuBar(jMenuBar1);
 
@@ -235,19 +265,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_mnuTrabalhoActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-     
-     
-        
+    private void mnuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuUsuarioActionPerformed
         UsuarioBuscar tela = new  UsuarioBuscar(Repositorios.getUsuarioRepositorio(), UsuarioEditar.class);        
         planoFundo.add(tela);
         tela.setVisible(true);   
-        
-     
+    }//GEN-LAST:event_mnuUsuarioActionPerformed
 
-       
-       
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void mnuListFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListFuncionariosActionPerformed
+        FuncionarioRepositorio dao = Repositorios.getFuncionarioRepositorio();        
+        Map parametros = new HashMap();       
+        parametros.put("usuario", Aplicacao.getUsuario().getNome());        
+        exibeRelatorioJasper("Funcionarios.jasper", dao.Buscar(null), parametros);
+    }//GEN-LAST:event_mnuListFuncionariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,22 +315,49 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
     }
     
-    
-    
+    private void exibeRelatorioJasper(String caminho_relatorio, List dados, Map parametros) {
+        try {
+            // Parâmetros
+            if(parametros == null)
+                parametros = new HashMap();
+
+            // Pega o caminho do arquivo do relatório
+            URL arquivo = getClass().getResource(caminho_relatorio);
+            
+            // Carrega o relatório na memória
+            JasperReport relatorio = (JasperReport) JRLoader.loadObject(arquivo);
+            
+            // Data Source - Fonte de Dados do Relatório
+            JRDataSource fontededados = new JRBeanCollectionDataSource(dados, true);
+            
+            // Preenche o relatório com os dados fornecidos pelo Data Source
+            JasperPrint jasperPrint = JasperFillManager.fillReport(relatorio, parametros, fontededados);
+            
+            // Visualiza o relatório, isto é, abre uma janela que mostra o relatório
+            JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
+            
+            jrviewer.setVisible(true);
+        
+        } catch (JRException ex) {
+            Logger.getLogger(JasperReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem mnuCliente;
     private javax.swing.JMenu mnuEmpresa;
     private javax.swing.JMenu mnuForm;
     private javax.swing.JMenuItem mnuForn;
     private javax.swing.JMenuItem mnuFunc;
+    private javax.swing.JMenuItem mnuListFuncionarios;
     private javax.swing.JMenuItem mnuMaterial;
     private javax.swing.JMenuItem mnuObraEServico;
     private javax.swing.JMenuItem mnuPedidos;
+    private javax.swing.JMenu mnuRelatorios;
     private javax.swing.JMenuItem mnuTrabalho;
+    private javax.swing.JMenuItem mnuUsuario;
     private javax.swing.JLabel planoFundo;
     // End of variables declaration//GEN-END:variables
 
