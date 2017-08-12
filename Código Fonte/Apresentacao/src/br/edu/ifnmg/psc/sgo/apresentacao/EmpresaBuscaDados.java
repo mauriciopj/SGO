@@ -160,7 +160,7 @@ public class EmpresaBuscaDados extends TelaBusca<Empresa> {
             .addGroup(jLayeredPane2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtNome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCnpj)
                     .addComponent(lblFone)
@@ -200,7 +200,7 @@ public class EmpresaBuscaDados extends TelaBusca<Empresa> {
                 .addContainerGap())
         );
 
-        setBounds(340, 100, 607, 419);
+        setBounds(340, 100, 607, 439);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed

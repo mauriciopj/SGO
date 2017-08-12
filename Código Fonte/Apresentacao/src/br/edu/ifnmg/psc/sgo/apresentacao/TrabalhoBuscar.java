@@ -216,10 +216,10 @@ public class TrabalhoBuscar extends TelaBusca<Trabalho> {
                     .addComponent(btnEditar)
                     .addComponent(btnNovo)
                     .addComponent(btnBuscar))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        setBounds(260, 55, 816, 462);
+        setBounds(260, 55, 816, 482);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed

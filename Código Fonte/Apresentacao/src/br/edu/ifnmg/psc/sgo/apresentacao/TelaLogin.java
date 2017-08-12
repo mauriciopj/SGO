@@ -47,17 +47,22 @@ public class TelaLogin extends javax.swing.JFrame {
         setTitle("Autenticação");
         getContentPane().setLayout(null);
 
-        btLogin.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
+        btLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/button_turn_on_15006.png"))); // NOI18N
         btLogin.setText("Acessar");
         btLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLoginActionPerformed(evt);
             }
         });
+        btLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btLoginKeyPressed(evt);
+            }
+        });
         getContentPane().add(btLogin);
-        btLogin.setBounds(640, 380, 100, 30);
+        btLogin.setBounds(670, 350, 120, 40);
 
-        btSair.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/button_log_off_14996.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,41 +70,51 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btSair);
-        btSair.setBounds(520, 380, 110, 30);
+        btSair.setBounds(810, 350, 110, 40);
 
-        textUsuario.setBackground(new java.awt.Color(254, 254, 254));
         textUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        textUsuario.setForeground(new java.awt.Color(132, 132, 132));
-        textUsuario.setText("Usuário");
-        textUsuario.setSelectionStart(-1);
+        textUsuario.setText("\n  Usuário");
         textUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textUsuarioActionPerformed(evt);
             }
         });
+        textUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textUsuarioKeyPressed(evt);
+            }
+        });
         getContentPane().add(textUsuario);
-        textUsuario.setBounds(410, 230, 450, 40);
+        textUsuario.setBounds(470, 200, 450, 30);
 
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 56)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 56)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("<html><center>SGO</center>Login</html>");
+        jLabel2.setText("Login");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(420, 70, 430, 140);
+        jLabel2.setBounds(640, 120, 150, 60);
 
-        txtSenha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtSenha);
-        txtSenha.setBounds(410, 300, 450, 40);
+        txtSenha.setBounds(470, 270, 450, 30);
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iStock_000031663298_Large_1.jpg"))); // NOI18N
         jLabel1.setText("Tela Login");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, -60, 1450, 870);
+        jLabel1.setBounds(0, -60, 1390, 770);
         jLabel1.getAccessibleContext().setAccessibleName("Tela login");
 
-        setSize(new java.awt.Dimension(1406, 837));
+        setSize(new java.awt.Dimension(1406, 743));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

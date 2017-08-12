@@ -142,10 +142,10 @@ public class PedidoBuscar extends TelaBusca<Pedido> {
                     .addComponent(btnNovo)
                     .addComponent(btnBuscar)
                     .addComponent(btnEditar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        setBounds(260, 55, 756, 380);
+        setBounds(260, 55, 756, 401);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
