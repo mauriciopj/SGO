@@ -7,7 +7,6 @@ package br.edu.ifnmg.psc.sgo.apresentacao;
 
 import br.edu.ifnmg.psc.sgo.aplicacao.Aplicacao;
 import br.edu.ifnmg.psc.sgo.aplicacao.Usuario;
-
 import java.util.List;
 import javax.swing.JOptionPane;
 import br.edu.ifnmg.psc.sgo.aplicacao.UsuarioRepositorio;
@@ -54,11 +53,6 @@ public class TelaLogin extends javax.swing.JFrame {
                 btLoginActionPerformed(evt);
             }
         });
-        btLogin.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btLoginKeyPressed(evt);
-            }
-        });
         getContentPane().add(btLogin);
         btLogin.setBounds(670, 350, 120, 40);
 
@@ -74,16 +68,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         textUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textUsuario.setText("\n  Usuário");
-        textUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textUsuarioActionPerformed(evt);
-            }
-        });
-        textUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                textUsuarioKeyPressed(evt);
-            }
-        });
         getContentPane().add(textUsuario);
         textUsuario.setBounds(470, 200, 450, 30);
 
@@ -92,17 +76,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel2.setText("Login");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(640, 120, 150, 60);
-
-        txtSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSenhaActionPerformed(evt);
-            }
-        });
-        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtSenhaKeyPressed(evt);
-            }
-        });
         getContentPane().add(txtSenha);
         txtSenha.setBounds(470, 270, 450, 30);
 
@@ -117,11 +90,6 @@ public class TelaLogin extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1406, 743));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void textUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUsuarioActionPerformed
-
-
-    }//GEN-LAST:event_textUsuarioActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         // botao tela login sair

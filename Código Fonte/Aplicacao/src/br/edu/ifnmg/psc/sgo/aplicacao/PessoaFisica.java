@@ -41,18 +41,4 @@ public class PessoaFisica extends Pessoa {
         return cpf.equals(cpf.substring(0,9) + digito1.toString() + digito2.toString());
    }
 
-<<<<<<< HEAD
-    @Override
-    public void setId(int id) {
-        
-    }
-
-    @Override
-    public int getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-        
-=======
-   
->>>>>>> 0237a51305c0293bd44c2711a478a6e3bbbdda64
 }

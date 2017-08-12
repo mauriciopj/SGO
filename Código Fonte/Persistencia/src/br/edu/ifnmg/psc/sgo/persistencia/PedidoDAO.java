@@ -6,11 +6,8 @@
 package br.edu.ifnmg.psc.sgo.persistencia;
 
 
-
-
 import br.edu.ifnmg.psc.sgo.aplicacao.Pedido;
-import br.edu.ifnmg.psc.sgo.aplicacao.PedidoItem;
-
+import br.edu.ifnmg.psc.sgo.aplicacao.ItemPedido;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +20,8 @@ import br.edu.ifnmg.psc.sgo.aplicacao.PedidoRepositorio;
  */
 public class PedidoDAO extends DAOGenerico<Pedido> implements PedidoRepositorio {
     
-    ItemPedidoDAO itens = new ItemPedidoDAO();
+    private ItemPedidoDAO itens = new ItemPedidoDAO();
+    private Pedido pedido = null;
     
     public PedidoDAO() throws ClassNotFoundException, SQLException {
         super();  
@@ -91,7 +89,7 @@ public class PedidoDAO extends DAOGenerico<Pedido> implements PedidoRepositorio 
             obj.setQuantidade( resultado.getInt("qtdItens") );
             obj.setFornecedor(fornecedores.Abrir( resultado.getInt("fornecedor") ) );
             
-            PedidoItem filtro = new PedidoItem();
+            ItemPedido filtro = new ItemPedido();
             filtro.setPedido(obj);
             
             obj.setItens( itens.Buscar(filtro) );
@@ -107,13 +105,14 @@ public class PedidoDAO extends DAOGenerico<Pedido> implements PedidoRepositorio 
     @Override
     public boolean Salvar(Pedido obj) {
         if(super.Salvar(obj)){
-            for(PedidoItem p : obj.getItens())
+            obj.setId(UltimoDaLista(obj).getId());
+            pedido = obj;
+            for(ItemPedido p : obj.getItens()){
+                p.setPedido(pedido);
                 itens.Salvar(p);
-            
+            }
             return true;
         }
-        
         return false;
-    }
-    
+    }     
 }

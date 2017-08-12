@@ -11,16 +11,16 @@ import java.util.Objects;
  *
  * @author aluno
  */
-public class PedidoItem implements Entidade {
+public class ItemPedido implements Entidade {
     private int id;
     private MaterialConstrucao material;
     private int quantidade;
     private Pedido pedido;
 
-    public PedidoItem() {
+    public ItemPedido() {
     }
 
-    public PedidoItem(int id, MaterialConstrucao material, int quantidade, Pedido pedido) {
+    public ItemPedido(int id, MaterialConstrucao material, int quantidade, Pedido pedido) {
         this.id = id;
         this.material = material;
         this.quantidade = quantidade;
@@ -61,9 +61,7 @@ public class PedidoItem implements Entidade {
         return pedido;
     }
 
-    public void setPedido(Pedido pedido) throws ViolacaoRegraNegocioException {
-        if(pedido == null)
-            throw new ViolacaoRegraNegocioException("O pedido não foi selecionado!");
+    public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
 
@@ -88,7 +86,7 @@ public class PedidoItem implements Entidade {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final PedidoItem other = (PedidoItem) obj;
+        final ItemPedido other = (ItemPedido) obj;
         if (this.id != other.id) {
             return false;
         }

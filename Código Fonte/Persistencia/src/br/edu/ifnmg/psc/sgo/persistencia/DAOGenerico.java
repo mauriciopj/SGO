@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level; 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -23,15 +23,11 @@ import java.util.logging.Logger;
  */
 public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> {   
     private Connection conexao;   
-    private String where = "";
+    private String where = "";    
 
     public DAOGenerico() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");  
-<<<<<<< HEAD
-        conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/sgo","mauriciopj","123");
-=======
-        conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/sgo","root","");
->>>>>>> 0237a51305c0293bd44c2711a478a6e3bbbdda64
+        conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/sgo","root","123");
     }
 
     protected abstract String getConsultaInsert();
@@ -43,8 +39,7 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> 
     
     protected abstract void setParametros(PreparedStatement sql, T obj);
     protected abstract T setDados(ResultSet resultado);
-    
-    
+        
     @Override
     public boolean Salvar(T obj) {
         try {
@@ -59,26 +54,20 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> 
             } else {
                 // Criar a consulta SQL de inserção
                 sql = conexao.prepareStatement(getConsultaUpdate());
-            }    
+            } 
             
-            setParametros(sql, obj);
+            setParametros(sql, obj);                        
 
             if (sql.executeUpdate() <= 0)
                 return false;
-            
-            List<T> busca = Buscar(obj);
-            
-            T maiorid = busca.get(0);
-            
-            obj.setId(maiorid.getId());
-            
+                                                                                     
             return true;
             
         } catch(Exception ex) {
              return false;
         }
     }
-
+    
     @Override
     public boolean Apagar(T obj) {
         try {
@@ -166,6 +155,13 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> 
             Logger.getLogger(DAOGenerico.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
+    }        
     
+    public T UltimoDaLista(T obj) {
+        List<T> busca = Buscar(obj);
+        T maiorid = busca.get(busca.size() -1);
+        if (maiorid.getId()<= 1)
+            maiorid.setId(1);
+        return maiorid;
+    }
 }

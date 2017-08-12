@@ -10,9 +10,21 @@ package br.edu.ifnmg.psc.sgo.aplicacao;
  * @author mauricio
  */
 public abstract class Pessoa implements Entidade {
+    protected int id;
     protected String nome, fone, email, bairro, numero, rua;      
 
     public Pessoa() {
+        
+    }
+    
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {

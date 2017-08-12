@@ -13,7 +13,6 @@ import br.edu.ifnmg.psc.sgo.aplicacao.ObrasEServicosRepositorio;
 import br.edu.ifnmg.psc.sgo.persistencia.ObrasEServicosDAO;
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucaoRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.PedidoRepositorio;
-import br.edu.ifnmg.psc.sgo.aplicacao.PedidoItemRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.TrabalhoRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.UsuarioRepositorio;
 import br.edu.ifnmg.psc.sgo.persistencia.ClienteDAO;
@@ -28,6 +27,7 @@ import br.edu.ifnmg.psc.sgo.persistencia.TrabalhoDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import br.edu.ifnmg.psc.sgo.aplicacao.ItemPedidoRepositorio;
 
 /**
  *
@@ -43,7 +43,7 @@ public class Repositorios {
     static ObrasEServicosRepositorio obrasEServicosDAO = null;
     static PedidoRepositorio pedidosDAO = null;
     static TrabalhoRepositorio trabalhoDAO = null;
-    static PedidoItemRepositorio itemPedidoDAO = null;
+    static ItemPedidoRepositorio itemPedidoDAO = null;
     static UsuarioRepositorio usuarioDAO = null;
     
     public static EmpresaRepositorio getEmpresaRepositorio(){
@@ -144,7 +144,7 @@ public class Repositorios {
         return trabalhoDAO;
     }
     
-    public static PedidoItemRepositorio getPedidoItemRepositorio(){
+    public static ItemPedidoRepositorio getPedidoItemRepositorio(){
         if(itemPedidoDAO == null)
             try {
                 itemPedidoDAO = new ItemPedidoDAO();

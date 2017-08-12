@@ -16,7 +16,7 @@ public class Pedido implements Entidade {
     private int id, quantidade = 0;
     private String data;
     private Fornecedor fornecedor;
-    private List<PedidoItem> itens = null;
+    private List<ItemPedido> itens = null;
 
     public Pedido() {
         this.itens = new ArrayList<>();
@@ -67,17 +67,17 @@ public class Pedido implements Entidade {
         this.fornecedor = fornecedor;
     }
 
-    public List<PedidoItem> getItens() {
+    public List<ItemPedido> getItens() {
         return itens;
     }
 
-    public void setItens(List<PedidoItem> itens) throws ViolacaoRegraNegocioException {
+    public void setItens(List<ItemPedido> itens) throws ViolacaoRegraNegocioException {
         if(itens == null)
             throw new ViolacaoRegraNegocioException("Você deve selecionar os itens para o pedido!");
         this.itens = itens;
     }
     
-    public void addItem(PedidoItem item) throws ViolacaoRegraNegocioException {
+    public void addItem(ItemPedido item) throws ViolacaoRegraNegocioException {
         item.setPedido(this);
         if(item == null)
             throw new ViolacaoRegraNegocioException("Falha ao adicionar o item do pedido!");

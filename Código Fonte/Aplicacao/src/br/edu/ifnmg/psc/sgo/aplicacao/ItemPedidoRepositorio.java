@@ -9,6 +9,6 @@ package br.edu.ifnmg.psc.sgo.aplicacao;
  *
  * @author aluno
  */
-public interface PedidoItemRepositorio extends Repositorio<PedidoItem> {
+public interface ItemPedidoRepositorio extends Repositorio<ItemPedido> {
     
 }

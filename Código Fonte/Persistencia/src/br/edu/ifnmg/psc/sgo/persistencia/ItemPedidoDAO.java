@@ -5,19 +5,19 @@
  */
 package br.edu.ifnmg.psc.sgo.persistencia;
 
-import br.edu.ifnmg.psc.sgo.aplicacao.PedidoItem;
-import br.edu.ifnmg.psc.sgo.aplicacao.PedidoItemRepositorio;
+import br.edu.ifnmg.psc.sgo.aplicacao.ItemPedido;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import br.edu.ifnmg.psc.sgo.aplicacao.ItemPedidoRepositorio;
 
 /**
  *
  * @author aluno
  */
-public class ItemPedidoDAO extends DAOGenerico<PedidoItem> implements PedidoItemRepositorio{
+public class ItemPedidoDAO extends DAOGenerico<ItemPedido> implements ItemPedidoRepositorio{
 
     public ItemPedidoDAO() throws ClassNotFoundException, SQLException {
         super();
@@ -51,13 +51,13 @@ public class ItemPedidoDAO extends DAOGenerico<PedidoItem> implements PedidoItem
     }
 
     @Override
-    protected void setBuscaFiltros(PedidoItem filtro) {
+    protected void setBuscaFiltros(ItemPedido filtro) {
         if(filtro.getId() > 0)
             this.adicionarFiltro("id", filtro.getId());        
     }
 
     @Override
-    protected void setParametros(PreparedStatement sql, PedidoItem obj) {
+    protected void setParametros(PreparedStatement sql, ItemPedido obj) {
         try {
             sql.setInt(1, obj.getMaterial().getId());
             sql.setInt(2, obj.getQuantidade());
@@ -75,9 +75,9 @@ public class ItemPedidoDAO extends DAOGenerico<PedidoItem> implements PedidoItem
     MaterialConstrucaoDAO materiais;
     
     @Override
-    protected PedidoItem setDados(ResultSet resultado) {
+    protected ItemPedido setDados(ResultSet resultado) {
         try {
-            PedidoItem obj = new PedidoItem();
+            ItemPedido obj = new ItemPedido();
             obj.setId( resultado.getInt("id") );
             obj.setMaterial( materiais.Abrir( resultado.getInt("material") ) );
             obj.setQuantidade( resultado.getInt("quantidade") );

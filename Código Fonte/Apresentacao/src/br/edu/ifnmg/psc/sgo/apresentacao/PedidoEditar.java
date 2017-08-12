@@ -10,7 +10,7 @@ import br.edu.ifnmg.psc.sgo.aplicacao.FornecedorRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucao;
 import br.edu.ifnmg.psc.sgo.aplicacao.MaterialConstrucaoRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.Pedido;
-import br.edu.ifnmg.psc.sgo.aplicacao.PedidoItem;
+import br.edu.ifnmg.psc.sgo.aplicacao.ItemPedido;
 import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -248,7 +248,7 @@ public class PedidoEditar extends  TelaEdicao<Pedido> {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
-        PedidoItem item = new PedidoItem();
+        ItemPedido item = new ItemPedido();
         try{
             item.setQuantidade( (int) txtQuantidade.getValue() );
             item.setMaterial((MaterialConstrucao) cbxMaterial.getSelectedItem());
@@ -301,14 +301,14 @@ public class PedidoEditar extends  TelaEdicao<Pedido> {
         // Verificar se a lista está vazia;
     }
     
-    public void preencheTabela(List<PedidoItem> listagem) {
+    public void preencheTabela(List<ItemPedido> listagem) {
         DefaultTableModel modelo = new DefaultTableModel();
         
         modelo.addColumn("ID");
         modelo.addColumn("Material");
         modelo.addColumn("Quantidade");
 
-        for(PedidoItem f : listagem){
+        for(ItemPedido f : listagem){
             Vector linha = new Vector();
             linha.add(f.getMaterial().getId()); 
             linha.add(f.getMaterial().getNome());
