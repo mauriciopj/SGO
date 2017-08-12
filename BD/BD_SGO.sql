@@ -34,6 +34,9 @@ create table funcionarios(
     rua varchar(150) not null
 );
 
+insert into funcionarios(idFunc,cpf,nome,fone,cargo,email,bairro,numero,rua,salario) 
+values (1,'11111111111','José','11111111111',3,'jose@gmail.com','Alto','25','Dez',1222);
+
 create table obrasEServicos(
 	idObra int auto_increment not null primary key,
 	descricao varchar(150) not null,
@@ -44,16 +47,6 @@ create table obrasEServicos(
     cidade int not null,
     cliente int,
 	foreign key(cliente) references clientes(idCli)
-);
-
-create table trabalhos(
-	idTrab int auto_increment not null primary key,
-	dataInicio date not null,
-	dataTermino date not null,
-	andamento int not null,
-	ultimaModificacao date,
-	obraEServico int,
-	foreign key(obraEServico) references obrasEServicos(idObra)
 );
 
 create table fornecedores(
@@ -99,7 +92,7 @@ create table usuario(
 );
 
 insert into usuario(nome, login, senha) 
-values('Mauricio','12173367617','123');	
+values('Administrador','admin','admin	');	
 
 create table pedidos(
 	id int auto_increment not null primary key,
@@ -118,12 +111,21 @@ create table itemPedido(
     foreign key(pedido) references pedidos(id)
 );
 
-create table listafuncionarios (
-	idLF int auto_increment not null primary key,
+create table trabalhos(
+	id int auto_increment not null primary key,
+	ultimaModificacao varchar(17) not null,
+	dataInicio varchar(17) not null,
+	dataTermino varchar(17) not null,		
+	andamento int not null,
+	obraEServico int,
+	foreign key(obraEServico) references obrasEServicos(idObra)
+);
+
+create table trabalhoFuncionario (
+	id int auto_increment not null primary key,
     funcionario int,
     trabalho int,
     foreign key(funcionario) references funcionarios(idFunc), 
     foreign key(trabalho) references trabalhos(idTrab)
 );
 
--- insert into funcionarios(idFunc,cpf,nome,fone,cargo,email,bairro,numero,rua,salario) values (1,'11111111111','Januária','38991586654',1,'gfdg','gfdg','dfg','fdsfsd',1222);
