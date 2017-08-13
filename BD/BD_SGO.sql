@@ -1,4 +1,4 @@
-﻿-- drop database sgo;
+-- drop database sgo;
 
 create database sgo;
 
@@ -18,8 +18,8 @@ create table clientes(
     rua varchar(150) not null
 ); 
 
-insert into clientes() 
-values('1','Maurício','11111111111',null,'11111111111','jose@hgfg','dsadas','25','fdsfdsa');
+insert into clientes(nome,cpf,cnpj,fone,email,bairro,numero,rua) 
+values('Maurício','11111111111',null,'11111111111','jose@hgfg','dsadas','25','fdsfdsa');
 
 create table funcionarios(
 	idFunc int auto_increment not null primary key,
@@ -34,20 +34,27 @@ create table funcionarios(
     rua varchar(150) not null
 );
 
-insert into funcionarios(idFunc,cpf,nome,fone,cargo,email,bairro,numero,rua,salario) 
-values (1,'11111111111','José','11111111111',3,'jose@gmail.com','Alto','25','Dez',1222);
+insert into funcionarios(cpf,nome,fone,cargo,email,bairro,numero,rua,salario) 
+values ('11111111111','José Doido','11111111111',3,'jose@gmail.com','Alto','25','Dez',1222);
+insert into funcionarios(cpf,nome,fone,cargo,email,bairro,numero,rua,salario) 
+values ('11111111111','José Doido2','11111111111',3,'jose@gmail.com','Alto','25','Dez',1222);
+insert into funcionarios(cpf,nome,fone,cargo,email,bairro,numero,rua,salario) 
+values ('11111111111','José Doido4','11111111111',3,'jose@gmail.com','Alto','25','Dez',1222);
 
 create table obrasEServicos(
 	idObra int auto_increment not null primary key,
 	descricao varchar(150) not null,
     bairro varchar(150) not null,
     numero varchar(8) not null, 
-    complemento varchar(150) not null,
+    complemento varchar(150),
     rua varchar(150) not null,
     cidade int not null,
     cliente int,
 	foreign key(cliente) references clientes(idCli)
 );
+
+insert into obrasEServicos(descricao,bairro,numero,complemento,rua,cidade,cliente) 
+values('Asfalto','Alto','5','---','Dois',2,1);	
 
 create table fornecedores(
 	idForn int auto_increment not null primary key,
@@ -59,8 +66,8 @@ create table fornecedores(
     rua varchar(150) not null
 );
 
-insert into fornecedores() 
-values('1','Construservs','11111111111','jose@hgfg','dsadas','25','fdsfdsa');
+insert into fornecedores(nome,fone,email,bairro,numero,rua) 
+values('Construservs','11111111111','jose@hgfg','dsadas','25','fdsfdsa');
 
 create table materiais(
 	idMate int auto_increment not null primary key,
@@ -70,8 +77,8 @@ create table materiais(
     descricao varchar(150) not null
 );
 
-insert into materiais(idMate, nome, qtd, valor, descricao) 
-values('1','Cimento',2000,'24','Saco');	
+insert into materiais(nome, qtd, valor, descricao) 
+values('Cimento',2000,'24','Saco');	
 
 create table empresa(
 	idEmpr int auto_increment not null primary key,
@@ -113,9 +120,9 @@ create table itemPedido(
 
 create table trabalhos(
 	id int auto_increment not null primary key,
-	ultimaModificacao varchar(17) not null,
-	dataInicio varchar(17) not null,
-	dataTermino varchar(17) not null,		
+	ultimaModificacao date,
+	dataInicio date,
+	dataTermino date,		
 	andamento int not null,
 	obraEServico int,
 	foreign key(obraEServico) references obrasEServicos(idObra)
@@ -126,6 +133,9 @@ create table trabalhoFuncionario (
     funcionario int,
     trabalho int,
     foreign key(funcionario) references funcionarios(idFunc), 
-    foreign key(trabalho) references trabalhos(idTrab)
+    foreign key(trabalho) references trabalhos(id)
 );
+
+insert into trabalhos(dataInicio, dataTermino, andamento, ultimaModificacao, obraEServico) 
+values('12/08/2017 00:04:41','12/08/2017 00:04:41',1,'12/08/2017 00:04:41',1);
 
