@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Funcionarios" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="39920568-300c-41c6-b54a-7b9b2a8371df">
+	<property name="ireport.zoom" value="1.3310000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="USUARIO" class="java.lang.String"/>
+	<field name="idFunc" class="java.lang.String"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="cpf" class="java.lang.String"/>
+	<field name="cargo" class="java.lang.String"/>
+	<field name="fone" class="java.lang.String"/>
+	<field name="salario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="11" width="555" height="37" uuid="5203f015-e38e-43a6-a958-ee44c1d7d6c4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema de Gestão de Obras - SGO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="673e735e-1648-47d4-998f-eba0200259b2"/>
+			</line>
+			<line>
+				<reportElement x="0" y="34" width="555" height="1" uuid="6f4e59d6-d705-4be8-afff-02e7c116227d"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="34" uuid="d1239441-7e6b-41bd-a351-4a09ec17514a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15"/>
+				</textElement>
+				<text><![CDATA[Funcionários]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="17" height="20" uuid="35a46236-ecbb-4346-a98e-e3afa87462ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="0" width="88" height="20" uuid="da0281a2-9294-4d89-a29e-af681f2460cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="0" width="182" height="20" uuid="c13b900d-37fb-4268-bf55-9331e8a1d317"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="0" width="113" height="20" uuid="1484fbbe-d606-43ae-8d81-11082799711e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cargo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="401" y="0" width="83" height="20" uuid="a2ec7f70-d55a-4147-ad7a-bf342cb329e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="484" y="0" width="71" height="20" uuid="7e6f936f-f1ca-45a4-bb45-0edb22f5e026"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salário]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="17" height="20" uuid="dedd83a7-e629-4073-a657-3370ce3def67"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{idFunc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="17" y="0" width="183" height="20" uuid="cf8ad6e7-cfe8-4c32-a229-66c4b0c5d33f"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="87" height="20" uuid="267c2267-8491-47ca-80cb-7e88e947fd8b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="0" width="113" height="20" uuid="892d4028-6bab-4c22-a65e-0ebce45dd244"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cargo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="0" width="83" height="20" uuid="c707fdc5-53b7-4c5a-a14e-2d1e33a6ce26"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{fone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="484" y="0" width="71" height="20" uuid="dcfce431-5cf0-49ab-a9ba-6728a86abf80"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{salario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="31" uuid="1fc72582-c055-459b-bfd5-14558c4882f9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Funcionários cadastrados no sistema]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="0" width="70" height="16" uuid="6da7e897-1c82-4ee7-b760-a5d058eefa3d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Responsável:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="220" y="0" width="230" height="16" uuid="04db074a-22c1-46b9-8b14-24de7f4a4168"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{USUARIO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
