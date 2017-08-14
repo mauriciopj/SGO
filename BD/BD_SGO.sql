@@ -99,7 +99,7 @@ create table usuario(
 );
 
 insert into usuario(nome, login, senha) 
-values('Administrador','admin','admin	');	
+values('Administrador','admin','admin');	
 
 create table pedidos(
 	id int auto_increment not null primary key,
@@ -120,9 +120,9 @@ create table itemPedido(
 
 create table trabalhos(
 	id int auto_increment not null primary key,
-	ultimaModificacao date,
-	dataInicio date,
-	dataTermino date,		
+	ultimaModificacao varchar(50),
+	dataInicio varchar(50),
+	dataTermino varchar(50),		
 	andamento int not null,
 	obraEServico int,
 	foreign key(obraEServico) references obrasEServicos(idObra)
@@ -135,7 +135,3 @@ create table trabalhoFuncionario (
     foreign key(funcionario) references funcionarios(idFunc), 
     foreign key(trabalho) references trabalhos(id)
 );
-
-insert into trabalhos(dataInicio, dataTermino, andamento, ultimaModificacao, obraEServico) 
-values('12/08/2017 00:04:41','12/08/2017 00:04:41',1,'12/08/2017 00:04:41',1);
-
