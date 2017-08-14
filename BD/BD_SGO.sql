@@ -135,3 +135,5 @@ create table trabalhoFuncionario (
     foreign key(funcionario) references funcionarios(idFunc), 
     foreign key(trabalho) references trabalhos(id)
 );
+
+-- Teste commit
