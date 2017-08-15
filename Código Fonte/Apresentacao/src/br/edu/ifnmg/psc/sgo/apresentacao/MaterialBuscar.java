@@ -46,6 +46,7 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
         btnEditar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/documentediting_editdocuments_text_documentedi_2820.png"))); // NOI18N
         btnEditar1.setText("Editar");
@@ -104,6 +105,14 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
             }
         });
 
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/1486504830-delete-dustbin-empty-recycle-recycling-remove-trash_81361.png"))); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,6 +121,8 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -141,7 +152,8 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(btnEditar)
-                    .addComponent(btnBuscar))
+                    .addComponent(btnBuscar)
+                    .addComponent(btnExcluir))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -153,6 +165,7 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+       filtro = new MaterialConstrucao();
         novo();
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -166,11 +179,21 @@ public class MaterialBuscar extends  TelaBusca<MaterialConstrucao> {
         editar();
     }//GEN-LAST:event_btnEditarActionPerformed
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        filtro = repositorio.Abrir(retornaIdSelecionado());
+        repositorio.Buscar(filtro);
+        apagar();
+        filtro = null;
+        buscar();
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEditar1;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -204,6 +204,7 @@ public class EmpresaBuscaDados extends TelaBusca<Empresa> {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        
         editar();
     }//GEN-LAST:event_btnEditarActionPerformed
 
