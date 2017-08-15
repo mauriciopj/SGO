@@ -51,6 +51,7 @@ public class PedidoBuscar extends TelaBusca<Pedido> {
         btnBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cbxFornecedores = new javax.swing.JComboBox<>();
+        btnExcluir = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -99,6 +100,14 @@ public class PedidoBuscar extends TelaBusca<Pedido> {
 
         cbxFornecedores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/1486504830-delete-dustbin-empty-recycle-recycling-remove-trash_81361.png"))); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,6 +116,8 @@ public class PedidoBuscar extends TelaBusca<Pedido> {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -141,7 +152,8 @@ public class PedidoBuscar extends TelaBusca<Pedido> {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(btnBuscar)
-                    .addComponent(btnEditar))
+                    .addComponent(btnEditar)
+                    .addComponent(btnExcluir))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -149,6 +161,7 @@ public class PedidoBuscar extends TelaBusca<Pedido> {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+   filtro = new Pedido();
         novo();
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -160,9 +173,20 @@ public class PedidoBuscar extends TelaBusca<Pedido> {
         buscar();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+
+        filtro = repositorio.Abrir(retornaIdSelecionado());
+        repositorio.Buscar(filtro);
+        apagar();
+        filtro = null;
+        buscar();
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
     private javax.swing.JComboBox<String> cbxFornecedores;
     private javax.swing.JLabel jLabel1;

@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -80,6 +81,29 @@ public abstract class TelaBusca<T extends Entidade> extends javax.swing.JInterna
         tela_edicao.setVisible(true);
         this.setVisible(false);
     }
+    
+     public boolean apagar(){
+        if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente apagar o registro?") == 0 ){
+            if (repositorio.Apagar(filtro)){
+                JOptionPane.showMessageDialog(rootPane, "O registro foi removido com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Falha ao remover o registro!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Operação Cancelada!");
+        }
+        filtro = null;
+        buscar();
+        return true;
+        
+    }
+     
+      public void cancelar(){
+        this.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }
+     
     
     public void preencheCbx(Repositorio repositorio, JComboBox cbx){
         List lista = repositorio.Buscar(null);

@@ -231,7 +231,7 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
                             .addComponent(jLayeredPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(lblNome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,7 +295,7 @@ public class ClienteEditar extends TelaEdicao<Cliente> {
                 .addGap(248, 248, 248))
         );
 
-        setBounds(360, 50, 617, 537);
+        setBounds(360, 50, 641, 537);
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbtnJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnJuridicaActionPerformed
