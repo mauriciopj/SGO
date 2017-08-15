@@ -250,9 +250,7 @@ public class FuncionarioBuscar extends TelaBusca<Funcionario> {
         modelo.addColumn("Telefone");
         modelo.addColumn("Salario");
         modelo.addColumn("Email");
-        modelo.addColumn("Rua");
-        modelo.addColumn("Bairro");
-        modelo.addColumn("Numero");
+        modelo.addColumn("Endereço");
         
         
         for(Funcionario f : listagem){
@@ -264,9 +262,7 @@ public class FuncionarioBuscar extends TelaBusca<Funcionario> {
             linha.add(f.getFone());
             linha.add(f.getSalario());
             linha.add(f.getEmail());
-            linha.add(f.getRua());
-            linha.add(f.getBairro());
-            linha.add(f.getNumero());            
+            linha.add(f.getRua()+", "+f.getBairro()+", "+f.getNumero());            
                         
             modelo.addRow(linha);
         }

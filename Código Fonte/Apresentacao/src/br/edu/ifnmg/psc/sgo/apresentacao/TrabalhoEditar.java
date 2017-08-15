@@ -6,17 +6,27 @@
 package br.edu.ifnmg.psc.sgo.apresentacao;
 
 import br.edu.ifnmg.psc.sgo.aplicacao.Funcionario;
+import br.edu.ifnmg.psc.sgo.aplicacao.FuncionarioRepositorio;
+import br.edu.ifnmg.psc.sgo.aplicacao.ItemPedido;
+import br.edu.ifnmg.psc.sgo.aplicacao.ObrasEServicos;
 import br.edu.ifnmg.psc.sgo.aplicacao.ObrasEServicosRepositorio;
-import br.edu.ifnmg.psc.sgo.aplicacao.Repositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.StatusAndamento;
 import br.edu.ifnmg.psc.sgo.aplicacao.Trabalho;
+import br.edu.ifnmg.psc.sgo.aplicacao.TrabalhoFuncionario;
+import br.edu.ifnmg.psc.sgo.aplicacao.TrabalhoFuncionarioRepositorio;
 import br.edu.ifnmg.psc.sgo.aplicacao.ViolacaoRegraNegocioException;
-import java.util.Arrays;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -24,7 +34,14 @@ import javax.swing.DefaultListModel;
  */
 public class TrabalhoEditar extends TelaEdicao<Trabalho> {
     
+    FuncionarioRepositorio funcionarios = Repositorios.getFuncionarioRepositorio();
     ObrasEServicosRepositorio obrasEServicos = Repositorios.getObrasEServicosRepositorio();
+    TrabalhoFuncionarioRepositorio trabalhos = Repositorios.getTrabalhoFuncionarioRepositorio();
+    List<Funcionario> listagem = null;
+    DefaultListModel model = new DefaultListModel();
+    
+    DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    
     /**
      * Creates new form TrabalhoEditar
      */
@@ -37,7 +54,13 @@ public class TrabalhoEditar extends TelaEdicao<Trabalho> {
         preencheCbx(obrasEServicos, cbxObras);
                 
         ComboBoxModel model = new DefaultComboBoxModel(StatusAndamento.values());               
-        cbxAndamento.setModel(model);                
+        cbxAndamento.setModel(model);
+        
+        txtDataAtual.setText(df.format(new Date()));
+        
+        listagem = funcionarios.Buscar(null);
+        
+        preencheLista(listagem);     
     }
 
     /**
@@ -54,16 +77,17 @@ public class TrabalhoEditar extends TelaEdicao<Trabalho> {
         lblNome = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstFuncionarios = new javax.swing.JList<>();
-        btnIncluir = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         lblDataInicio = new javax.swing.JLabel();
-        txtDataInicio = new javax.swing.JFormattedTextField();
-        txtDataTermino = new javax.swing.JFormattedTextField();
         lblDataTermino = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         cbxAndamento = new javax.swing.JComboBox<>();
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        txtDataAtual = new javax.swing.JTextField();
+        txtDataTermino = new com.toedter.calendar.JDateChooser();
+        txtDataInicio = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Gerenciar Trabalho");
@@ -76,17 +100,7 @@ public class TrabalhoEditar extends TelaEdicao<Trabalho> {
 
         jScrollPane1.setViewportView(lstFuncionarios);
 
-        btnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Plus_36851.png"))); // NOI18N
-        btnIncluir.setText("Incluir");
-        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIncluirActionPerformed(evt);
-            }
-        });
-
         lblDataInicio.setText("Data Inicio: *");
-
-        txtDataInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         lblDataTermino.setText("Data Término: *");
 
@@ -111,82 +125,104 @@ public class TrabalhoEditar extends TelaEdicao<Trabalho> {
             }
         });
 
+        txtDataAtual.setEditable(false);
+
+        jLabel2.setText("Última modificação:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(26, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCancelar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblObra)
-                                .addComponent(lblNome)
-                                .addComponent(jLabel1)
-                                .addComponent(lblDataTermino)
-                                .addComponent(lblDataInicio))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(14, 14, 14)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblObra)
+                            .addComponent(lblNome)
+                            .addComponent(jLabel1)
+                            .addComponent(lblDataTermino)
+                            .addComponent(lblDataInicio))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxObras, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(99, 99, 99)
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(cbxAndamento, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtDataTermino, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btnIncluir))))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cbxObras, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                                            .addComponent(txtDataTermino, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))
+                                        .addGap(153, 153, 153)
+                                        .addComponent(btnCancelar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblObra)
+                    .addComponent(cbxObras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNome)
+                        .addGap(153, 153, 153))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblObra)
-                            .addComponent(cbxObras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSalvar)
+                            .addComponent(btnCancelar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblDataInicio)
+                                    .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDataTermino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblDataTermino))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNome)))
-                    .addComponent(btnIncluir))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDataInicio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDataTermino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDataTermino))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxAndamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnSalvar))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbxAndamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        setBounds(260, 55, 817, 443);
+        setBounds(260, 55, 826, 443);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        int[] indexes = lstFuncionarios.getSelectedIndices();
+        TrabalhoFuncionario selecionado = new TrabalhoFuncionario();
+
+        for (int i : indexes)
+            try {                
+                selecionado.setFuncionario( listagem.get(i) );
+                entidade.addFuncionario(selecionado);                                
+            } catch (ViolacaoRegraNegocioException ex) {
+                Logger.getLogger(TrabalhoEditar.class.getName()).log(Level.SEVERE, null, ex);
+            }       
         salvar();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -194,18 +230,14 @@ public class TrabalhoEditar extends TelaEdicao<Trabalho> {
         cancelar();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
-        int[] indexes = lstFuncionarios.getSelectedIndices();
-    }//GEN-LAST:event_btnIncluirActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbxAndamento;
     private javax.swing.JComboBox<String> cbxObras;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDataInicio;
@@ -213,41 +245,57 @@ public class TrabalhoEditar extends TelaEdicao<Trabalho> {
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblObra;
     private javax.swing.JList<String> lstFuncionarios;
-    private javax.swing.JFormattedTextField txtDataInicio;
-    private javax.swing.JFormattedTextField txtDataTermino;
+    private javax.swing.JTextField txtDataAtual;
+    private com.toedter.calendar.JDateChooser txtDataInicio;
+    private com.toedter.calendar.JDateChooser txtDataTermino;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void carregaCampos() {
-        txtDataInicio.setValue( entidade.getDataInicio());
-        txtDataInicio.setValue( entidade.getDataInicio());
+        cbxObras.setSelectedItem( entidade.getObraEServico() );
+        List<TrabalhoFuncionario> lista = null;   
+        lista = entidade.getFuncionarios();             
+
+        if (lista != null)
+            preencheTabela(lista);
+        txtDataInicio.setDateFormatString(entidade.getDataInicio());
+        txtDataTermino.setDateFormatString( entidade.getDataTermino());
         cbxAndamento.setSelectedItem( entidade.getAndamento() );
+        txtDataAtual.setText( entidade.getUltimaModificacao() );   
     }
 
     @Override
     public void carregaObjeto() throws ViolacaoRegraNegocioException {
-        entidade.setDataInicio( (Date) txtDataInicio.getValue());
-        entidade.setDataInicio( (Date) txtDataInicio.getValue());
+        entidade.setDataInicio((String) df.format(txtDataInicio.getDate()) );
+        entidade.setDataTermino((String) df.format(txtDataTermino.getDate()) );
+        entidade.setUltimaModificacao((String) df.format(new Date()));
         entidade.setAndamento( (StatusAndamento) cbxAndamento.getSelectedItem());
+        entidade.setObraEServico((ObrasEServicos) cbxObras.getSelectedItem());
+        entidade.setFuncionarios( entidade.getFuncionarios());
     }
 
     @Override
     public boolean verificarCamposObrigatorios() {
-        return  txtDataInicio.getValue() != null || 
-                txtDataTermino.getValue() != null ||
-                cbxAndamento.getSelectedItem() != null;
+        return  txtDataInicio.getDate() != null || 
+                txtDataTermino.getDate() != null ||
+                cbxAndamento.getSelectedItem() != null ||
+                lstFuncionarios.getSelectedIndices() != null ||
+                cbxObras.getSelectedItem() != null;
     }
     
-    private void preencheLista(){
-        Repositorio<Funcionario> r = Repositorios.getFuncionarioRepositorio();        
-        List<Funcionario> listagem = r.Buscar(null);
-        
-        DefaultListModel model = new DefaultListModel();
-        List list = Arrays.asList(model.toArray());
-        
+    private void preencheLista(List<Funcionario> listagem){                        
         int i = 0;                
         for (Funcionario f : listagem) {            
             model.add(i,f.getId()+" - "+f.getCpf()+" "+f.getNome()+"    "+f.getCargo());
+            i++;                
+        }
+        lstFuncionarios.setModel(model);
+    }
+    
+    public void preencheTabela(List<TrabalhoFuncionario> listagem) {
+        int i = 0;  
+        for(TrabalhoFuncionario f : listagem) {            
+            model.add(i,f.getId()+" - "+f.getFuncionario().getCpf()+" "+f.getFuncionario().getNome()+"    "+f.getFuncionario().getCargo());
             i++;                
         }
         lstFuncionarios.setModel(model);

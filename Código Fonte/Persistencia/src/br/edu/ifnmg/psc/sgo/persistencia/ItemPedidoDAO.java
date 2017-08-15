@@ -21,7 +21,6 @@ public class ItemPedidoDAO extends DAOGenerico<ItemPedido> implements ItemPedido
 
     public ItemPedidoDAO() throws ClassNotFoundException, SQLException {
         super();
-        pedido = new PedidoDAO();
         materiais = new MaterialConstrucaoDAO();
     }
 
@@ -53,7 +52,9 @@ public class ItemPedidoDAO extends DAOGenerico<ItemPedido> implements ItemPedido
     @Override
     protected void setBuscaFiltros(ItemPedido filtro) {
         if(filtro.getId() > 0)
-            this.adicionarFiltro("id", filtro.getId());        
+            this.adicionarFiltro("id", filtro.getId());     
+        if(filtro.getId() > 0)
+            this.adicionarFiltro("id", filtro.getId());
     }
 
     @Override
@@ -81,7 +82,7 @@ public class ItemPedidoDAO extends DAOGenerico<ItemPedido> implements ItemPedido
             obj.setId( resultado.getInt("id") );
             obj.setMaterial( materiais.Abrir( resultado.getInt("material") ) );
             obj.setQuantidade( resultado.getInt("quantidade") );
-            obj.setPedido( pedido.Abrir( resultado.getInt("pedido") ) );
+            //obj.setPedido( pedido.Abrir( resultado.getInt("pedido") ) );
             
             return obj;
             
@@ -90,4 +91,5 @@ public class ItemPedidoDAO extends DAOGenerico<ItemPedido> implements ItemPedido
         }
         return null;
     }
+       
 }

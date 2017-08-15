@@ -239,9 +239,7 @@ public class FornecedorBuscar extends TelaBusca<Fornecedor> {
         modelo.addColumn("Nome");
         modelo.addColumn("Telefone");
         modelo.addColumn("Email");
-        modelo.addColumn("Bairro");
-        modelo.addColumn("Numero");
-        modelo.addColumn("Rua");
+        modelo.addColumn("Endereço");
         
         for(Fornecedor f : listagem){
             Vector linha = new Vector();
@@ -249,9 +247,7 @@ public class FornecedorBuscar extends TelaBusca<Fornecedor> {
             linha.add(f.getNome());            
             linha.add(f.getFone());
             linha.add(f.getEmail());
-            linha.add(f.getBairro());
-            linha.add(f.getNumero());
-            linha.add(f.getRua());
+            linha.add(f.getRua()+", "+f.getBairro()+", "+f.getNumero());
                         
             modelo.addRow(linha);
         }

@@ -284,6 +284,7 @@ public class PedidoEditar extends  TelaEdicao<Pedido> {
         txtData.setValue( entidade.getData());
         preencheTabela( entidade.getItens());
         cbxFornecedor.setSelectedItem( entidade.getFornecedor());
+        lblQuantidade.setValue(entidade.getQuantidade());
     }
 
     @Override

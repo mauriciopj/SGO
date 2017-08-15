@@ -273,10 +273,7 @@ public class ClienteBuscar extends TelaBusca<Cliente> {
         modelo.addColumn("Nome");
         modelo.addColumn("Email");
         modelo.addColumn("Telefone");
-        modelo.addColumn("Rua");
-        modelo.addColumn("Bairro");
-        modelo.addColumn("Numero");
-        modelo.addColumn("CNPJ");     
+        modelo.addColumn("Endereço");   
         modelo.addColumn("CPF");     
         
         
@@ -286,10 +283,7 @@ public class ClienteBuscar extends TelaBusca<Cliente> {
             linha.add(c.getNome());
             linha.add(c.getEmail());
             linha.add(c.getFone());            
-            linha.add(c.getRua());
-            linha.add(c.getBairro());
-            linha.add(c.getNumero());
-            //linha.add(f.getCnpj());
+            linha.add(c.getRua()+", "+c.getBairro()+", "+c.getNumero());
             linha.add(c.getCpf());            
                         
             modelo.addRow(linha);

@@ -28,6 +28,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import br.edu.ifnmg.psc.sgo.aplicacao.ItemPedidoRepositorio;
+import br.edu.ifnmg.psc.sgo.aplicacao.TrabalhoFuncionarioRepositorio;
+import br.edu.ifnmg.psc.sgo.persistencia.TrabalhoFuncionarioDAO;
 
 /**
  *
@@ -45,6 +47,7 @@ public class Repositorios {
     static TrabalhoRepositorio trabalhoDAO = null;
     static ItemPedidoRepositorio itemPedidoDAO = null;
     static UsuarioRepositorio usuarioDAO = null;
+    static TrabalhoFuncionarioRepositorio trabalhoFuncionarioDAO = null;
     
     public static EmpresaRepositorio getEmpresaRepositorio(){
         if(empresaDAO == null)
@@ -169,4 +172,17 @@ public class Repositorios {
             }
         return usuarioDAO;
     }
+         
+    public static TrabalhoFuncionarioRepositorio getTrabalhoFuncionarioRepositorio(){
+        if(trabalhoFuncionarioDAO == null)
+            try {
+               trabalhoFuncionarioDAO = new TrabalhoFuncionarioDAO();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Repositorios.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Repositorios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return trabalhoFuncionarioDAO;
+    }
+            
 }

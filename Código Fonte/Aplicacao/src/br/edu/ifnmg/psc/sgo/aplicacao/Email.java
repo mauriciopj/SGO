@@ -8,14 +8,14 @@ package br.edu.ifnmg.psc.sgo.aplicacao;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
+
 /**
  *
  * @author mauricio
  */
 public class Email {
     private String destinatario;
-    private 
-    Usuario usuario;
+    private Usuario usuario;
 
     public Email() {
         

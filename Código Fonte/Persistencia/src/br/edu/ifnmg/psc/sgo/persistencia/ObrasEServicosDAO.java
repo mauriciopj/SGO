@@ -20,7 +20,7 @@ public class ObrasEServicosDAO extends DAOGenerico<ObrasEServicos> implements Ob
     
     public ObrasEServicosDAO() throws ClassNotFoundException, SQLException {
         super();
-        //clientes = new ClienteDAO();
+        clientes = new ClienteDAO();
     }
 
     @Override
@@ -52,7 +52,7 @@ public class ObrasEServicosDAO extends DAOGenerico<ObrasEServicos> implements Ob
     @Override
     protected void setBuscaFiltros(ObrasEServicos filtro) {
         if(filtro.getDescricao()!= null && !filtro.getDescricao().isEmpty())
-            this.adicionarFiltro("cpf", filtro.getDescricao());
+            this.adicionarFiltro("descricao", filtro.getDescricao());
    }
     
     @Override

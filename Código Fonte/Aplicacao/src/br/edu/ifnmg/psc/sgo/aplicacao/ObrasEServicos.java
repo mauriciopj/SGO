@@ -10,7 +10,7 @@ import java.util.Objects;
  * @author Dougla_Castro
  */
 public class ObrasEServicos implements Entidade {
-    private int idObras;
+    private int idObra;
     private ObrasCidade cidade;
     private String descricao, bairro, numero, complemento, rua;
     private Cliente cliente;
@@ -28,17 +28,17 @@ public class ObrasEServicos implements Entidade {
         this.rua = rua;
         this.cliente = cliente;
     }  
-       
-    @Override
-    public void setId(int id) {
-        this.idObras = id;
-    }
-    
+
     @Override
     public int getId() {
-        return idObras;
+        return idObra;
     }
-    
+
+    @Override
+    public void setId(int idObra) {
+        this.idObra = idObra;
+    }
+       
     public ObrasCidade getCidade() {
         return cidade;
     }
@@ -74,7 +74,7 @@ public class ObrasEServicos implements Entidade {
     }
 
     public String getRua() {
-            return rua;
+        return rua;
     }
 
     public void setDescricao(String descricao) {
@@ -82,25 +82,25 @@ public class ObrasEServicos implements Entidade {
     }
 
     public void setBairro(String bairro) {
-         this.bairro = bairro;
+        this.bairro = bairro;
     }
 
     public void setComplemento(String complemnento) {
-         this.complemento = complemnento;
+        this.complemento = complemnento;
     }
 
     public void setNumero(String numero) {
-         this.numero = numero;
+        this.numero = numero;
     }
 
     public void setRua(String rua) {
-        this. rua= rua;
+        this. rua = rua;
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 79 * hash + this.idObras;
+        hash = 79 * hash + this.idObra;
         hash = 79 * hash + Objects.hashCode(this.cidade);
         hash = 79 * hash + Objects.hashCode(this.descricao);
         hash = 79 * hash + Objects.hashCode(this.bairro);
@@ -123,7 +123,7 @@ public class ObrasEServicos implements Entidade {
             return false;
         }
         final ObrasEServicos other = (ObrasEServicos) obj;
-        if (this.idObras != other.idObras) {
+        if (this.idObra != other.idObra) {
             return false;
         }
         if (!Objects.equals(this.descricao, other.descricao)) {
@@ -150,6 +150,9 @@ public class ObrasEServicos implements Entidade {
         return true;
     }
 
-   
+   @Override
+    public String toString() {
+        return descricao;
+    }
            
 }

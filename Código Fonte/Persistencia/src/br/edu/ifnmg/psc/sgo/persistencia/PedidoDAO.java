@@ -21,7 +21,7 @@ import br.edu.ifnmg.psc.sgo.aplicacao.PedidoRepositorio;
 public class PedidoDAO extends DAOGenerico<Pedido> implements PedidoRepositorio {
     
     private ItemPedidoDAO itens = new ItemPedidoDAO();
-    private Pedido pedido = null;
+    private Pedido pedido;
     
     public PedidoDAO() throws ClassNotFoundException, SQLException {
         super();  

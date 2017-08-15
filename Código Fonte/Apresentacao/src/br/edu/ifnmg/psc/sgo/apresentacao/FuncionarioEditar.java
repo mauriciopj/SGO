@@ -28,7 +28,7 @@ public class FuncionarioEditar extends TelaEdicao<Funcionario> {
         entidade = new Funcionario();
                 
         ComboBoxModel model = new DefaultComboBoxModel(CargoFuncionario.values());               
-        cbxCargo.setModel(model);
+        cbxCargo.setModel(model);                
     }
 
     /**
