@@ -5,8 +5,9 @@
  */
 package br.edu.ifnmg.psc.sgo.apresentacao;
 import br.edu.ifnmg.psc.sgo.aplicacao.Aplicacao;
-import br.edu.ifnmg.psc.sgo.aplicacao.FuncionarioRepositorio;
+import br.edu.ifnmg.psc.sgo.apresentacao.ConnectionFactory;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -92,13 +93,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SGO - Sistema de Gestão de Obras", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Loma", 1, 14), new java.awt.Color(74, 74, 74))); // NOI18N
         jMenuBar1.setMargin(new java.awt.Insets(10, 0, 0, 0));
         jMenuBar1.setName(""); // NOI18N
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(481, 80));
 
         mnuForm.setForeground(new java.awt.Color(1, 1, 1));
         mnuForm.setText("Novo");
         mnuForm.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         mnuForm.setFocusCycleRoot(true);
+        mnuForm.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
         mnuForm.setNextFocusableComponent(mnuForm);
 
+        mnuCliente.setFont(new java.awt.Font("Ubuntu", 0, 13)); // NOI18N
         mnuCliente.setText("Cliente");
         mnuCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,10 +276,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuUsuarioActionPerformed
 
     private void mnuListFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListFuncionariosActionPerformed
-        FuncionarioRepositorio dao = Repositorios.getFuncionarioRepositorio();        
-        Map parametros = new HashMap();       
-        parametros.put("usuario", Aplicacao.getUsuario().getNome());        
-        exibeRelatorioJasper("Funcionarios.jasper", dao.Buscar(null), parametros);
+        Connection conn = ConnectionFactory.getConnection();
+        
+        String src = "/home/mauricio/Área de Trabalho/Repositório/SGO/Código Fonte/Apresentacao/src/Relatórios/Funcionarios.jasper";
+        
+        JasperPrint jaspertPrint = null;
+        
+        try {
+            
+            jaspertPrint = JasperFillManager.fillReport(src, null, conn);
+            
+        } catch (JRException ex) {
+            System.out.println("Error: "+ex);
+        }
+        
+        JasperViewer view = new JasperViewer(jaspertPrint,false);
+        
+        view.setVisible(true);
+        this.setAutoRequestFocus(rootPaneCheckingEnabled);
     }//GEN-LAST:event_mnuListFuncionariosActionPerformed
 
     /**
